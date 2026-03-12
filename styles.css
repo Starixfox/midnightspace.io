@@ -1,0 +1,1 @@
+:root { --green: #00d4ff; --bg: #030712; } body { background: var(--bg); color: #fff; font-family: sans-serif; } .nav-logo { display: flex; align-items: center; gap: 10px; } .btn-primary { background: var(--green); color: #000; padding: 8px 16px; border-radius: 6px; }
