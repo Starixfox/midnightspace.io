@@ -1337,4 +1337,4 @@ a, button, [role="button"], input, textarea, select {
 
 
 /* REVEAL FIX — ensure elements are visible if JS observer fails */
-.reveal { opacity: 1 !important; transform: none !important; }
+.reveal { opacity: 1 !important; transform: none !important;  transition: none !important;}
