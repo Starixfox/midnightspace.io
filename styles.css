@@ -1334,3 +1334,7 @@ a, button, [role="button"], input, textarea, select {
   .section-title { font-size: var(--text-xl) !important; }
 }
 
+
+
+/* REVEAL FIX — ensure elements are visible if JS observer fails */
+.reveal { opacity: 1 !important; transform: none !important; }
