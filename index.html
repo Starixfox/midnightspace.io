@@ -11,7 +11,7 @@
 </head>
 <body>
     <canvas id="starfield"></canvas>
-
+    
     <nav class="site-nav" role="navigation" aria-label="Main navigation">
         <div class="nav-inner">
             <a href="index.html" class="nav-logo" aria-label="Midnight Space home">
@@ -20,6 +20,11 @@
                     <path d="M22 8.5C19.5 8.5 17 10.5 17 13.5C17 18 21 20 21 23C21 25 19.5 26.5 17 26.5C20 26.5 26 23.5 26 17C26 12.5 24 8.5 22 8.5Z" fill="currentColor" opacity="0.9"/>
                     <circle cx="10" cy="14" r="2.5" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
                     <circle cx="10" cy="14" r="0.8" fill="#00d4ff"/>
+                    <line x1="10" y1="16.5" x2="10" y2="20" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+                    <line x1="10" y1="11.5" x2="10" y2="8" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+                    <line x1="7.5" y1="14" x2="5" y2="14" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+                    <circle cx="5" cy="14" r="1.2" fill="#00d4ff" opacity="0.4"/>
+                    <circle cx="10" cy="20" r="1.2" fill="#00d4ff" opacity="0.4"/>
                 </svg>
                 <span class="nav-logo-text">Midnight<span> Space</span></span>
             </a>
@@ -28,6 +33,7 @@
                 <li><a href="products.html">Products</a></li>
                 <li><a href="use-cases.html">Use Cases</a></li>
                 <li><a href="roadmap.html">Roadmap</a></li>
+                <li><a href="https://starixfox.github.io/midnight-space-orbit-tracker/" target="_blank">Orbital Tracker</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
             <div class="nav-actions">
@@ -40,79 +46,17 @@
         </div>
     </nav>
 
-    <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu">
         <a href="index.html" class="active">Home</a>
         <a href="products.html">Products</a>
         <a href="use-cases.html">Use Cases</a>
         <a href="roadmap.html">Roadmap</a>
+        <a href="https://starixfox.github.io/midnight-space-orbit-tracker/" target="_blank">Orbital Tracker</a>
         <a href="contact.html">Contact</a>
     </div>
 
     <main>
         <section class="page-hero" data-reveal>
-            <div class="container-default" style="text-align:center;">
-                <div class="section-label" style="justify-content:center; margin-bottom: var(--space-6);">Early stage · Prototype available</div>
-                <h1 style="font-size: var(--text-3xl); font-weight:800; letter-spacing:-0.02em; line-height:1.1; margin-bottom:var(--space-6);">Data and insight for the next space economy</h1>
-                <p style="font-size: var(--text-lg); color:var(--color-text-muted); max-width:52ch; margin: 0 auto var(--space-10);">Mapping funding, programs, and ecosystem activity for governments and investors.</p>
-                <div style="display:flex; gap:var(--space-4); justify-content:center;">
-                    <a href="products.html" class="btn btn-primary btn-lg">See live prototype</a>
-                    <a href="contact.html" class="btn btn-secondary btn-lg">Request early access</a>
-                </div>
-
-                <!-- Dashboard Mockup -->
-                <div class="dash-mock" style="margin-top:var(--space-16);">
-                    <div class="dash-mock-header">
-                        <div class="dash-dot"></div><div class="dash-dot"></div><div class="dash-dot"></div>
-                        <span style="font-size:var(--text-xs); color:var(--color-text-faint); margin-left:var(--space-3);">Saudi Space Opportunity Hub — prototype</span>
-                    </div>
-                    <div class="dash-mock-body">
-                        <div class="dash-row">
-                            <div class="dash-kpi">
-                                <div class="dash-kpi-label">Active Programs</div>
-                                <div class="dash-kpi-value stat-number">47</div>
-                            </div>
-                            <div class="dash-kpi">
-                                <div class="dash-kpi-label">Funding Tracked</div>
-                                <div class="dash-kpi-value stat-number">$2.4B</div>
-                            </div>
-                            <div class="dash-kpi">
-                                <div class="dash-kpi-label">Countries</div>
-                                <div class="dash-kpi-value stat-number">18</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" data-reveal>
-            <div class="container-default">
-                <div class="text-center" style="margin-bottom:var(--space-12);">
-                    <div class="section-label">Core capabilities</div>
-                    <h2 class="section-title">Built around data, not hardware</h2>
-                </div>
-                <div class="grid-4">
-                    <div class="card">
-                        <h3 class="card-title">Opportunity mapping</h3>
-                        <p class="card-body">Funding calls, grants, and public programs consolidated in one searchable database.</p>
-                    </div>
-                    <div class="card">
-                        <h3 class="card-title">Program tracking</h3>
-                        <p class="card-body">Monitor open cycles and application windows across the GCC and global markets.</p>
-                    </div>
-                    <div class="card">
-                        <h3 class="card-title">Ecosystem dashboards</h3>
-                        <p class="card-body">Visual summaries and charts for leadership teams to identify investment trends.</p>
-                    </div>
-                    <div class="card" style="border-style:dashed;">
-                        <h3 class="card-title">Signals & alerts</h3>
-                        <p class="card-body">Coming soon: Notifications when new funding calls open or programs change status.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="cta-band" data-reveal>
             <div class="container-narrow">
                 <h2 class="section-title">We are in prototype stage and looking for partners</h2>
                 <div class="cta-band-actions" style="margin-top: var(--space-8);">
