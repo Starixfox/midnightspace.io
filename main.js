@@ -1,120 +1,111 @@
 /* ============================================================
- MIDNIGHT SPACE — main.js
- Shared JS: nav, theme toggle, mobile menu, scroll FX
- ============================================================ */
+   MIDNIGHT SPACE — main.js
+   Shared JS: nav, mobile menu, scroll FX, starfield
+   ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
- // ── Scroll reveal ───────────────────────────────────────────
- const revealEls = document.querySelectorAll('.reveal');
- if ('IntersectionObserver' in window && revealEls.length > 0) {
-  const observer = new IntersectionObserver(
-   entries => {
-    entries.forEach(entry => {
-     if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-     }
-    });
-   },
-   { threshold: 0.12 }
-  );
-  revealEls.forEach(el => observer.observe(el));
- } else {
-  revealEls.forEach(el => el.classList.add('visible'));
- }
+    // 1. Improved Scroll Reveal
+    const revealEls = document.querySelectorAll('[data-reveal], .reveal');
+    if ('IntersectionObserver' in window && revealEls.length > 0) {
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal-visible', 'visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+        
+        revealEls.forEach(el => revealObserver.observe(el));
+    }
 
- // ── Starfield background ───────────────────────────────────
- initStarfield();
+    // 2. Count-up Numbers for Stats
+    const countEls = document.querySelectorAll('.stat-number');
+    if ('IntersectionObserver' in window && countEls.length > 0) {
+        const countObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = entry.target;
+                    const endText = target.innerText.replace(/[^0-9.]/g, '');
+                    const end = parseFloat(endText);
+                    if (!isNaN(end)) {
+                        animateCount(target, 0, end, 2000);
+                    }
+                    countObserver.unobserve(target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        countEls.forEach(el => countObserver.observe(el));
+    }
 
- // ── Mobile menu ────────────────────────────────────────────
- const hamburger = document.querySelector('.hamburger');
- const mobileMenu = document.getElementById('mobile-menu');
- if (hamburger && mobileMenu) {
-  hamburger.addEventListener('click', () => {
-   const isOpen = hamburger.getAttribute('aria-expanded') === 'true';
-   hamburger.setAttribute('aria-expanded', String(!isOpen));
-   hamburger.classList.toggle('is-open', !isOpen);
-   mobileMenu.classList.toggle('is-open', !isOpen);
-  });
- }
+    // 3. Mobile Menu Toggle
+    const hamburger = document.querySelector('.hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (hamburger && mobileMenu) {
+        hamburger.addEventListener('click', () => {
+            const isOpen = hamburger.getAttribute('aria-expanded') === 'true';
+            hamburger.setAttribute('aria-expanded', String(!isOpen));
+            hamburger.classList.toggle('is-open');
+            mobileMenu.classList.toggle('is-open');
+            document.body.classList.toggle('menu-open');
+        });
+    }
 
- // ── Count-up animation ─────────────────────────────────────
- initCountUp();
+    // 4. Starfield Background
+    initStarfield();
 });
 
-function initStarfield() {
- const canvas = document.getElementById('starfield-canvas');
- if (!canvas) return;
- const ctx = canvas.getContext('2d');
- const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
- let width, height, stars;
-
- function resize() {
-  width = canvas.width = window.innerWidth;
-  height = canvas.height = window.innerHeight;
-  const count = Math.floor((width * height) / 8000);
-  stars = Array.from({ length: count }, () => ({
-   x: Math.random() * width,
-   y: Math.random() * height,
-   r: Math.random() * 1.2 + 0.3,
-   twinkle: Math.random() * Math.PI * 2
-  }));
- }
-
- function draw() {
-  ctx.clearRect(0, 0, width, height);
-  ctx.fillStyle = 'rgba(255,255,255,0.8)';
-  stars.forEach(s => {
-   const alpha = 0.3 + 0.3 * Math.sin(s.twinkle);
-   ctx.globalAlpha = alpha;
-   ctx.beginPath();
-   ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-   ctx.fill();
-   s.twinkle += 0.02;
-  });
-  ctx.globalAlpha = 1;
- }
-
- function loop() {
-  if (prefersReducedMotion) {
-   draw();
-   return;
-  }
-  draw();
-  requestAnimationFrame(loop);
- }
-
- resize();
- loop();
- window.addEventListener('resize', resize);
+function animateCount(el, start, end, duration) {
+    let startTimestamp = null;
+    const finalSymbol = el.innerText.includes('+') ? '+' : '';
+    const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        const current = Math.floor(progress * (end - start) + start);
+        el.innerText = current.toLocaleString() + finalSymbol;
+        if (progress < 1) {
+            window.requestAnimationFrame(step);
+        }
+    };
+    window.requestAnimationFrame(step);
 }
 
-function initCountUp() {
- const els = document.querySelectorAll('[data-countup]');
- if (!els.length) return;
- const duration = 900;
- els.forEach(el => {
-  const target = Number(el.getAttribute('data-target'));
-  if (!Number.isFinite(target)) return;
-  const isCurrency = el.textContent.trim().startsWith('$');
-  const start = performance.now();
-  const initialText = el.textContent.trim();
+function initStarfield() {
+    const canvas = document.getElementById('starfield');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let w, h, stars = [];
 
-  function tick(now) {
-   const progress = Math.min(1, (now - start) / duration);
-   const value = Math.floor(target * progress);
-   if (isCurrency) {
-    if (target >= 1_000_000_000) {
-     el.textContent = '$' + (target / 1_000_000_000 * progress).toFixed(1) + 'B';
-    } else {
-     el.textContent = '$' + value.toLocaleString();
+    function setCanvasSize() {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
     }
-   } else {
-    el.textContent = value.toLocaleString();
-   }
-   if (progress < 1) requestAnimationFrame(tick);
-   else el.textContent = initialText;
-  }
-  requestAnimationFrame(tick);
- });
+    
+    setCanvasSize();
+    window.addEventListener('resize', setCanvasSize);
+
+    // Create stars
+    for (let i = 0; i < 200; i++) {
+        stars.push({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            size: Math.random() * 1.5,
+            velocity: Math.random() * 0.05 + 0.02
+        });
+    }
+
+    function draw() {
+        ctx.clearRect(0, 0, w, h);
+        ctx.fillStyle = '#fff';
+        stars.forEach(star => {
+            ctx.beginPath();
+            ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+            ctx.fill();
+            star.y -= star.velocity;
+            if (star.y < 0) star.y = h;
+        });
+        requestAnimationFrame(draw);
+    }
+    draw();
 }
