@@ -1,111 +1,226 @@
+@@ -1,54 +1,174 @@
+// Midnight Space Platform - Main Interactivity
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Mobile Navigation Menu Toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('nav ul');
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('open');
+        });
+    }
+
+    // 2. Dark/Light Theme Toggle
+    const themeToggle = document.querySelector('.theme-switch');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-theme');
+            const isLight = document.body.classList.contains('light-theme');
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        });
+        
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-theme');
 /* ============================================================
    MIDNIGHT SPACE — main.js
-   Shared JS: nav, mobile menu, scroll FX, starfield
+   Shared JS: nav, theme toggle, mobile menu, form, scroll FX
    ============================================================ */
 
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. Improved Scroll Reveal
-    const revealEls = document.querySelectorAll('[data-reveal], .reveal');
-    if ('IntersectionObserver' in window && revealEls.length > 0) {
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('reveal-visible', 'visible');
-                    revealObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
-        
-        revealEls.forEach(el => revealObserver.observe(el));
-    }
+(function () {
+  'use strict';
 
-    // 2. Count-up Numbers for Stats
-    const countEls = document.querySelectorAll('.stat-number');
-    if ('IntersectionObserver' in window && countEls.length > 0) {
-        const countObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const target = entry.target;
-                    const endText = target.innerText.replace(/[^0-9.]/g, '');
-                    const end = parseFloat(endText);
-                    if (!isNaN(end)) {
-                        animateCount(target, 0, end, 2000);
-                    }
-                    countObserver.unobserve(target);
-                }
-            });
-        }, { threshold: 0.5 });
-        
-        countEls.forEach(el => countObserver.observe(el));
-    }
+  /* ── 1. Theme toggle ────────────────────────────────────── */
+  const html = document.documentElement;
 
-    // 3. Mobile Menu Toggle
-    const hamburger = document.querySelector('.hamburger');
-    const mobileMenu = document.getElementById('mobile-menu');
-    if (hamburger && mobileMenu) {
-        hamburger.addEventListener('click', () => {
-            const isOpen = hamburger.getAttribute('aria-expanded') === 'true';
-            hamburger.setAttribute('aria-expanded', String(!isOpen));
-            hamburger.classList.toggle('is-open');
-            mobileMenu.classList.toggle('is-open');
-            document.body.classList.toggle('menu-open');
-        });
-    }
+  // Detect system preference and init
+  const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  let currentTheme = systemDark ? 'dark' : 'light';
+  html.setAttribute('data-theme', currentTheme);
 
-    // 4. Starfield Background
-    initStarfield();
-});
+  function updateThemeToggleIcon(btn, theme) {
+    if (!btn) return;
+    btn.setAttribute('aria-label', 'Switch to ' + (theme === 'dark' ? 'light' : 'dark') + ' mode');
+    btn.innerHTML = theme === 'dark'
+      ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+      : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+  }
 
-function animateCount(el, start, end, duration) {
-    let startTimestamp = null;
-    const finalSymbol = el.innerText.includes('+') ? '+' : '';
-    const step = (timestamp) => {
-        if (!startTimestamp) startTimestamp = timestamp;
-        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-        const current = Math.floor(progress * (end - start) + start);
-        el.innerText = current.toLocaleString() + finalSymbol;
-        if (progress < 1) {
-            window.requestAnimationFrame(step);
+  document.querySelectorAll('[data-theme-toggle]').forEach(function (btn) {
+    updateThemeToggleIcon(btn, currentTheme);
+    btn.addEventListener('click', function () {
+      currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', currentTheme);
+      document.querySelectorAll('[data-theme-toggle]').forEach(function (b) {
+        updateThemeToggleIcon(b, currentTheme);
+      });
+    });
+  });
+
+  /* ── 2. Active nav link highlight ──────────────────────── */
+  (function highlightNav() {
+    var page = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(function (a) {
+      var href = a.getAttribute('href');
+      var isHome = (page === '' || page === 'index.html') && (href === 'index.html' || href === './');
+      var isMatch = href === page;
+      if (isHome || isMatch) {
+        a.classList.add('active');
+        a.setAttribute('aria-current', 'page');
+      }
+    });
+  })();
+
+  /* ── 3. Nav scroll shadow ───────────────────────────────── */
+  var siteNav = document.querySelector('.site-nav');
+  if (siteNav) {
+    window.addEventListener('scroll', function () {
+      siteNav.classList.toggle('scrolled', window.scrollY > 8);
+    }, { passive: true });
+  }
+
+  /* ── 4. Hamburger / mobile menu ─────────────────────────── */
+  var hamburger = document.querySelector('.hamburger');
+  var mobileMenu = document.querySelector('.mobile-menu');
+
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener('click', function () {
+      var isOpen = hamburger.getAttribute('aria-expanded') === 'true';
+      hamburger.setAttribute('aria-expanded', String(!isOpen));
+      mobileMenu.classList.toggle('open', !isOpen);
+      document.body.style.overflow = isOpen ? '' : 'hidden';
+    });
+
+    // Close on nav link click
+    mobileMenu.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        hamburger.setAttribute('aria-expanded', 'false');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Close on outside click
+    document.addEventListener('click', function (e) {
+      if (
+        mobileMenu.classList.contains('open') &&
+        !mobileMenu.contains(e.target) &&
+        !hamburger.contains(e.target)
+      ) {
+        hamburger.setAttribute('aria-expanded', 'false');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+
+  /* ── 5. Smooth scroll for in-page anchors ───────────────── */
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var id = a.getAttribute('href');
+      var target = document.querySelector(id);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  /* ── 6. Contact form handler ────────────────────────────── */
+  var contactForm = document.getElementById('contact-form');
+  var formSuccess = document.getElementById('form-success');
+
+  if (contactForm && formSuccess) {
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // Basic validation
+      var name = contactForm.querySelector('[name="name"]');
+      var email = contactForm.querySelector('[name="email"]');
+      var valid = true;
+
+      [name, email].forEach(function (field) {
+        if (!field || !field.value.trim()) {
+          field && field.classList.add('error');
+          valid = false;
+        } else {
+          field && field.classList.remove('error');
         }
-    };
-    window.requestAnimationFrame(step);
-}
-
-function initStarfield() {
-    const canvas = document.getElementById('starfield');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    let w, h, stars = [];
-
-    function setCanvasSize() {
-        w = canvas.width = window.innerWidth;
-        h = canvas.height = window.innerHeight;
     }
-    
-    setCanvasSize();
-    window.addEventListener('resize', setCanvasSize);
 
-    // Create stars
-    for (let i = 0; i < 200; i++) {
-        stars.push({
-            x: Math.random() * w,
-            y: Math.random() * h,
-            size: Math.random() * 1.5,
-            velocity: Math.random() * 0.05 + 0.02
+    // 3. Simple Form Feedback (for contact page)
+    const contactForm = document.querySelector('#contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for reaching out! Your message has been sent to the Midnight Space team.');
+            contactForm.reset();
         });
     }
 
-    function draw() {
-        ctx.clearRect(0, 0, w, h);
-        ctx.fillStyle = '#fff';
-        stars.forEach(star => {
-            ctx.beginPath();
-            ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
-            ctx.fill();
-            star.y -= star.velocity;
-            if (star.y < 0) star.y = h;
+    // 4. Smooth Scrolling for Anchor Links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if (targetId !== "#") {
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            }
+      });
+
+      if (!valid) return;
+
+      // Show success state
+      contactForm.style.display = 'none';
+      formSuccess.classList.add('visible');
+
+      // Scroll to success
+      formSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+
+    // Remove error class on input
+    contactForm.querySelectorAll('input, textarea, select').forEach(function (field) {
+      field.addEventListener('input', function () {
+        field.classList.remove('error');
+      });
+    });
+  }
+
+  /* ── 7. Intersection observer — reveal on scroll ────────── */
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
         });
-        requestAnimationFrame(draw);
-    }
-    draw();
-}
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    document.querySelectorAll('.reveal').forEach(function (el) {
+      observer.observe(el);
+    });
+  } else {
+    // Fallback: show all immediately
+    document.querySelectorAll('.reveal').forEach(function (el) {
+      el.classList.add('visible');
+    });
+});
+  }
+
+  /* ── 8. Add error style for invalid form fields ─────────── */
+  var style = document.createElement('style');
+  style.textContent = '.form-input.error, .form-textarea.error { border-color: #ff6b6b; box-shadow: 0 0 0 3px rgba(255,107,107,0.15); }';
+  document.head.appendChild(style);
+
+})();
