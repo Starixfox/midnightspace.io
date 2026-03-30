@@ -1,373 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!--
-   ______                            __
-  / ____/___  ____ ___  ____  __  __/ /____  _____
- / /   / __ \/ __ `__ \/ __ \/ / / / __/ _ \/ ___/
-/ /___/ /_/ / / / / / / /_/ / /_/ / /_/  __/ /
-\____/\____/_/ /_/ /_/ .___/\__,_/\__/\___/_/
-                    /_/
-        Created with Perplexity Computer
-        https://www.perplexity.ai/computer
--->
-<meta name="generator" content="Perplexity Computer">
-<meta name="author" content="Perplexity Computer">
-<meta property="og:see_also" content="https://www.perplexity.ai/computer">
-<link rel="author" href="https://www.perplexity.ai/computer">
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Midnight Space roadmap — an honest, indicative timeline from current prototype through first product, first paying customer, and longer-term space data intelligence tools.">
-  <meta property="og:title" content="Roadmap — Midnight Space">
-  <meta property="og:description" content="Honest indicative roadmap from prototype to first product. Currently building space data analytics tools for agencies and investors.">
   <title>Roadmap — Midnight Space</title>
-
-  <link rel="preconnect" href="https://api.fontshare.com">
-  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@300,400,500,700,800&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<!-- ── Navigation ─────────────────────────────────────────── -->
-<nav class="site-nav" role="navigation" aria-label="Main navigation">
+<!-- ── Navbar ─────────────────────────────────────────── -->
+<nav class="site-nav" id="site-nav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo" aria-label="Midnight Space home">
-      <svg class="nav-logo-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-        <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="1.5" opacity="0.15"/>
-        <path d="M22 8.5C19.5 8.5 17 10.5 17 13.5C17 18 21 20 21 23C21 25 19.5 26.5 17 26.5C20 26.5 26 23.5 26 17C26 12.5 24 8.5 22 8.5Z" fill="currentColor" opacity="0.9"/>
-        <circle cx="10" cy="14" r="2.5" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
-        <circle cx="10" cy="14" r="0.8" fill="#00d4ff"/>
-        <line x1="10" y1="16.5" x2="10" y2="20" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
-        <line x1="10" y1="11.5" x2="10" y2="8" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
-        <line x1="7.5" y1="14" x2="5" y2="14" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
-        <circle cx="5" cy="14" r="1.2" fill="#00d4ff" opacity="0.4"/>
-        <circle cx="10" cy="20" r="1.2" fill="#00d4ff" opacity="0.4"/>
-      </svg>
-      <span class="nav-logo-text">Midnight<span> Space</span></span>
+    <a href="index.html" class="nav-logo">
+      <span class="logo-midnight">MIDNIGHT</span><span class="logo-space"> SPACE</span>
     </a>
-
-    <ul class="nav-links" role="list">
+    <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="products.html">Products</a></li>
       <li><a href="use-cases.html">Use Cases</a></li>
       <li><a href="roadmap.html" class="active">Roadmap</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
-
     <div class="nav-actions">
-      <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme"></button>
-      <a href="contact.html" class="btn btn-primary btn-sm nav-cta">Request access</a>
-      <button class="hamburger" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation menu">
+      <a href="contact.html" class="btn btn-primary btn-sm">Request access</a>
+      <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
   </div>
 </nav>
-
-<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu">
+<div class="mobile-menu" id="mobile-menu">
   <a href="index.html">Home</a>
   <a href="products.html">Products</a>
   <a href="use-cases.html">Use Cases</a>
-  <a href="roadmap.html" class="active">Roadmap</a>
+  <a href="roadmap.html">Roadmap</a>
   <a href="contact.html">Contact</a>
-  <div class="mobile-menu-cta">
-    <a href="contact.html" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;">Request early access</a>
-  </div>
+  <a href="contact.html" class="btn btn-primary" style="margin-top:0.5rem;text-align:center;border-radius:50px;">Request access</a>
 </div>
 
-<!-- ── Main content ────────────────────────────────────────── -->
-<main>
-  <!-- Hero -->
-  <section class="page-hero-sm starfield-bg" aria-labelledby="roadmap-hero-heading">
-    <div class="container-default">
-      <div class="section-label reveal">Indicative plan</div>
-      <h1 id="roadmap-hero-heading" class="reveal reveal-delay-1" style="font-size:var(--text-2xl); font-weight:800; color:var(--color-text); margin-bottom:var(--space-5); max-width:18ch; letter-spacing:-0.02em; line-height:1.1;">
-        Roadmap
-      </h1>
-      <p class="reveal reveal-delay-2" style="font-size:var(--text-lg); color:var(--color-text-muted); max-width:52ch; line-height:1.7; margin-bottom:var(--space-6);">
-        An honest, indicative plan for what Midnight Space is working on and where it is heading. Timelines are approximate and subject to change based on feedback and priorities.
-      </p>
-      <div class="reveal reveal-delay-3" style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:var(--radius-xl); padding:var(--space-4) var(--space-5); display:inline-flex; gap:var(--space-3); align-items:flex-start; max-width:500px;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-warning)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;" aria-hidden="true">
-          <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
-        </svg>
-        <p style="font-size:var(--text-sm); color:var(--color-text-muted); max-width:100%;">
-          This roadmap is intended to give a realistic picture of progress and direction. It is not a commitment or a product announcement. Dates are approximate.
-        </p>
+<!-- ── Hero Parallax ──────────────────────────────────── -->
+<section class="parallax" style="background-image: url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=1920'); min-height: 70vh;">
+  <div class="parallax-content">
+    <div class="container">
+      <div class="hero-text">
+        <div class="hero-badge">WHERE WE'RE GOING</div>
+        <h1>Roadmap</h1>
+        <p>A transparent view of where Midnight Space is today and where it is heading. This is a living document — shaped by feedback from pilot partners.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <hr class="divider">
-
-  <!-- Timeline -->
-  <section class="section" aria-labelledby="timeline-heading">
-    <div class="container-default">
-      <div style="display:grid; grid-template-columns:5fr 4fr; gap:var(--space-16); align-items:start;">
-
-        <!-- Timeline column -->
-        <div>
-          <h2 id="timeline-heading" class="sr-only">Development timeline</h2>
-          <div class="timeline" role="list">
-
-            <!-- Phase 1: Now -->
-            <div class="timeline-item reveal" role="listitem">
-              <div class="timeline-dot active" aria-hidden="true">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12"/>
-                </svg>
-              </div>
-              <div class="timeline-content">
-                <div class="timeline-phase">Now — Current</div>
-                <h3 class="timeline-title">Prototype phase</h3>
-                <p class="timeline-desc">
-                  The Saudi Space Opportunity Hub is live as a working prototype. Data is manually curated. The dashboard is functional and has been demonstrated to prospective users.
-                </p>
-                <ul class="timeline-bullets" role="list">
-                  <li>Saudi Space Opportunity Hub demo — live and demonstrable</li>
-                  <li>Manually curated database of Saudi, GCC, and global space programs</li>
-                  <li>Filterable list and basic chart views</li>
-                  <li>Dashboard designed for government and agency decision-makers</li>
-                  <li>Actively seeking pilot partners and early feedback</li>
-                </ul>
-                <div style="margin-top:var(--space-4);">
-                  <span class="badge badge-prototype">Active now</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Phase 2: ~1–2 months -->
-            <div class="timeline-item reveal" role="listitem">
-              <div class="timeline-dot upcoming" aria-hidden="true">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-                </svg>
-              </div>
-              <div class="timeline-content">
-                <div class="timeline-phase upcoming-phase">~1–2 months — Target</div>
-                <h3 class="timeline-title">First product version</h3>
-                <p class="timeline-desc">
-                  Consolidate the prototype into a usable initial product with a proper web interface, better data organisation, and the core filtering and viewing experience cleaned up for external use.
-                </p>
-                <ul class="timeline-bullets" role="list">
-                  <li>Consolidated web dashboard with improved navigation</li>
-                  <li>Better filters — status, region, sector, program type, funding range</li>
-                  <li>Improved charts and summary views for briefings</li>
-                  <li>Basic export capability — list downloads or shareable views</li>
-                  <li>Early access onboarding for first pilot partners</li>
-                </ul>
-                <div style="margin-top:var(--space-4);">
-                  <span class="badge badge-soon">Target: ~1–2 months</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Phase 3: ~2 months -->
-            <div class="timeline-item reveal" role="listitem">
-              <div class="timeline-dot" aria-hidden="true">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-faint)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                </svg>
-              </div>
-              <div class="timeline-content">
-                <div class="timeline-phase future-phase">~2 months — Goal</div>
-                <h3 class="timeline-title">First paying customer</h3>
-                <p class="timeline-desc">
-                  The target is to have the first organisation using the platform with a commercial arrangement in place — whether a direct subscription, a pilot fee, or a service agreement.
-                </p>
-                <ul class="timeline-bullets" role="list">
-                  <li>First paying organisation using the platform in a real workflow</li>
-                  <li>Understanding validated through actual usage — not just demos</li>
-                  <li>Pricing model tested and iterated based on pilot feedback</li>
-                  <li>At least one additional partner identified for the pipeline</li>
-                </ul>
-                <div style="margin-top:var(--space-4);">
-                  <span class="badge badge-planned">Goal: ~2 months</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Phase 4: Later -->
-            <div class="timeline-item reveal" role="listitem">
-              <div class="timeline-dot" aria-hidden="true">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-faint)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
-                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-                </svg>
-              </div>
-              <div class="timeline-content">
-                <div class="timeline-phase future-phase">Later — Direction</div>
-                <h3 class="timeline-title">Broader coverage and API access</h3>
-                <p class="timeline-desc">
-                  Expand the data platform beyond the initial GCC focus to include major space funding programs from Europe, North America, and Asia. Add API access for organisations that want to pull data into their own tools.
-                </p>
-                <ul class="timeline-bullets" role="list">
-                  <li>Expand database to cover global space programs and funding bodies</li>
-                  <li>Add more data sources — international agencies, bilateral programs</li>
-                  <li>Structured API for integration into internal tools and reports</li>
-                  <li>Alerts and notification system for new programs and deadline changes</li>
-                  <li>Custom views configurable per-organisation</li>
-                </ul>
-                <div style="margin-top:var(--space-4);">
-                  <span class="badge badge-planned">Planned direction</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Phase 5: Longer term -->
-            <div class="timeline-item reveal" role="listitem">
-              <div class="timeline-dot" aria-hidden="true">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-faint)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-                </svg>
-              </div>
-              <div class="timeline-content">
-                <div class="timeline-phase future-phase">Longer term — Vision</div>
-                <h3 class="timeline-title">Ecosystem intelligence tools</h3>
-                <p class="timeline-desc">
-                  The longer-term direction is deeper analytics — moving from program lookup toward genuine intelligence about space ecosystem dynamics, trends, and strategic scenarios.
-                </p>
-                <ul class="timeline-bullets" role="list">
-                  <li>Trend analysis — how funding patterns shift over time</li>
-                  <li>Scenario views for strategic planning and policy modelling</li>
-                  <li>Comparative intelligence across countries and agencies</li>
-                  <li>Integration with commercial data sources (funding rounds, partnerships)</li>
-                  <li>Tools for ecosystem mapping and gap analysis at a national level</li>
-                </ul>
-                <div style="margin-top:var(--space-4);">
-                  <span class="badge badge-planned">Longer-term vision</span>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- Sidebar -->
-        <div style="position:sticky; top:calc(var(--nav-height) + var(--space-8));">
-          <div style="display:flex; flex-direction:column; gap:var(--space-6);">
-
-            <!-- Progress summary -->
-            <div class="card">
-              <div class="section-label" style="margin-bottom:var(--space-5);">Where we are</div>
-              <div style="display:flex; flex-direction:column; gap:var(--space-4);">
-                <div style="display:flex; align-items:center; gap:var(--space-3);">
-                  <div style="width:10px; height:10px; border-radius:50%; background:var(--color-primary); flex-shrink:0; box-shadow: 0 0 0 4px var(--color-primary-dim);"></div>
-                  <span style="font-size:var(--text-sm); color:var(--color-text);">Prototype phase</span>
-                  <span class="badge badge-prototype" style="margin-left:auto;">Now</span>
-                </div>
-                <div style="display:flex; align-items:center; gap:var(--space-3);">
-                  <div style="width:10px; height:10px; border-radius:50%; border:2px solid var(--color-accent); flex-shrink:0;"></div>
-                  <span style="font-size:var(--text-sm); color:var(--color-text-muted);">First product version</span>
-                  <span style="font-size:var(--text-xs); color:var(--color-text-faint); margin-left:auto;">~1–2 mo</span>
-                </div>
-                <div style="display:flex; align-items:center; gap:var(--space-3);">
-                  <div style="width:10px; height:10px; border-radius:50%; border:2px solid var(--color-border); flex-shrink:0;"></div>
-                  <span style="font-size:var(--text-sm); color:var(--color-text-muted);">First paying customer</span>
-                  <span style="font-size:var(--text-xs); color:var(--color-text-faint); margin-left:auto;">~2 mo</span>
-                </div>
-                <div style="display:flex; align-items:center; gap:var(--space-3);">
-                  <div style="width:10px; height:10px; border-radius:50%; border:2px solid var(--color-border); flex-shrink:0;"></div>
-                  <span style="font-size:var(--text-sm); color:var(--color-text-muted);">Broader coverage &amp; API</span>
-                  <span style="font-size:var(--text-xs); color:var(--color-text-faint); margin-left:auto;">Later</span>
-                </div>
-                <div style="display:flex; align-items:center; gap:var(--space-3);">
-                  <div style="width:10px; height:10px; border-radius:50%; border:2px solid var(--color-border); flex-shrink:0;"></div>
-                  <span style="font-size:var(--text-sm); color:var(--color-text-muted);">Ecosystem intelligence</span>
-                  <span style="font-size:var(--text-xs); color:var(--color-text-faint); margin-left:auto;">Vision</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Pilot partner callout -->
-            <div class="card" style="background:linear-gradient(135deg, var(--color-surface) 0%, rgba(0,212,255,0.04) 100%); border-color:var(--color-primary);">
-              <div style="font-size:var(--text-xs); color:var(--color-primary); font-weight:600; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:var(--space-4);">Shape the roadmap</div>
-              <p style="font-size:var(--text-sm); color:var(--color-text-muted); margin-bottom:var(--space-5); line-height:1.65;">
-                Pilot partners get direct input into what gets prioritised. If your organisation has a specific data need, we want to know.
-              </p>
-              <a href="contact.html" class="btn btn-primary" style="width:100%; justify-content:center;">Talk to the founder</a>
-            </div>
-
-            <!-- Honest note -->
-            <div style="background:var(--color-surface-offset); border:1px solid var(--color-border-subtle); border-radius:var(--radius-xl); padding:var(--space-5);">
-              <div style="font-size:var(--text-xs); color:var(--color-text-faint); font-weight:600; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:var(--space-3);">A note on timelines</div>
-              <p style="font-size:var(--text-xs); color:var(--color-text-faint); line-height:1.65; max-width:100%;">
-                This is a solo-founder project. Timelines reflect current intent, not guarantees. The roadmap will evolve based on what pilot partners need most. Last reviewed: March 2026.
-              </p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta-band starfield-bg" aria-labelledby="roadmap-cta-heading">
-    <div class="container-narrow">
-      <div class="section-label reveal" style="justify-content:center;">Get involved early</div>
-      <h2 id="roadmap-cta-heading" class="section-title reveal reveal-delay-1" style="font-size:var(--text-2xl);">
-        Help define what gets built next
-      </h2>
-      <p class="section-subtitle reveal reveal-delay-2" style="margin:0 auto;">
-        Early partners influence the roadmap directly. If you work in space policy, investment, or ecosystem development, a conversation now shapes what we prioritise.
-      </p>
-      <div class="cta-band-actions reveal reveal-delay-3">
-        <a href="contact.html" class="btn btn-primary btn-lg">Request early access</a>
-        <a href="products.html" class="btn btn-secondary btn-lg">See current platform</a>
-      </div>
-    </div>
-  </section>
-</main>
-
-<!-- ── Footer ─────────────────────────────────────────────── -->
-<footer class="site-footer" role="contentinfo">
+<!-- ── Timeline ───────────────────────────────────────── -->
+<section class="section" style="background: var(--bg-primary);">
   <div class="container">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <a href="index.html" class="nav-logo" style="margin-bottom:var(--space-4); display:inline-flex;">
-          <svg class="nav-logo-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-            <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="1.5" opacity="0.15"/>
-            <path d="M22 8.5C19.5 8.5 17 10.5 17 13.5C17 18 21 20 21 23C21 25 19.5 26.5 17 26.5C20 26.5 26 23.5 26 17C26 12.5 24 8.5 22 8.5Z" fill="currentColor" opacity="0.9"/>
-            <circle cx="10" cy="14" r="2.5" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
-            <circle cx="10" cy="14" r="0.8" fill="#00d4ff"/>
-            <line x1="10" y1="16.5" x2="10" y2="20" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
-            <line x1="10" y1="11.5" x2="10" y2="8" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
-            <line x1="7.5" y1="14" x2="5" y2="14" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
-            <circle cx="5" cy="14" r="1.2" fill="#00d4ff" opacity="0.4"/>
-            <circle cx="10" cy="20" r="1.2" fill="#00d4ff" opacity="0.4"/>
-          </svg>
-          <span class="nav-logo-text">Midnight<span> Space</span></span>
-        </a>
-        <p class="footer-tagline">Space data and analytics tools for governments, agencies, and investors. Early-stage prototype looking for pilot partners.</p>
+    <div class="section-header section-center" style="margin-bottom:5rem;">
+      <div class="section-label">MILESTONES</div>
+      <h2>Four stages of development</h2>
+      <p>We are at stage one. Everything after that depends on what we learn from pilot partners.</p>
+    </div>
+
+    <div class="timeline">
+
+      <!-- Milestone 1: NOW -->
+      <div class="timeline-item timeline-left fade-in">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-date">NOW — March 2026</div>
+          <h3 class="timeline-title">Prototype Stage</h3>
+          <ul>
+            <li>Live demo of Saudi Space Opportunity Hub</li>
+            <li>Manually curated program database</li>
+            <li>Basic filters by region, sector, and status</li>
+            <li>Charts and summary views</li>
+            <li>Solo founder — direct pilot partner access</li>
+          </ul>
+          <span class="badge badge-active">Active</span>
+        </div>
       </div>
-      <nav class="footer-links" aria-label="Footer navigation">
-        <div class="footer-col">
-          <div class="footer-col-title">Platform</div>
-          <ul role="list">
-            <li><a href="products.html">Products</a></li>
-            <li><a href="use-cases.html">Use Cases</a></li>
-            <li><a href="roadmap.html">Roadmap</a></li>
+
+      <!-- Milestone 2: 1-2 months -->
+      <div class="timeline-item timeline-right fade-in">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-date">1–2 MONTHS</div>
+          <h3 class="timeline-title">V1 Product</h3>
+          <ul>
+            <li>Consolidated dashboard with improved UX</li>
+            <li>Better filters and search functionality</li>
+            <li>Initial data exports (CSV / PDF summaries)</li>
+            <li>First paying customer or committed pilot</li>
+            <li>Feedback loop from pilot partners built in</li>
           </ul>
+          <span class="badge badge-next">Next</span>
         </div>
-        <div class="footer-col">
-          <div class="footer-col-title">Company</div>
-          <ul role="list">
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="contact.html">Early Access</a></li>
-            <li><a href="#" aria-label="LinkedIn (coming soon)">LinkedIn</a></li>
+      </div>
+
+      <!-- Milestone 3: 3-6 months -->
+      <div class="timeline-item timeline-left fade-in">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-date">3–6 MONTHS</div>
+          <h3 class="timeline-title">Expanded Coverage</h3>
+          <ul>
+            <li>More regions — ESA, Asia-Pacific, African Union</li>
+            <li>Automated data ingestion from key sources</li>
+            <li>API access for integrations</li>
+            <li>Team dashboards with multiple user accounts</li>
+            <li>Alerts when programs open or change status</li>
           </ul>
+          <span class="badge badge-planned">Planned</span>
         </div>
-      </nav>
+      </div>
+
+      <!-- Milestone 4: 6-12 months -->
+      <div class="timeline-item timeline-right fade-in">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-date">6–12 MONTHS</div>
+          <h3 class="timeline-title">Scale</h3>
+          <ul>
+            <li>Multi-region platform with global coverage</li>
+            <li>Enterprise features for large organisations</li>
+            <li>Strategic partnerships with agencies and funds</li>
+            <li>Custom views and white-label options</li>
+            <li>Community and network layer for ecosystem</li>
+          </ul>
+          <span class="badge badge-planned">Planned</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── Principles Section ──────────────────────────────── -->
+<section class="section" style="background: var(--bg-surface);">
+  <div class="container">
+    <div class="section-header section-center">
+      <div class="section-label">HOW WE BUILD</div>
+      <h2>Honest about what we are</h2>
+    </div>
+    <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+      <div class="info-card fade-in">
+        <h4>Solo founded</h4>
+        <p>One person building, iterating, and talking to users. That means fast decisions and direct conversations — no layers.</p>
+      </div>
+      <div class="info-card fade-in">
+        <h4>Prototype first</h4>
+        <p>We ship working demos before polished products. Feedback from real users shapes every version of the roadmap.</p>
+      </div>
+      <div class="info-card fade-in">
+        <h4>Partner-shaped</h4>
+        <p>Pilot partners have direct input on what gets built next. If you have a specific need, we want to hear about it.</p>
+      </div>
+      <div class="info-card fade-in">
+        <h4>No hype</h4>
+        <p>We are not a launch company. We are building data tools. The roadmap reflects what is actually achievable, not what sounds impressive.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ─────────────────────────────────────────────── -->
+<section class="parallax" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920'); min-height: 60vh;">
+  <div class="parallax-content">
+    <div class="container">
+      <div style="max-width:640px;">
+        <div class="section-label">SHAPE THE PRODUCT</div>
+        <h2>Want to shape the product?</h2>
+        <p style="margin-top:1rem;font-size:1.1rem;">Pilot partners get direct input on the roadmap. If there is a feature or dataset that would solve a real problem for your organisation, we want to know about it.</p>
+        <div class="btn-group" style="margin-top:2rem;">
+          <a href="contact.html" class="btn btn-primary">Talk to the founder</a>
+          <a href="products.html" class="btn btn-secondary">See the prototype</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ──────────────────────────────────────────── -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <span class="logo-midnight">MIDNIGHT</span><span class="logo-space"> SPACE</span>
+        </div>
+        <p class="footer-tagline">Space data tools for governments, agencies, and investors navigating the new space economy.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Platform</h5>
+        <ul>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="use-cases.html">Use Cases</a></li>
+          <li><a href="roadmap.html">Roadmap</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="contact.html">Early Access</a></li>
+          <li><a href="#">LinkedIn</a></li>
+        </ul>
+      </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-copy">&copy; 2026 Midnight Space. Early-stage prototype — not a product offering.</p>
-      <p class="footer-pplx"><a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Created with Perplexity Computer</a></p>
+      <p>© 2026 Midnight Space. Early-stage prototype — not a product offering.</p>
+      <p>Built by a solo founder.</p>
     </div>
   </div>
 </footer>
 
-<script src="main.js" defer></script>
+<script src="script.js"></script>
 </body>
 </html>

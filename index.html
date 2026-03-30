@@ -1,449 +1,375 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!--
-   ______                            __
-  / ____/___  ____ ___  ____  __  __/ /____  _____
- / /   / __ \/ __ `__ \/ __ \/ / / / __/ _ \/ ___/
-/ /___/ /_/ / / / / / / /_/ / /_/ / /_/  __/ /
-\____/\____/_/ /_/ /_/ .___/\__,_/\__/\___/_/
-                    /_/
-        Created with Perplexity Computer
-        https://www.perplexity.ai/computer
--->
-
-<!-- Perplexity Computer Attribution — SEO Meta Tags -->
-<meta name="generator" content="Perplexity Computer">
-<meta name="author" content="Perplexity Computer">
-<meta property="og:see_also" content="https://www.perplexity.ai/computer">
-<link rel="author" href="https://www.perplexity.ai/computer">
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Midnight Space builds space data and analytics tools — mapping funding, programs, and ecosystem activity for governments, agencies, and investors. Currently in prototype stage.">
-  <meta property="og:title" content="Midnight Space — Data and insight for the next space economy">
-  <meta property="og:description" content="Space data tools that map funding, programs, and ecosystem activity. Early-stage prototype looking for pilot partners.">
-  <meta property="og:type" content="website">
-  <title>Midnight Space — Space Data &amp; Analytics</title>
-
-  <link rel="preconnect" href="https://api.fontshare.com">
-  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@300,400,500,700,800&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+  <title>Midnight Space — Data and insight for the next space economy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<!-- ── Navigation ─────────────────────────────────────────── -->
-<nav class="site-nav" role="navigation" aria-label="Main navigation">
+<!-- ── Navbar ─────────────────────────────────────────── -->
+<nav class="site-nav" id="site-nav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo" aria-label="Midnight Space home">
-      <svg class="nav-logo-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-        <!-- Midnight Space logo: crescent + data node -->
-        <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="1.5" opacity="0.15"/>
-        <path d="M22 8.5C19.5 8.5 17 10.5 17 13.5C17 18 21 20 21 23C21 25 19.5 26.5 17 26.5C20 26.5 26 23.5 26 17C26 12.5 24 8.5 22 8.5Z" fill="currentColor" opacity="0.9"/>
-        <circle cx="10" cy="14" r="2.5" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
-        <circle cx="10" cy="14" r="0.8" fill="#00d4ff"/>
-        <line x1="10" y1="16.5" x2="10" y2="20" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
-        <line x1="10" y1="11.5" x2="10" y2="8" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
-        <line x1="7.5" y1="14" x2="5" y2="14" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
-        <circle cx="5" cy="14" r="1.2" fill="#00d4ff" opacity="0.4"/>
-        <circle cx="10" cy="20" r="1.2" fill="#00d4ff" opacity="0.4"/>
-      </svg>
-      <span class="nav-logo-text">Midnight<span> Space</span></span>
+    <a href="index.html" class="nav-logo">
+      <span class="logo-midnight">MIDNIGHT</span><span class="logo-space"> SPACE</span>
     </a>
-
-    <ul class="nav-links" role="list">
+    <ul class="nav-links">
       <li><a href="index.html" class="active">Home</a></li>
       <li><a href="products.html">Products</a></li>
       <li><a href="use-cases.html">Use Cases</a></li>
       <li><a href="roadmap.html">Roadmap</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
-
     <div class="nav-actions">
-      <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme">
-        <!-- Icon injected by JS -->
-      </button>
-      <a href="contact.html" class="btn btn-primary btn-sm nav-cta">Request access</a>
-      <button class="hamburger" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation menu">
+      <a href="contact.html" class="btn btn-primary btn-sm">Request access</a>
+      <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
   </div>
 </nav>
 
-<!-- Mobile menu -->
-<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu">
-  <a href="index.html" class="active">Home</a>
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html">Home</a>
   <a href="products.html">Products</a>
   <a href="use-cases.html">Use Cases</a>
   <a href="roadmap.html">Roadmap</a>
   <a href="contact.html">Contact</a>
-  <div class="mobile-menu-cta">
-    <a href="contact.html" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;">Request early access</a>
-  </div>
+  <a href="contact.html" class="btn btn-primary" style="margin-top:0.5rem;text-align:center;border-radius:50px;">Request access</a>
 </div>
 
-<!-- ── HERO ───────────────────────────────────────────────── -->
-<main>
-  <section class="page-hero starfield-bg" aria-labelledby="hero-heading">
-    <div class="container-default" style="text-align:center;">
-
-      <div class="section-label reveal" style="justify-content:center; margin-bottom: var(--space-6);">
-        Early stage · Prototype available
-      </div>
-
-      <h1 id="hero-heading" class="reveal reveal-delay-1" style="font-size: var(--text-3xl); font-weight:800; letter-spacing:-0.02em; color:var(--color-text); margin-bottom:var(--space-6); max-width:16ch; margin-left:auto; margin-right:auto; line-height:1.1;">
-        Data and insight for the next space economy
-      </h1>
-
-      <p class="reveal reveal-delay-2" style="font-size: var(--text-lg); color:var(--color-text-muted); max-width:52ch; margin: 0 auto var(--space-10); line-height:1.7;">
-        We are building space data tools that map funding, programs, and ecosystem activity for governments, agencies, and investors.
-      </p>
-
-      <div class="reveal reveal-delay-3" style="display:flex; gap:var(--space-4); justify-content:center; flex-wrap:wrap;">
-        <a href="products.html" class="btn btn-primary btn-lg">See live prototype</a>
-        <a href="contact.html" class="btn btn-secondary btn-lg">Request early access</a>
-      </div>
-
-      <!-- Dashboard mockup -->
-      <div class="reveal reveal-delay-4" style="margin-top:var(--space-16); max-width:700px; margin-left:auto; margin-right:auto;">
-        <div class="dash-mock">
-          <div class="dash-mock-header">
-            <div class="dash-dot"></div>
-            <div class="dash-dot"></div>
-            <div class="dash-dot"></div>
-            <span style="font-size:var(--text-xs); color:var(--color-text-faint); margin-left:var(--space-3);">Saudi Space Opportunity Hub — prototype</span>
-          </div>
-          <div class="dash-mock-body">
-            <div class="dash-row">
-              <div class="dash-kpi">
-                <div class="dash-kpi-label">Active Programs</div>
-                <div class="dash-kpi-value">47</div>
-                <div class="dash-kpi-sub">↑ 12 added this cycle</div>
-              </div>
-              <div class="dash-kpi">
-                <div class="dash-kpi-label">Funding Tracked</div>
-                <div class="dash-kpi-value">$2.4B</div>
-                <div class="dash-kpi-sub">SAR + USD sources</div>
-              </div>
-              <div class="dash-kpi">
-                <div class="dash-kpi-label">Countries Covered</div>
-                <div class="dash-kpi-value">18</div>
-                <div class="dash-kpi-sub">GCC + global</div>
-              </div>
-            </div>
-            <div class="dash-chart">
-              <div class="dash-bar"></div>
-              <div class="dash-bar"></div>
-              <div class="dash-bar"></div>
-              <div class="dash-bar"></div>
-              <div class="dash-bar"></div>
-              <div class="dash-bar"></div>
-              <div class="dash-bar"></div>
-              <div class="dash-bar"></div>
-            </div>
-            <div class="dash-list">
-              <div class="dash-list-item">
-                <span class="dash-list-name">KACST Space Technology Grant — Q2 2025</span>
-                <span class="dash-list-tag">Open</span>
-              </div>
-              <div class="dash-list-item">
-                <span class="dash-list-name">Vision 2030 Space Accelerator Program</span>
-                <span class="dash-list-tag">Reviewing</span>
-              </div>
-              <div class="dash-list-item">
-                <span class="dash-list-name">UAE Space Innovation Fund — Round 3</span>
-                <span class="dash-list-tag">Open</span>
-              </div>
-            </div>
-          </div>
+<!-- ── SECTION 2: Hero Parallax ───────────────────────── -->
+<section class="parallax" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920');">
+  <div class="parallax-content">
+    <div class="container">
+      <div class="hero-text">
+        <div class="hero-badge">EARLY STAGE · PROTOTYPE AVAILABLE</div>
+        <h1>Data and insight for the<br>next space economy</h1>
+        <p>We are building space data tools that map funding, programs, and ecosystem activity for governments, agencies, and investors.</p>
+        <div class="btn-group">
+          <a href="products.html" class="btn btn-primary">See live prototype</a>
+          <a href="contact.html" class="btn btn-secondary">Request early access</a>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ── What Midnight Space is ─────────────────────────── -->
-  <section class="section" aria-labelledby="about-heading">
-    <div class="container-default">
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:var(--space-16); align-items:center;">
-        <div>
-          <div class="section-label reveal">What we are</div>
-          <h2 id="about-heading" class="section-title reveal reveal-delay-1">
-            An honest early-stage data project
-          </h2>
-          <p class="reveal reveal-delay-2" style="color:var(--color-text-muted); line-height:1.75; margin-bottom:var(--space-6);">
-            Midnight Space is a solo-founder project in prototype phase. Right now, there is one working demo: a dashboard that maps public Saudi and GCC space-related funding calls, grants, and programs.
-          </p>
-          <p class="reveal reveal-delay-3" style="color:var(--color-text-muted); line-height:1.75; margin-bottom:var(--space-8);">
-            We are not a launch company. We do not operate rockets, satellites, or spacecraft. We are building data and analytics tools that help organisations navigate the growing space funding landscape.
-          </p>
-          <div class="reveal reveal-delay-4" style="display:flex; gap:var(--space-4); flex-wrap:wrap;">
-            <a href="contact.html" class="btn btn-primary">Become a pilot partner</a>
-            <a href="roadmap.html" class="btn btn-secondary">See the roadmap</a>
+<!-- ── SECTION 3: Dashboard Preview ───────────────────── -->
+<section class="section" style="background: var(--bg-primary);">
+  <div class="container">
+    <div class="split">
+      <!-- Left: Description -->
+      <div class="fade-in-left">
+        <div class="section-label">PROTOTYPE</div>
+        <h2>Saudi Space Opportunity Hub</h2>
+        <p style="margin-top:1rem;">Our first working prototype consolidates space funding programs, government grants, and ecosystem activity across the GCC into one searchable, filterable dashboard designed for decision-makers.</p>
+        <p style="margin-top:1rem;">Built for government teams, investment offices, and ecosystem builders who need to see what is happening in the space sector — without spending weeks hunting through fragmented sources.</p>
+        <div class="stats-row" style="margin-top:2rem;">
+          <div class="stat-box">
+            <span class="stat-number">47</span>
+            <span class="stat-label">Active Programs</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-number">$2.4B</span>
+            <span class="stat-label">Funding Tracked</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-number">18</span>
+            <span class="stat-label">Countries Covered</span>
           </div>
         </div>
-        <div class="reveal reveal-delay-2" style="display:flex; flex-direction:column; gap:var(--space-4);">
-          <div class="card" style="border-left:3px solid var(--color-primary);">
-            <div style="font-size:var(--text-xs); color:var(--color-primary); font-weight:600; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:var(--space-2);">Current status</div>
-            <div style="font-size:var(--text-base); color:var(--color-text); font-weight:600; margin-bottom:var(--space-2);">Prototype stage, live demo</div>
-            <p style="font-size:var(--text-sm); color:var(--color-text-muted);">Saudi Space Opportunity Hub is live. Manually curated, filterable, with basic charts.</p>
-          </div>
-          <div class="card" style="border-left:3px solid var(--color-accent);">
-            <div style="font-size:var(--text-xs); color:var(--color-accent); font-weight:600; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:var(--space-2);">Next goal</div>
-            <div style="font-size:var(--text-base); color:var(--color-text); font-weight:600; margin-bottom:var(--space-2);">First product version in ~1–2 months</div>
-            <p style="font-size:var(--text-sm); color:var(--color-text-muted);">Consolidated dashboard, better filters, initial exports. First paying customer within ~2 months.</p>
-          </div>
-          <div class="card" style="border-left:3px solid var(--color-success);">
-            <div style="font-size:var(--text-xs); color:var(--color-success); font-weight:600; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:var(--space-2);">Looking for</div>
-            <div style="font-size:var(--text-base); color:var(--color-text); font-weight:600; margin-bottom:var(--space-2);">Pilot partners to shape the product</div>
-            <p style="font-size:var(--text-sm); color:var(--color-text-muted);">Agencies, investment offices, and ecosystem builders who want early access and influence.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="divider">
-
-  <!-- ── Core capabilities ─────────────────────────────────── -->
-  <section class="section" aria-labelledby="capabilities-heading">
-    <div class="container-default">
-      <div class="text-center" style="margin-bottom:var(--space-12);">
-        <div class="section-label reveal">Core capabilities</div>
-        <h2 id="capabilities-heading" class="section-title reveal reveal-delay-1">Built around data, not hardware</h2>
-        <p class="section-subtitle reveal reveal-delay-2">
-          Everything Midnight Space does is about making space ecosystem data readable, navigable, and actionable.
-        </p>
-      </div>
-
-      <div class="grid-4 reveal reveal-delay-1">
-        <div class="card">
-          <div class="card-icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-            </svg>
-          </div>
-          <h3 class="card-title">Opportunity mapping</h3>
-          <p class="card-body">Funding calls, grants, accelerators, and public programs — consolidated in one searchable database with filters by region, sector, and status.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
-            </svg>
-          </div>
-          <h3 class="card-title">Program tracking</h3>
-          <p class="card-body">Monitor open and closed program cycles, recurring calls, and application windows. Know what is active right now and what to anticipate.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-            </svg>
-          </div>
-          <h3 class="card-title">Ecosystem dashboards</h3>
-          <p class="card-body">Visual summaries and charts for leadership teams. Turn raw program data into a clear picture of where activity and investment are concentrated.</p>
-        </div>
-        <div class="card" style="border-style:dashed;">
-          <div class="card-icon" style="background:var(--color-accent-dim); color:var(--color-accent);" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>
-            </svg>
-          </div>
-          <h3 class="card-title">Signals &amp; alerts <span class="badge badge-planned" style="vertical-align:middle; font-size:10px;">Planned</span></h3>
-          <p class="card-body">Notifications when new funding calls open, programs change status, or new sources are added. Coming in a future version.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="divider">
-
-  <!-- ── Who it's for ─────────────────────────────────────── -->
-  <section class="section" aria-labelledby="personas-heading">
-    <div class="container-default">
-      <div style="margin-bottom:var(--space-12);">
-        <div class="section-label reveal">Who it's for</div>
-        <h2 id="personas-heading" class="section-title reveal reveal-delay-1">Built for the people navigating space</h2>
-        <p class="section-subtitle reveal reveal-delay-2">Midnight Space is relevant anywhere decisions are shaped by knowledge of funding flows, programs, and ecosystem activity.</p>
-      </div>
-
-      <div class="grid-4 reveal reveal-delay-1">
-        <div class="persona-card">
-          <div class="persona-icon" aria-hidden="true">🏛️</div>
-          <div class="persona-title">Governments &amp; public agencies</div>
-          <p class="persona-desc">Track national and international space programs, identify gaps in your funding landscape, and benchmark against peer agencies — all from a dashboard built for decision-makers.</p>
-        </div>
-        <div class="persona-card">
-          <div class="persona-icon" aria-hidden="true">🌐</div>
-          <div class="persona-title">Economic development offices</div>
-          <p class="persona-desc">Map where public money is flowing in the space ecosystem, identify overlapping or competing programs, and build strategy grounded in real data.</p>
-        </div>
-        <div class="persona-card">
-          <div class="persona-icon" aria-hidden="true">📈</div>
-          <div class="persona-title">Investors &amp; funds</div>
-          <p class="persona-desc">See where government investment is concentrating before commercial dealflow follows. Use program and grant data as a leading indicator for where to look.</p>
-        </div>
-        <div class="persona-card">
-          <div class="persona-icon" aria-hidden="true">🚀</div>
-          <div class="persona-title">Ecosystem builders</div>
-          <p class="persona-desc">Accelerators, clusters, and incubators benefit from a clear picture of what programs are active, what calls are open, and where their startups should apply.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="divider">
-
-  <!-- ── Prototype highlight ───────────────────────────────── -->
-  <section class="section" id="prototype" aria-labelledby="proto-heading">
-    <div class="container-default">
-      <div class="proto-section reveal">
-        <div>
-          <div class="section-label">Current prototype</div>
-          <h2 id="proto-heading" style="font-size:var(--text-xl); font-weight:800; color:var(--color-text); margin-bottom:var(--space-4); font-family:var(--font-display);">
-            Saudi Space Opportunity Hub
-          </h2>
-          <p style="color:var(--color-text-muted); margin-bottom:var(--space-6); line-height:1.75;">
-            The first working demo maps public Saudi, GCC, and global space-related funding and programs. It shows filters by category and region, and charts summarising what is open, what is recurring, and where funding volume sits.
-          </p>
-          <ul style="list-style:none; display:flex; flex-direction:column; gap:var(--space-3); margin-bottom:var(--space-8);">
-            <li style="display:flex; gap:var(--space-3); align-items:flex-start; font-size:var(--text-sm); color:var(--color-text-muted);">
-              <span style="color:var(--color-primary); flex-shrink:0; margin-top:2px;">✓</span>
-              Manually curated database of space funding and programs
-            </li>
-            <li style="display:flex; gap:var(--space-3); align-items:flex-start; font-size:var(--text-sm); color:var(--color-text-muted);">
-              <span style="color:var(--color-primary); flex-shrink:0; margin-top:2px;">✓</span>
-              Filters by region, sector, program type, and status
-            </li>
-            <li style="display:flex; gap:var(--space-3); align-items:flex-start; font-size:var(--text-sm); color:var(--color-text-muted);">
-              <span style="color:var(--color-primary); flex-shrink:0; margin-top:2px;">✓</span>
-              Charts and summary views for leadership teams
-            </li>
-            <li style="display:flex; gap:var(--space-3); align-items:flex-start; font-size:var(--text-sm); color:var(--color-text-muted);">
-              <span style="color:var(--color-primary); flex-shrink:0; margin-top:2px;">✓</span>
-              GCC-focused with growing global coverage
-            </li>
-          </ul>
+        <div style="margin-top:2rem;">
           <a href="products.html" class="btn btn-primary">View product description</a>
         </div>
-        <div>
-          <div class="dash-mock">
-            <div class="dash-mock-header">
-              <div class="dash-dot"></div>
-              <div class="dash-dot"></div>
-              <div class="dash-dot"></div>
-              <span style="font-size:var(--text-xs); color:var(--color-text-faint); margin-left:var(--space-3);">opportunity-hub · dashboard</span>
+      </div>
+      <!-- Right: Dashboard mock -->
+      <div class="fade-in-right">
+        <div class="dashboard-card">
+          <div class="dashboard-card-header">
+            <h4>Saudi Space Opportunity Hub — prototype</h4>
+            <span class="badge badge-active">Live</span>
+          </div>
+          <div class="dashboard-stats">
+            <div class="dashboard-stat">
+              <span class="dashboard-stat-num">47 <span class="dashboard-stat-up">↑12</span></span>
+              <span class="dashboard-stat-label">Active Programs</span>
             </div>
-            <div class="dash-mock-body">
-              <div class="dash-row">
-                <div class="dash-kpi">
-                  <div class="dash-kpi-label">Open Now</div>
-                  <div class="dash-kpi-value">23</div>
-                  <div class="dash-kpi-sub">programs</div>
-                </div>
-                <div class="dash-kpi">
-                  <div class="dash-kpi-label">Closing Soon</div>
-                  <div class="dash-kpi-value">8</div>
-                  <div class="dash-kpi-sub">within 30 days</div>
-                </div>
-                <div class="dash-kpi">
-                  <div class="dash-kpi-label">Total Tracked</div>
-                  <div class="dash-kpi-value">147</div>
-                  <div class="dash-kpi-sub">all time</div>
-                </div>
-              </div>
-              <div class="dash-list">
-                <div class="dash-list-item">
-                  <span class="dash-list-name">Space Ventures Accelerator — KSA</span>
-                  <span class="dash-list-tag">Open</span>
-                </div>
-                <div class="dash-list-item">
-                  <span class="dash-list-name">Mohammed Bin Rashid Space Centre Grant</span>
-                  <span class="dash-list-tag">Open</span>
-                </div>
-                <div class="dash-list-item">
-                  <span class="dash-list-name">ESA BIC Program — Europe/MENA</span>
-                  <span class="dash-list-tag" style="background:rgba(255,181,71,0.12);color:var(--color-warning);border-color:rgba(255,181,71,0.25);">Closing</span>
-                </div>
-                <div class="dash-list-item">
-                  <span class="dash-list-name">Taqadam Startup Accelerator</span>
-                  <span class="dash-list-tag" style="background:rgba(124,111,255,0.12);color:var(--color-accent);border-color:rgba(124,111,255,0.25);">Reviewing</span>
-                </div>
-              </div>
+            <div class="dashboard-stat">
+              <span class="dashboard-stat-num">$2.4B</span>
+              <span class="dashboard-stat-label">Funding Tracked</span>
+            </div>
+            <div class="dashboard-stat">
+              <span class="dashboard-stat-num">18</span>
+              <span class="dashboard-stat-label">Countries Covered</span>
             </div>
           </div>
-          <p style="font-size:var(--text-xs); color:var(--color-text-faint); text-align:center; margin-top:var(--space-3);">Illustrative prototype interface — not final product</p>
+          <div class="dashboard-rows">
+            <div class="dashboard-row">
+              <span class="dashboard-row-name">KACST Grant Program</span>
+              <span class="badge badge-open">Open</span>
+            </div>
+            <div class="dashboard-row">
+              <span class="dashboard-row-name">Vision 2030 Accelerator</span>
+              <span class="badge badge-reviewing">Reviewing</span>
+            </div>
+            <div class="dashboard-row">
+              <span class="dashboard-row-name">UAE Space Innovation Fund</span>
+              <span class="badge badge-open">Open</span>
+            </div>
+          </div>
+          <div style="margin-top:1.5rem; border-radius:10px; overflow:hidden;">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600" alt="Analytics dashboard" loading="lazy" style="width:100%;height:160px;object-fit:cover;">
+          </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ── Bottom CTA ─────────────────────────────────────────── -->
-  <section class="cta-band starfield-bg" aria-labelledby="cta-heading">
-    <div class="container-narrow">
-      <div class="section-label reveal" style="justify-content:center;">Early stage · Open to partners</div>
-      <h2 id="cta-heading" class="section-title reveal reveal-delay-1" style="font-size:var(--text-2xl);">
-        We are in prototype stage and looking for partners
-      </h2>
-      <p class="section-subtitle reveal reveal-delay-2" style="margin:0 auto;">
-        If your organisation works in space policy, economic development, investment, or ecosystem building — we want to hear what data problems you are trying to solve.
-      </p>
-      <div class="cta-band-actions reveal reveal-delay-3">
-        <a href="contact.html" class="btn btn-primary btn-lg">Talk to the founder</a>
-        <a href="use-cases.html" class="btn btn-secondary btn-lg">See use cases</a>
+<!-- ── SECTION 4: What We Are — Parallax ──────────────── -->
+<section class="parallax" style="background-image: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=1920'); min-height: 80vh;">
+  <div class="parallax-content">
+    <div class="container">
+      <div style="max-width:700px;">
+        <div class="section-label">WHAT WE ARE</div>
+        <h2>An honest early-stage data project</h2>
+        <p style="margin-top:1rem;font-size:1.1rem;">Midnight Space is a solo-founder project in prototype phase. There is one working demo. We are not a launch company — we are building data and analytics tools for the people who navigate the space ecosystem.</p>
+        <div class="btn-group" style="margin-top:2rem;">
+          <a href="contact.html" class="btn btn-primary">Become a pilot partner</a>
+          <a href="roadmap.html" class="btn btn-secondary">See the roadmap</a>
+        </div>
+        <!-- Info cards below the text -->
+        <div class="card-grid" style="margin-top:3rem;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));">
+          <div class="info-card fade-in">
+            <h4>Current Status</h4>
+            <p>Prototype stage, live demo. Saudi Space Opportunity Hub is live and being tested.</p>
+          </div>
+          <div class="info-card fade-in">
+            <h4>Next Goal</h4>
+            <p>First product version in ~1–2 months. Consolidated dashboard, better filters.</p>
+          </div>
+          <div class="info-card fade-in">
+            <h4>Looking For</h4>
+            <p>Pilot partners. Agencies, investment offices, ecosystem builders ready to test.</p>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
-</main>
+  </div>
+</section>
 
-<!-- ── Footer ─────────────────────────────────────────────── -->
-<footer class="site-footer" role="contentinfo">
+<!-- ── SECTION 5: Core Capabilities ───────────────────── -->
+<section class="section" style="background: #0a0e1a;">
   <div class="container">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <a href="index.html" class="nav-logo" style="margin-bottom:var(--space-4); display:inline-flex;">
-          <svg class="nav-logo-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-            <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="1.5" opacity="0.15"/>
-            <path d="M22 8.5C19.5 8.5 17 10.5 17 13.5C17 18 21 20 21 23C21 25 19.5 26.5 17 26.5C20 26.5 26 23.5 26 17C26 12.5 24 8.5 22 8.5Z" fill="currentColor" opacity="0.9"/>
-            <circle cx="10" cy="14" r="2.5" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
-            <circle cx="10" cy="14" r="0.8" fill="#00d4ff"/>
-            <line x1="10" y1="16.5" x2="10" y2="20" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
-            <line x1="10" y1="11.5" x2="10" y2="8" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
-            <line x1="7.5" y1="14" x2="5" y2="14" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
-            <circle cx="5" cy="14" r="1.2" fill="#00d4ff" opacity="0.4"/>
-            <circle cx="10" cy="20" r="1.2" fill="#00d4ff" opacity="0.4"/>
-          </svg>
-          <span class="nav-logo-text">Midnight<span> Space</span></span>
-        </a>
-        <p class="footer-tagline">Space data and analytics tools for governments, agencies, and investors. Early-stage prototype looking for pilot partners.</p>
+    <div class="section-header section-center">
+      <div class="section-label">CORE CAPABILITIES</div>
+      <h2>Built around data, not hardware</h2>
+      <p>Everything Midnight Space does is about making space ecosystem data readable, navigable, and actionable.</p>
+    </div>
+    <div class="card-grid">
+      <!-- Card 1 -->
+      <div class="card fade-in">
+        <img class="card-img" src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=400" alt="Opportunity mapping" loading="lazy">
+        <div class="card-body">
+          <h3>Opportunity Mapping</h3>
+          <p>Funding calls, grants, accelerators, and public programs consolidated in one searchable database with filters by region, sector, and status.</p>
+        </div>
       </div>
-      <nav class="footer-links" aria-label="Footer navigation">
-        <div class="footer-col">
-          <div class="footer-col-title">Platform</div>
-          <ul role="list">
-            <li><a href="products.html">Products</a></li>
-            <li><a href="use-cases.html">Use Cases</a></li>
-            <li><a href="roadmap.html">Roadmap</a></li>
-          </ul>
+      <!-- Card 2 -->
+      <div class="card fade-in">
+        <img class="card-img" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400" alt="Program tracking" loading="lazy">
+        <div class="card-body">
+          <h3>Program Tracking</h3>
+          <p>Monitor open and closed program cycles, recurring calls, and application windows so you never miss a deadline.</p>
         </div>
-        <div class="footer-col">
-          <div class="footer-col-title">Company</div>
-          <ul role="list">
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="contact.html">Early Access</a></li>
-            <li><a href="#" aria-label="LinkedIn (coming soon)">LinkedIn</a></li>
-          </ul>
+      </div>
+      <!-- Card 3 -->
+      <div class="card fade-in">
+        <img class="card-img" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400" alt="Ecosystem dashboards" loading="lazy">
+        <div class="card-body">
+          <h3>Ecosystem Dashboards</h3>
+          <p>Visual summaries and charts for leadership teams. Turn raw data into a clear picture of what is happening in the sector.</p>
         </div>
-      </nav>
+      </div>
+      <!-- Card 4 -->
+      <div class="card fade-in">
+        <img class="card-img" src="https://images.unsplash.com/photo-1563986768609-322da13575f2?w=400" alt="Signals and alerts" loading="lazy">
+        <div class="card-body">
+          <h3>Signals &amp; Alerts <span class="badge badge-planned" style="vertical-align:middle;margin-left:0.3rem;">Planned</span></h3>
+          <p>Notifications when new funding calls open or programs change status. Coming in a future version of the platform.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SECTION 6: Who It's For — Parallax ─────────────── -->
+<section class="parallax" style="background-image: url('https://images.unsplash.com/photo-1516849841032-87cbac4d88f7?w=1920'); min-height: auto; padding: 7rem 0;">
+  <div class="parallax-content">
+    <div class="container">
+      <div class="section-header section-center">
+        <div class="section-label">WHO IT'S FOR</div>
+        <h2>Built for the people navigating space</h2>
+      </div>
+      <div class="card-grid">
+        <!-- Card 1 -->
+        <div class="card fade-in">
+          <img class="card-img" src="https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?w=400" alt="Governments and public agencies" loading="lazy">
+          <div class="card-body">
+            <h3>Governments &amp; Public Agencies</h3>
+            <p>Track national and international space programs, identify gaps, benchmark against peers, and build strategy on real data.</p>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="card fade-in">
+          <img class="card-img" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400" alt="Economic development offices" loading="lazy">
+          <div class="card-body">
+            <h3>Economic Development Offices</h3>
+            <p>Map where public money is flowing, identify overlapping programs, and build investment strategy on real data.</p>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="card fade-in">
+          <img class="card-img" src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400" alt="Investors and funds" loading="lazy">
+          <div class="card-body">
+            <h3>Investors &amp; Funds</h3>
+            <p>See where government investment is concentrating before commercial dealflow follows. Use grant data as a leading indicator.</p>
+          </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="card fade-in">
+          <img class="card-img" src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=400" alt="Ecosystem builders" loading="lazy">
+          <div class="card-body">
+            <h3>Ecosystem Builders</h3>
+            <p>Accelerators, clusters, and incubators benefit from a clear picture of active programs and open funding opportunities.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SECTION 7: Prototype Showcase ──────────────────── -->
+<section class="section" style="background: var(--bg-surface);">
+  <div class="container">
+    <div class="split">
+      <!-- Left: Description -->
+      <div class="fade-in-left">
+        <div class="section-label">CURRENT PROTOTYPE</div>
+        <h2>Saudi Space Opportunity Hub</h2>
+        <ul class="checklist" style="margin-top:1.5rem;">
+          <li>Manually curated database of space funding and programs</li>
+          <li>Filters by region, sector, program type, and status</li>
+          <li>Charts and summary views for leadership teams</li>
+          <li>GCC-focused with growing global coverage</li>
+        </ul>
+        <div style="margin-top:2rem;">
+          <a href="products.html" class="btn btn-primary">View product description</a>
+        </div>
+      </div>
+      <!-- Right: Dashboard mock -->
+      <div class="fade-in-right">
+        <div class="dashboard-card">
+          <div class="dashboard-card-header">
+            <h4>Live Prototype — Program Tracker</h4>
+            <span class="badge badge-active">Demo</span>
+          </div>
+          <div class="dashboard-stats">
+            <div class="dashboard-stat">
+              <span class="dashboard-stat-num">23</span>
+              <span class="dashboard-stat-label">Open Now</span>
+            </div>
+            <div class="dashboard-stat">
+              <span class="dashboard-stat-num">8</span>
+              <span class="dashboard-stat-label">Closing Soon</span>
+            </div>
+            <div class="dashboard-stat">
+              <span class="dashboard-stat-num">147</span>
+              <span class="dashboard-stat-label">Total Tracked</span>
+            </div>
+          </div>
+          <div class="dashboard-rows">
+            <div class="dashboard-row">
+              <span class="dashboard-row-name">KACST R&amp;D Grant 2026</span>
+              <span class="badge badge-open">Open</span>
+            </div>
+            <div class="dashboard-row">
+              <span class="dashboard-row-name">NEOM Space Innovation Fund</span>
+              <span class="badge badge-open">Open</span>
+            </div>
+            <div class="dashboard-row">
+              <span class="dashboard-row-name">UAE Space Agency Accelerator</span>
+              <span class="badge badge-reviewing">Reviewing</span>
+            </div>
+            <div class="dashboard-row">
+              <span class="dashboard-row-name">Arab Space Cooperation Seed</span>
+              <span class="badge badge-planned">Planned</span>
+            </div>
+          </div>
+        </div>
+        <p class="note" style="margin-top:1rem;text-align:center;">Illustrative prototype interface — not final product</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SECTION 8: CTA Parallax ────────────────────────── -->
+<section class="parallax" style="background-image: url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=1920'); min-height: 70vh;">
+  <div class="parallax-content">
+    <div class="container">
+      <div style="max-width:680px;">
+        <div class="section-label">EARLY STAGE · OPEN TO PARTNERS</div>
+        <h2>We are in prototype stage and looking for partners</h2>
+        <p style="margin-top:1rem;font-size:1.1rem;">If your organisation works in space policy, economic development, investment, or ecosystem building — we want to hear what data problems you are trying to solve.</p>
+        <div class="btn-group" style="margin-top:2rem;">
+          <a href="contact.html" class="btn btn-primary">Talk to the founder</a>
+          <a href="use-cases.html" class="btn btn-secondary">See use cases</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ──────────────────────────────────────────── -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <span class="logo-midnight">MIDNIGHT</span><span class="logo-space"> SPACE</span>
+        </div>
+        <p class="footer-tagline">Space data tools for governments, agencies, and investors navigating the new space economy.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Platform</h5>
+        <ul>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="use-cases.html">Use Cases</a></li>
+          <li><a href="roadmap.html">Roadmap</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="contact.html">Early Access</a></li>
+          <li><a href="#">LinkedIn</a></li>
+        </ul>
+      </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-copy">&copy; 2026 Midnight Space. Early-stage prototype — not a product offering.</p>
-      <p class="footer-pplx"><a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Created with Perplexity Computer</a></p>
+      <p>© 2026 Midnight Space. Early-stage prototype — not a product offering.</p>
+      <p>Built by a solo founder.</p>
     </div>
   </div>
 </footer>
 
-<script src="main.js" defer></script>
+<script src="script.js"></script>
 </body>
 </html>

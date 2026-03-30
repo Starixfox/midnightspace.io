@@ -1,435 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!--
-   ______                            __
-  / ____/___  ____ ___  ____  __  __/ /____  _____
- / /   / __ \/ __ `__ \/ __ \/ / / / __/ _ \/ ___/
-/ /___/ /_/ / / / / / / /_/ / /_/ / /_/  __/ /
-\____/\____/_/ /_/ /_/ .___/\__,_/\__/\___/_/
-                    /_/
-        Created with Perplexity Computer
-        https://www.perplexity.ai/computer
--->
-<meta name="generator" content="Perplexity Computer">
-<meta name="author" content="Perplexity Computer">
-<meta property="og:see_also" content="https://www.perplexity.ai/computer">
-<link rel="author" href="https://www.perplexity.ai/computer">
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Who Midnight Space is built for — use cases for governments, agencies, investors, economic development teams, and ecosystem builders working in the space sector.">
-  <meta property="og:title" content="Use Cases — Midnight Space">
-  <meta property="og:description" content="How space data and analytics tools help governments, agencies, investors, and ecosystem builders navigate the space funding landscape.">
   <title>Use Cases — Midnight Space</title>
-
-  <link rel="preconnect" href="https://api.fontshare.com">
-  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@300,400,500,700,800&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<!-- ── Navigation ─────────────────────────────────────────── -->
-<nav class="site-nav" role="navigation" aria-label="Main navigation">
+<!-- ── Navbar ─────────────────────────────────────────── -->
+<nav class="site-nav" id="site-nav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo" aria-label="Midnight Space home">
-      <svg class="nav-logo-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-        <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="1.5" opacity="0.15"/>
-        <path d="M22 8.5C19.5 8.5 17 10.5 17 13.5C17 18 21 20 21 23C21 25 19.5 26.5 17 26.5C20 26.5 26 23.5 26 17C26 12.5 24 8.5 22 8.5Z" fill="currentColor" opacity="0.9"/>
-        <circle cx="10" cy="14" r="2.5" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
-        <circle cx="10" cy="14" r="0.8" fill="#00d4ff"/>
-        <line x1="10" y1="16.5" x2="10" y2="20" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
-        <line x1="10" y1="11.5" x2="10" y2="8" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
-        <line x1="7.5" y1="14" x2="5" y2="14" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
-        <circle cx="5" cy="14" r="1.2" fill="#00d4ff" opacity="0.4"/>
-        <circle cx="10" cy="20" r="1.2" fill="#00d4ff" opacity="0.4"/>
-      </svg>
-      <span class="nav-logo-text">Midnight<span> Space</span></span>
+    <a href="index.html" class="nav-logo">
+      <span class="logo-midnight">MIDNIGHT</span><span class="logo-space"> SPACE</span>
     </a>
-
-    <ul class="nav-links" role="list">
+    <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="products.html">Products</a></li>
       <li><a href="use-cases.html" class="active">Use Cases</a></li>
       <li><a href="roadmap.html">Roadmap</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
-
     <div class="nav-actions">
-      <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme"></button>
-      <a href="contact.html" class="btn btn-primary btn-sm nav-cta">Request access</a>
-      <button class="hamburger" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation menu">
+      <a href="contact.html" class="btn btn-primary btn-sm">Request access</a>
+      <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
   </div>
 </nav>
-
-<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu">
+<div class="mobile-menu" id="mobile-menu">
   <a href="index.html">Home</a>
   <a href="products.html">Products</a>
-  <a href="use-cases.html" class="active">Use Cases</a>
+  <a href="use-cases.html">Use Cases</a>
   <a href="roadmap.html">Roadmap</a>
   <a href="contact.html">Contact</a>
-  <div class="mobile-menu-cta">
-    <a href="contact.html" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;">Request early access</a>
-  </div>
+  <a href="contact.html" class="btn btn-primary" style="margin-top:0.5rem;text-align:center;border-radius:50px;">Request access</a>
 </div>
 
-<!-- ── Main content ────────────────────────────────────────── -->
-<main>
-  <!-- Hero -->
-  <section class="page-hero-sm starfield-bg" aria-labelledby="uc-hero-heading">
-    <div class="container-default">
-      <div class="section-label reveal">Use cases</div>
-      <h1 id="uc-hero-heading" class="reveal reveal-delay-1" style="font-size:var(--text-2xl); font-weight:800; color:var(--color-text); margin-bottom:var(--space-5); max-width:22ch; letter-spacing:-0.02em; line-height:1.1;">
-        Who Midnight Space is for
-      </h1>
-      <p class="reveal reveal-delay-2" style="font-size:var(--text-lg); color:var(--color-text-muted); max-width:54ch; line-height:1.7;">
-        Anyone whose decisions depend on understanding the space funding and program landscape — across governments, investment, and ecosystem development.
-      </p>
-    </div>
-  </section>
-
-  <hr class="divider">
-
-  <!-- Use case cards -->
-  <section class="section" aria-labelledby="usecases-heading">
-    <div class="container-default">
-      <div style="margin-bottom:var(--space-12);">
-        <div class="section-label reveal">Organisations we're building for</div>
-        <h2 id="usecases-heading" class="section-title reveal reveal-delay-1">How different teams use it</h2>
-        <p class="section-subtitle reveal reveal-delay-2">
-          The use cases below reflect what we hear from people working in these roles. All language here is about data, dashboards, and insight — not operations or hardware.
-        </p>
-      </div>
-
-      <!-- Use case 1 -->
-      <div class="reveal" style="display:grid; grid-template-columns:1fr 1fr; gap:var(--space-10); align-items:center; margin-bottom:var(--space-16); padding-bottom:var(--space-16); border-bottom:1px solid var(--color-divider);">
-        <div>
-          <div style="display:flex; align-items:center; gap:var(--space-3); margin-bottom:var(--space-5);">
-            <div style="width:52px; height:52px; border-radius:var(--radius-full); background:var(--color-primary-dim); display:flex; align-items:center; justify-content:center; font-size:24px; flex-shrink:0;" aria-hidden="true">🏛️</div>
-            <div>
-              <div style="font-size:var(--text-xs); color:var(--color-primary); font-weight:600; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:var(--space-1);">Use case 01</div>
-              <h3 style="font-size:var(--text-xl); font-weight:700; color:var(--color-text); font-family:var(--font-display);">Public agencies tracking calls and programs</h3>
-            </div>
-          </div>
-          <p style="color:var(--color-text-muted); line-height:1.75; margin-bottom:var(--space-5);">
-            Government departments and public agencies responsible for space policy or industrial strategy need to know which programs are active, which are closing, and what the funding landscape looks like nationally and internationally.
-          </p>
-          <p style="color:var(--color-text-muted); line-height:1.75; margin-bottom:var(--space-6);">
-            A filterable, always-updated dashboard replaces hours of manual web research. Leadership can see a summary in minutes. Staff can drill into specifics without starting from scratch each time a new brief is needed.
-          </p>
-          <div style="display:flex; flex-direction:column; gap:var(--space-3);">
-            <div style="display:flex; gap:var(--space-3); align-items:flex-start;">
-              <span style="color:var(--color-primary); font-size:var(--text-sm); flex-shrink:0; margin-top:1px;">✓</span>
-              <p style="font-size:var(--text-sm); color:var(--color-text-muted); max-width:100%;">All relevant programs visible in one view — filtered by region, sector, and status</p>
-            </div>
-            <div style="display:flex; gap:var(--space-3); align-items:flex-start;">
-              <span style="color:var(--color-primary); font-size:var(--text-sm); flex-shrink:0; margin-top:1px;">✓</span>
-              <p style="font-size:var(--text-sm); color:var(--color-text-muted); max-width:100%;">Charts summarising open calls, funding volumes, and program categories at a glance</p>
-            </div>
-            <div style="display:flex; gap:var(--space-3); align-items:flex-start;">
-              <span style="color:var(--color-primary); font-size:var(--text-sm); flex-shrink:0; margin-top:1px;">✓</span>
-              <p style="font-size:var(--text-sm); color:var(--color-text-muted); max-width:100%;">Data that can be referenced in briefings and policy documents without manual curation</p>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div class="dash-mock">
-            <div class="dash-mock-header">
-              <div class="dash-dot"></div><div class="dash-dot"></div><div class="dash-dot"></div>
-              <span style="font-size:var(--text-xs); color:var(--color-text-faint); margin-left:var(--space-3);">Agency view — Programs Overview</span>
-            </div>
-            <div class="dash-mock-body">
-              <div class="dash-row">
-                <div class="dash-kpi"><div class="dash-kpi-label">National</div><div class="dash-kpi-value">18</div><div class="dash-kpi-sub">KSA programs</div></div>
-                <div class="dash-kpi"><div class="dash-kpi-label">Regional</div><div class="dash-kpi-value">29</div><div class="dash-kpi-sub">GCC programs</div></div>
-                <div class="dash-kpi"><div class="dash-kpi-label">Global</div><div class="dash-kpi-value">100+</div><div class="dash-kpi-sub">tracked</div></div>
-              </div>
-              <div class="dash-list">
-                <div class="dash-list-item"><span class="dash-list-name">Space Exploration Grant — KACST</span><span class="dash-list-tag">Open</span></div>
-                <div class="dash-list-item"><span class="dash-list-name">National Space Economy Fund</span><span class="dash-list-tag" style="background:rgba(255,181,71,0.12);color:var(--color-warning);border-color:rgba(255,181,71,0.25);">Closing</span></div>
-                <div class="dash-list-item"><span class="dash-list-name">MISA Startups Program — Space Track</span><span class="dash-list-tag">Open</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Use case 2 -->
-      <div class="reveal" style="display:grid; grid-template-columns:1fr 1fr; gap:var(--space-10); align-items:center; margin-bottom:var(--space-16); padding-bottom:var(--space-16); border-bottom:1px solid var(--color-divider);">
-        <div style="order:2;">
-          <div style="display:flex; align-items:center; gap:var(--space-3); margin-bottom:var(--space-5);">
-            <div style="width:52px; height:52px; border-radius:var(--radius-full); background:var(--color-accent-dim); display:flex; align-items:center; justify-content:center; font-size:24px; flex-shrink:0;" aria-hidden="true">🌐</div>
-            <div>
-              <div style="font-size:var(--text-xs); color:var(--color-accent); font-weight:600; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:var(--space-1);">Use case 02</div>
-              <h3 style="font-size:var(--text-xl); font-weight:700; color:var(--color-text); font-family:var(--font-display);">Economic development teams</h3>
-            </div>
-          </div>
-          <p style="color:var(--color-text-muted); line-height:1.75; margin-bottom:var(--space-5);">
-            Teams tasked with growing a regional or national space economy need to understand where public funding is flowing, where the gaps are, and where the overlaps between programs create inefficiencies.
-          </p>
-          <p style="color:var(--color-text-muted); line-height:1.75; margin-bottom:var(--space-6);">
-            Midnight Space data helps these teams build evidence-based strategy — identifying program categories that are underserved, tracking how peer countries structure their incentives, and seeing where international programs could complement domestic ones.
-          </p>
-          <div style="display:flex; flex-direction:column; gap:var(--space-3);">
-            <div style="display:flex; gap:var(--space-3); align-items:flex-start;">
-              <span style="color:var(--color-accent); font-size:var(--text-sm); flex-shrink:0; margin-top:1px;">✓</span>
-              <p style="font-size:var(--text-sm); color:var(--color-text-muted); max-width:100%;">Map the gap — see which sectors or regions lack visible funding programs</p>
-            </div>
-            <div style="display:flex; gap:var(--space-3); align-items:flex-start;">
-              <span style="color:var(--color-accent); font-size:var(--text-sm); flex-shrink:0; margin-top:1px;">✓</span>
-              <p style="font-size:var(--text-sm); color:var(--color-text-muted); max-width:100%;">Compare peer nations' program structures and funding priorities</p>
-            </div>
-            <div style="display:flex; gap:var(--space-3); align-items:flex-start;">
-              <span style="color:var(--color-accent); font-size:var(--text-sm); flex-shrink:0; margin-top:1px;">✓</span>
-              <p style="font-size:var(--text-sm); color:var(--color-text-muted); max-width:100%;">Identify overlapping incentives that could be rationalised or strengthened</p>
-            </div>
-          </div>
-        </div>
-        <div style="order:1;">
-          <div class="dash-mock">
-            <div class="dash-mock-header">
-              <div class="dash-dot"></div><div class="dash-dot"></div><div class="dash-dot"></div>
-              <span style="font-size:var(--text-xs); color:var(--color-text-faint); margin-left:var(--space-3);">Strategy view — Funding Gaps</span>
-            </div>
-            <div class="dash-mock-body">
-              <div class="dash-chart">
-                <div class="dash-bar"></div><div class="dash-bar"></div><div class="dash-bar"></div>
-                <div class="dash-bar"></div><div class="dash-bar"></div><div class="dash-bar"></div>
-                <div class="dash-bar"></div><div class="dash-bar"></div>
-              </div>
-              <div class="dash-list">
-                <div class="dash-list-item"><span class="dash-list-name">Earth Observation — KSA programs</span><span class="dash-list-tag">7 programs</span></div>
-                <div class="dash-list-item"><span class="dash-list-name">Space Manufacturing — KSA programs</span><span class="dash-list-tag" style="background:rgba(255,107,107,0.1);color:var(--color-error);border-color:rgba(255,107,107,0.2);">Gap detected</span></div>
-                <div class="dash-list-item"><span class="dash-list-name">R&D Grants — cross-border</span><span class="dash-list-tag">12 programs</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Use case 3 -->
-      <div class="reveal" style="display:grid; grid-template-columns:1fr 1fr; gap:var(--space-10); align-items:center; margin-bottom:var(--space-16); padding-bottom:var(--space-16); border-bottom:1px solid var(--color-divider);">
-        <div>
-          <div style="display:flex; align-items:center; gap:var(--space-3); margin-bottom:var(--space-5);">
-            <div style="width:52px; height:52px; border-radius:var(--radius-full); background:rgba(61,214,140,0.1); display:flex; align-items:center; justify-content:center; font-size:24px; flex-shrink:0;" aria-hidden="true">📈</div>
-            <div>
-              <div style="font-size:var(--text-xs); color:var(--color-success); font-weight:600; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:var(--space-1);">Use case 03</div>
-              <h3 style="font-size:var(--text-xl); font-weight:700; color:var(--color-text); font-family:var(--font-display);">Investors and funds</h3>
-            </div>
-          </div>
-          <p style="color:var(--color-text-muted); line-height:1.75; margin-bottom:var(--space-5);">
-            Government program investment tends to precede commercial venture activity. Investors and funds focused on deep tech or space benefit from understanding where public money is concentrating — it signals where commercial deal flow is likely to emerge.
-          </p>
-          <p style="color:var(--color-text-muted); line-height:1.75; margin-bottom:var(--space-6);">
-            Midnight Space makes it possible to scan program data quickly — by sector, region, and funding level — without relying on fragmented news sources or manual research across multiple government websites.
-          </p>
-          <div style="display:flex; flex-direction:column; gap:var(--space-3);">
-            <div style="display:flex; gap:var(--space-3); align-items:flex-start;">
-              <span style="color:var(--color-success); font-size:var(--text-sm); flex-shrink:0; margin-top:1px;">✓</span>
-              <p style="font-size:var(--text-sm); color:var(--color-text-muted); max-width:100%;">See where government investment is concentrating ahead of commercial activity</p>
-            </div>
-            <div style="display:flex; gap:var(--space-3); align-items:flex-start;">
-              <span style="color:var(--color-success); font-size:var(--text-sm); flex-shrink:0; margin-top:1px;">✓</span>
-              <p style="font-size:var(--text-sm); color:var(--color-text-muted); max-width:100%;">Track which programs have active accelerators that could surface portfolio companies</p>
-            </div>
-            <div style="display:flex; gap:var(--space-3); align-items:flex-start;">
-              <span style="color:var(--color-success); font-size:var(--text-sm); flex-shrink:0; margin-top:1px;">✓</span>
-              <p style="font-size:var(--text-sm); color:var(--color-text-muted); max-width:100%;">Build market context for due diligence and LP reporting without weeks of desk research</p>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div class="dash-mock">
-            <div class="dash-mock-header">
-              <div class="dash-dot"></div><div class="dash-dot"></div><div class="dash-dot"></div>
-              <span style="font-size:var(--text-xs); color:var(--color-text-faint); margin-left:var(--space-3);">Investor view — Sector Heatmap</span>
-            </div>
-            <div class="dash-mock-body">
-              <div class="dash-row">
-                <div class="dash-kpi"><div class="dash-kpi-label">Accelerators</div><div class="dash-kpi-value">14</div><div class="dash-kpi-sub">MENA region</div></div>
-                <div class="dash-kpi"><div class="dash-kpi-label">Gov Grants</div><div class="dash-kpi-value">$820M</div><div class="dash-kpi-sub">tracked 2024–25</div></div>
-                <div class="dash-kpi"><div class="dash-kpi-label">Hot sector</div><div class="dash-kpi-value" style="font-size:var(--text-base);">EO &amp; RS</div><div class="dash-kpi-sub">↑ 38% YoY</div></div>
-              </div>
-              <div class="dash-list">
-                <div class="dash-list-item"><span class="dash-list-name">Earth Observation</span><span class="dash-list-tag">High activity</span></div>
-                <div class="dash-list-item"><span class="dash-list-name">Space Data Services</span><span class="dash-list-tag">High activity</span></div>
-                <div class="dash-list-item"><span class="dash-list-name">In-Space Manufacturing</span><span class="dash-list-tag" style="background:rgba(255,181,71,0.12);color:var(--color-warning);border-color:rgba(255,181,71,0.25);">Emerging</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Use case 4 -->
-      <div class="reveal" style="display:grid; grid-template-columns:1fr 1fr; gap:var(--space-10); align-items:center;">
-        <div style="order:2;">
-          <div style="display:flex; align-items:center; gap:var(--space-3); margin-bottom:var(--space-5);">
-            <div style="width:52px; height:52px; border-radius:var(--radius-full); background:rgba(255,181,71,0.1); display:flex; align-items:center; justify-content:center; font-size:24px; flex-shrink:0;" aria-hidden="true">🎓</div>
-            <div>
-              <div style="font-size:var(--text-xs); color:var(--color-warning); font-weight:600; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:var(--space-1);">Use case 04</div>
-              <h3 style="font-size:var(--text-xl); font-weight:700; color:var(--color-text); font-family:var(--font-display);">Universities and research labs</h3>
-            </div>
-          </div>
-          <p style="color:var(--color-text-muted); line-height:1.75; margin-bottom:var(--space-5);">
-            Academic institutions and research groups need to discover open scholarship calls, fellowships, research grants, and collaborative program opportunities — across multiple funding bodies simultaneously.
-          </p>
-          <p style="color:var(--color-text-muted); line-height:1.75; margin-bottom:var(--space-6);">
-            Midnight Space aggregates these sources so research offices and faculty can monitor the funding landscape without subscribing to dozens of newsletters or assigning staff to continuous monitoring tasks.
-          </p>
-          <div style="display:flex; flex-direction:column; gap:var(--space-3);">
-            <div style="display:flex; gap:var(--space-3); align-items:flex-start;">
-              <span style="color:var(--color-warning); font-size:var(--text-sm); flex-shrink:0; margin-top:1px;">✓</span>
-              <p style="font-size:var(--text-sm); color:var(--color-text-muted); max-width:100%;">Discover scholarships, fellowships, and research grants across agencies in one place</p>
-            </div>
-            <div style="display:flex; gap:var(--space-3); align-items:flex-start;">
-              <span style="color:var(--color-warning); font-size:var(--text-sm); flex-shrink:0; margin-top:1px;">✓</span>
-              <p style="font-size:var(--text-sm); color:var(--color-text-muted); max-width:100%;">Track application deadlines and recurring cycles across multiple funding bodies</p>
-            </div>
-            <div style="display:flex; gap:var(--space-3); align-items:flex-start;">
-              <span style="color:var(--color-warning); font-size:var(--text-sm); flex-shrink:0; margin-top:1px;">✓</span>
-              <p style="font-size:var(--text-sm); color:var(--color-text-muted); max-width:100%;">Identify international collaboration opportunities and co-funding program requirements</p>
-            </div>
-          </div>
-        </div>
-        <div style="order:1;">
-          <div class="dash-mock">
-            <div class="dash-mock-header">
-              <div class="dash-dot"></div><div class="dash-dot"></div><div class="dash-dot"></div>
-              <span style="font-size:var(--text-xs); color:var(--color-text-faint); margin-left:var(--space-3);">Research view — Academic Grants</span>
-            </div>
-            <div class="dash-mock-body">
-              <div class="dash-row">
-                <div class="dash-kpi"><div class="dash-kpi-label">Open Calls</div><div class="dash-kpi-value">11</div><div class="dash-kpi-sub">for academia</div></div>
-                <div class="dash-kpi"><div class="dash-kpi-label">Closing</div><div class="dash-kpi-value">3</div><div class="dash-kpi-sub">this month</div></div>
-                <div class="dash-kpi"><div class="dash-kpi-label">Fellowships</div><div class="dash-kpi-value">5</div><div class="dash-kpi-sub">open now</div></div>
-              </div>
-              <div class="dash-list">
-                <div class="dash-list-item"><span class="dash-list-name">ESA Research Fellowship — MENA Track</span><span class="dash-list-tag">Open</span></div>
-                <div class="dash-list-item"><span class="dash-list-name">KACST Research Collaboration Grant</span><span class="dash-list-tag">Open</span></div>
-                <div class="dash-list-item"><span class="dash-list-name">UAE Space Scholarship — postgrad</span><span class="dash-list-tag" style="background:rgba(255,181,71,0.12);color:var(--color-warning);border-color:rgba(255,181,71,0.25);">Closing</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
+<!-- ── Hero Parallax ──────────────────────────────────── -->
+<section class="parallax" style="background-image: url('https://images.unsplash.com/photo-1454789548928-9efd52dc4031?w=1920'); min-height: 70vh;">
+  <div class="parallax-content">
+    <div class="container">
+      <div class="hero-text">
+        <div class="hero-badge">WHO USES IT</div>
+        <h1>Use Cases</h1>
+        <p>Different organisations face different data problems in the space sector. Here is how Midnight Space tools address them.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <hr class="divider">
-
-  <!-- Workflow section -->
-  <section class="section-sm" style="background:var(--color-surface);" aria-labelledby="workflow-heading">
-    <div class="container-default">
-      <div class="text-center" style="margin-bottom:var(--space-12);">
-        <div class="section-label reveal">How it works in practice</div>
-        <h2 id="workflow-heading" class="section-title reveal reveal-delay-1">A typical session on the platform</h2>
-        <p class="section-subtitle reveal reveal-delay-2">
-          From objective to insight — the core workflow is simple and repeatable, regardless of your role.
-        </p>
-      </div>
-
-      <div class="workflow reveal reveal-delay-1" style="justify-content:center; gap:var(--space-6);">
-        <div class="workflow-step">
-          <div class="workflow-num">1</div>
-          <div class="workflow-label">Define focus</div>
-          <p class="workflow-desc">Set your region, sector, or program type to scope your view</p>
-        </div>
-        <div class="workflow-step">
-          <div class="workflow-num">2</div>
-          <div class="workflow-label">Filter data</div>
-          <p class="workflow-desc">Apply filters — open only, funding range, program category</p>
-        </div>
-        <div class="workflow-step">
-          <div class="workflow-num">3</div>
-          <div class="workflow-label">Shortlist</div>
-          <p class="workflow-desc">Identify the programs or calls most relevant to your needs</p>
-        </div>
-        <div class="workflow-step">
-          <div class="workflow-num">4</div>
-          <div class="workflow-label">Export / share</div>
-          <p class="workflow-desc">Save or share a filtered view for briefings or team review (planned)</p>
-        </div>
-        <div class="workflow-step" style="position:relative;">
-          <div class="workflow-num">5</div>
-          <div class="workflow-label">Review over time</div>
-          <p class="workflow-desc">Return when new cycles open — data is kept current</p>
-        </div>
-      </div>
-
-      <p class="reveal" style="text-align:center; font-size:var(--text-xs); color:var(--color-text-faint); margin-top:var(--space-10);">
-        Export and alert features are planned for a future release. Current prototype includes filtering, viewing, and charting.
-      </p>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta-band starfield-bg" aria-labelledby="uc-cta-heading">
-    <div class="container-narrow">
-      <div class="section-label reveal" style="justify-content:center;">Data for your context</div>
-      <h2 id="uc-cta-heading" class="section-title reveal reveal-delay-1" style="font-size:var(--text-2xl);">
-        Recognise your use case here?
-      </h2>
-      <p class="section-subtitle reveal reveal-delay-2" style="margin:0 auto;">
-        Tell us what data problem you are trying to solve. Early access partners help shape what gets built first.
-      </p>
-      <div class="cta-band-actions reveal reveal-delay-3">
-        <a href="contact.html" class="btn btn-primary btn-lg">Talk to the founder</a>
-        <a href="roadmap.html" class="btn btn-secondary btn-lg">See the roadmap</a>
-      </div>
-    </div>
-  </section>
-</main>
-
-<!-- ── Footer ─────────────────────────────────────────────── -->
-<footer class="site-footer" role="contentinfo">
+<!-- ── Use Case 1: Governments ────────────────────────── -->
+<section class="usecase-section" style="background: var(--bg-primary);">
   <div class="container">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <a href="index.html" class="nav-logo" style="margin-bottom:var(--space-4); display:inline-flex;">
-          <svg class="nav-logo-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-            <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="1.5" opacity="0.15"/>
-            <path d="M22 8.5C19.5 8.5 17 10.5 17 13.5C17 18 21 20 21 23C21 25 19.5 26.5 17 26.5C20 26.5 26 23.5 26 17C26 12.5 24 8.5 22 8.5Z" fill="currentColor" opacity="0.9"/>
-            <circle cx="10" cy="14" r="2.5" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
-            <circle cx="10" cy="14" r="0.8" fill="#00d4ff"/>
-            <line x1="10" y1="16.5" x2="10" y2="20" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
-            <line x1="10" y1="11.5" x2="10" y2="8" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
-            <line x1="7.5" y1="14" x2="5" y2="14" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
-            <circle cx="5" cy="14" r="1.2" fill="#00d4ff" opacity="0.4"/>
-            <circle cx="10" cy="20" r="1.2" fill="#00d4ff" opacity="0.4"/>
-          </svg>
-          <span class="nav-logo-text">Midnight<span> Space</span></span>
-        </a>
-        <p class="footer-tagline">Space data and analytics tools for governments, agencies, and investors. Early-stage prototype looking for pilot partners.</p>
+    <div class="split">
+      <div class="img-glow fade-in-left">
+        <img src="https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?w=700" alt="Government and public agencies" loading="lazy" style="height:380px;">
       </div>
-      <nav class="footer-links" aria-label="Footer navigation">
-        <div class="footer-col">
-          <div class="footer-col-title">Platform</div>
-          <ul role="list">
-            <li><a href="products.html">Products</a></li>
-            <li><a href="use-cases.html">Use Cases</a></li>
-            <li><a href="roadmap.html">Roadmap</a></li>
-          </ul>
+      <div class="fade-in-right">
+        <div class="section-label">USE CASE 01</div>
+        <h2>Governments &amp; Agencies</h2>
+        <p style="margin-top:1rem;">National space agencies and government ministries need a clear picture of what programs exist, where duplication occurs, and how their investments compare to regional peers. That requires data aggregated from dozens of sources — which is exactly what Midnight Space does.</p>
+        <ul class="checklist" style="margin-top:1.5rem;">
+          <li>Track all active and upcoming national space programs in one place</li>
+          <li>Identify gaps and overlaps in current funding portfolios</li>
+          <li>Benchmark program activity against regional and global peers</li>
+          <li>Build briefing summaries for leadership teams quickly</li>
+        </ul>
+        <div style="margin-top:1.75rem;">
+          <a href="contact.html" class="btn btn-secondary">Discuss your use case</a>
         </div>
-        <div class="footer-col">
-          <div class="footer-col-title">Company</div>
-          <ul role="list">
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="contact.html">Early Access</a></li>
-            <li><a href="#" aria-label="LinkedIn (coming soon)">LinkedIn</a></li>
-          </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Use Case 2: Economic Development ───────────────── -->
+<section class="usecase-section" style="background: var(--bg-surface);">
+  <div class="container">
+    <div class="split split-reverse">
+      <div class="fade-in-left">
+        <div class="section-label">USE CASE 02</div>
+        <h2>Economic Development Offices</h2>
+        <p style="margin-top:1rem;">Development offices and investment promotion bodies need to understand where public money is going in the space sector before they can design effective incentive structures or identify attraction targets.</p>
+        <ul class="checklist" style="margin-top:1.5rem;">
+          <li>Map public funding flows across GCC and MENA space programs</li>
+          <li>Identify which sectors and geographies are receiving the most investment</li>
+          <li>Spot programs that signal government commitment to specific subsectors</li>
+          <li>Support economic strategy with data, not assumptions</li>
+        </ul>
+        <div style="margin-top:1.75rem;">
+          <a href="contact.html" class="btn btn-secondary">Discuss your use case</a>
         </div>
-      </nav>
+      </div>
+      <div class="img-glow fade-in-right">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700" alt="Economic development" loading="lazy" style="height:380px;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Use Case 3: Investors ──────────────────────────── -->
+<section class="usecase-section" style="background: var(--bg-primary);">
+  <div class="container">
+    <div class="split">
+      <div class="img-glow fade-in-left">
+        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=700" alt="Investors and funds" loading="lazy" style="height:380px;">
+      </div>
+      <div class="fade-in-right">
+        <div class="section-label">USE CASE 03</div>
+        <h2>Investors &amp; Funds</h2>
+        <p style="margin-top:1rem;">Government grant activity is one of the most reliable leading indicators of where private capital will flow next in deep tech. Tracking which sectors receive consistent public funding helps investors get ahead of the curve.</p>
+        <ul class="checklist" style="margin-top:1.5rem;">
+          <li>Monitor where government money is concentrating in space</li>
+          <li>Identify subsectors with sustained public funding — before commercial deals follow</li>
+          <li>Track recurring grant programs that signal long-term government commitment</li>
+          <li>Use ecosystem data to validate or challenge investment theses</li>
+        </ul>
+        <div style="margin-top:1.75rem;">
+          <a href="contact.html" class="btn btn-secondary">Discuss your use case</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Use Case 4: Ecosystem Builders ────────────────── -->
+<section class="usecase-section" style="background: var(--bg-surface);">
+  <div class="container">
+    <div class="split split-reverse">
+      <div class="fade-in-left">
+        <div class="section-label">USE CASE 04</div>
+        <h2>Ecosystem Builders</h2>
+        <p style="margin-top:1rem;">Accelerators, clusters, and incubators working in the space sector need to know what funding their cohort companies can apply for — and when. Manually tracking government programs across multiple countries is time-consuming and error-prone.</p>
+        <ul class="checklist" style="margin-top:1.5rem;">
+          <li>Discover open funding calls relevant to your portfolio or cohort</li>
+          <li>Track application windows and avoid missed deadlines</li>
+          <li>Build a clear picture of the programs available in your region</li>
+          <li>Share filtered program views with founders in your network</li>
+        </ul>
+        <div style="margin-top:1.75rem;">
+          <a href="contact.html" class="btn btn-secondary">Discuss your use case</a>
+        </div>
+      </div>
+      <div class="img-glow fade-in-right">
+        <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=700" alt="Ecosystem builders" loading="lazy" style="height:380px;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ─────────────────────────────────────────────── -->
+<section class="parallax" style="background-image: url('https://images.unsplash.com/photo-1516849841032-87cbac4d88f7?w=1920'); min-height: 60vh;">
+  <div class="parallax-content">
+    <div class="container">
+      <div style="max-width:640px;">
+        <div class="section-label">GET STARTED</div>
+        <h2>Ready to explore?</h2>
+        <p style="margin-top:1rem;font-size:1.1rem;">Tell us about the data problem you are trying to solve. We are onboarding a small number of pilot partners and tailoring the prototype to real use cases.</p>
+        <div class="btn-group" style="margin-top:2rem;">
+          <a href="contact.html" class="btn btn-primary">Talk to the founder</a>
+          <a href="products.html" class="btn btn-secondary">See the product</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ──────────────────────────────────────────── -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <span class="logo-midnight">MIDNIGHT</span><span class="logo-space"> SPACE</span>
+        </div>
+        <p class="footer-tagline">Space data tools for governments, agencies, and investors navigating the new space economy.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Platform</h5>
+        <ul>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="use-cases.html">Use Cases</a></li>
+          <li><a href="roadmap.html">Roadmap</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="contact.html">Early Access</a></li>
+          <li><a href="#">LinkedIn</a></li>
+        </ul>
+      </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-copy">&copy; 2026 Midnight Space. Early-stage prototype — not a product offering.</p>
-      <p class="footer-pplx"><a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Created with Perplexity Computer</a></p>
+      <p>© 2026 Midnight Space. Early-stage prototype — not a product offering.</p>
+      <p>Built by a solo founder.</p>
     </div>
   </div>
 </footer>
 
-<script src="main.js" defer></script>
+<script src="script.js"></script>
 </body>
 </html>
