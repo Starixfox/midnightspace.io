@@ -1,7 +1,7 @@
 /* ============================================================
-   MIDNIGHT SPACE — main.js
+   MIDNIGHT SPACE - main.js
    Shared JS: nav, theme toggle, mobile menu, form, scroll FX
-============================================================ */
+   ============================================================ */
 (function () {
   'use strict';
 
@@ -83,69 +83,22 @@
     });
   });
 
-  /* Contact form handler — Formspree AJAX */
-  var FORMSPREE_ENDPOINT = 'https://formspree.io/f/xdayzqbr';
+  /* Contact form uses NATIVE HTML submit to Formspree. No AJAX. */
   var contactForm = document.getElementById('contact-form');
-  var formSuccess = document.getElementById('form-success');
-  if (contactForm && formSuccess) {
-    contactForm.setAttribute('action', FORMSPREE_ENDPOINT);
-    contactForm.setAttribute('method', 'POST');
-
-    contactForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var name = contactForm.querySelector('[name="name"]');
-      var email = contactForm.querySelector('[name="email"]');
-      var valid = true;
-      [name, email].forEach(function (field) {
-        if (!field || !field.value.trim()) {
-          field && field.classList.add('error');
-          valid = false;
-        } else {
-          field && field.classList.remove('error');
-        }
-      });
-      if (!valid) return;
-
-      var submitBtn = contactForm.querySelector('button[type="submit"], input[type="submit"]');
-      var originalBtnText = submitBtn ? submitBtn.textContent : '';
-      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
-
-      var data = new FormData(contactForm);
-      if (!data.get('_subject')) {
-        data.append('_subject', 'New Midnight Space contact: ' + (name ? name.value : ''));
-      }
-      if (email && email.value && !data.get('_replyto')) {
-        data.append('_replyto', email.value);
-      }
-
-      fetch(FORMSPREE_ENDPOINT, {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      })
-        .then(function (res) {
-          if (res.ok) {
-            contactForm.style.display = 'none';
-            formSuccess.classList.add('visible');
-            formSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            contactForm.reset();
-          } else {
-            return res.json().then(function (json) {
-              throw new Error((json && json.errors && json.errors.map(function (x) { return x.message; }).join(', ')) || 'Submission failed');
-            });
-          }
-        })
-        .catch(function (err) {
-          alert('Sorry, something went wrong sending your message. Please email jblancoapodaca@gmail.com directly.\n\n' + (err && err.message ? err.message : ''));
-        })
-        .finally(function () {
-          if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = originalBtnText; }
-        });
-    });
-
+  if (contactForm) {
     contactForm.querySelectorAll('input, textarea, select').forEach(function (field) {
       field.addEventListener('input', function () { field.classList.remove('error'); });
     });
+  }
+
+  if (/[?&]submitted=1/.test(window.location.search)) {
+    var formSuccess = document.getElementById('form-success');
+    var cf = document.getElementById('contact-form');
+    if (formSuccess) {
+      formSuccess.classList.add('visible');
+      if (cf) cf.style.display = 'none';
+      try { formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) {}
+    }
   }
 
   if ('IntersectionObserver' in window) {
