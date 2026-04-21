@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
@@ -696,12 +697,7 @@ section:last-of-type { border-bottom: none; }
   -webkit-overflow-scrolling: touch;
 }
 
-.table-scroll {
-  max-height: 600px;
-  overflow-y: auto !important;
-  overflow-x: auto;
-  /* override the overflow:hidden set on .table-wrapper */
-}
+
 
 .table-scroll::-webkit-scrollbar { width: 6px; height: 6px; }
 .table-scroll::-webkit-scrollbar-track { background: var(--surface); }
@@ -709,51 +705,14 @@ section:last-of-type { border-bottom: none; }
 .table-scroll::-webkit-scrollbar-thumb:hover { background: var(--text-faint); }
 
 /* Sticky header inside scrollable table */
-.table-scroll thead th { position: sticky; top: 0; z-index: 2; }
 
-table { width: 100%; border-collapse: collapse; min-width: 680px; }
 
-thead th {
-  font-family: var(--font-display);
-  font-size: var(--text-xs);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-  color: var(--text-faint);
-  padding: var(--space-4) var(--space-4);
-  text-align: left;
-  background: var(--surface-2);
-  border-bottom: 1px solid var(--border);
-  white-space: nowrap;
-}
 
-thead th:first-child { padding-left: var(--space-6); }
-thead th:last-child  { padding-right: var(--space-6); }
 
-tbody tr {
-  border-bottom: 1px solid var(--divider);
-  cursor: pointer;
-  transition: background 0.12s;
-}
 
-tbody tr:last-child { border-bottom: none; }
-tbody tr:hover { background: rgba(0, 168, 89, 0.06) !important; }
-tbody tr.panel-active { background: rgba(0, 168, 89, 0.11) !important; }
 
-tbody td {
-  padding: var(--space-4);
-  font-size: var(--text-sm);
-  color: var(--text-muted);
-  vertical-align: middle;
-}
 
-tbody td:first-child { padding-left: var(--space-6); }
-tbody td:last-child  { padding-right: var(--space-6); }
 
-.col-title    { max-width: 340px; }
-.col-eligibility { display: none; } /* hidden on default; shown on wide */
-.col-funding  { min-width: 140px; max-width: 200px; font-size: var(--text-xs); }
-.col-deadline { min-width: 130px; font-size: var(--text-xs); color: var(--text-faint); }
 
 .title-wrap { display: flex; align-items: flex-start; gap: 6px; flex-wrap: wrap; margin-bottom: 3px; }
 
@@ -1378,7 +1337,6 @@ body.panel-open { overflow: hidden; }
 
 /* ── RESPONSIVE ──────────────────────────────── */
 @media (min-width: 1100px) {
-  .col-eligibility { display: table-cell; }
 }
 
 @media (max-width: 900px) {
@@ -1780,14 +1738,6 @@ body::before { display: none; }
   border-color: #dde3ed;
   box-shadow: 0 2px 10px rgba(0,0,0,0.07);
 }
-thead th {
-  background: #f2f7f5;
-  color: #006C35;
-  border-bottom-color: #c8ddd5;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-tbody tr:hover { background: rgba(0,108,53,0.04) !important; }
-tbody tr.panel-active { background: rgba(0,108,53,0.08) !important; }
 
 .opp-title-link:hover { color: #006C35; }
 
@@ -1943,8 +1893,6 @@ html[dir="rtl"] .kpi-card { flex-direction: row-reverse; text-align: right; }
 html[dir="rtl"] .filter-profile-row { flex-direction: row-reverse; }
 html[dir="rtl"] .reset-btn { margin-left: 0; margin-right: auto; }
 html[dir="rtl"] .is-pilot-banner { flex-direction: row-reverse; }
-html[dir="rtl"] thead th { text-align: right; }
-html[dir="rtl"] tbody td { text-align: right; }
 html[dir="rtl"] .title-wrap { flex-direction: row-reverse; text-align: right; }
 html[dir="rtl"] .panel-header { flex-direction: row-reverse; }
 html[dir="rtl"] .panel-badges { flex-direction: row-reverse; }
@@ -2004,11 +1952,6 @@ html[dir="rtl"] .hero-badge { flex-direction: row-reverse; }
 }
 
 /* IS Table in dark mode */
-[data-theme="dark"] thead th {
-  background: #0d1f16;
-  color: #34d97b;
-  border-bottom-color: #00361a;
-}
 
 /* IS Footer in dark mode (already dark) */
 [data-theme="dark"] footer { background: #060810; border-top-color: #006C35; }
@@ -2020,16 +1963,6 @@ html[dir="rtl"] .hero-badge { flex-direction: row-reverse; }
 [data-theme="dark"] .is-lang-btn.is-lang-active { color: #C9A66B; }
 [data-theme="dark"] .is-lang-sep { color: rgba(255,255,255,0.3); }
 
-/* PATCH: keep the opportunities table hidden until JS marks it ready */
-#oppsTableWrapper {
-  visibility: hidden;
-  opacity: 0;
-}
-
-#oppsTableWrapper.ready {
-  visibility: visible;
-  opacity: 1;
-}
 
 </style>
 </head>
@@ -2315,23 +2248,8 @@ html[dir="rtl"] .hero-badge { flex-direction: row-reverse; }
       <span id="resultsCount">Loading&hellip;</span>
     </div>
 
-    <div id="oppsTableWrapper" class="table-wrapper table-scroll" role="region" aria-label="Opportunities table" tabindex="0">
-      <table aria-label="Space opportunities database">
-        <thead>
-          <tr>
-            <th scope="col">Title & Sponsor</th>
-            <th scope="col">Type</th>
-            <th scope="col">Region</th>
-            <th scope="col" class="col-eligibility">Eligibility</th>
-            <th scope="col" class="col-funding">Funding</th>
-            <th scope="col">Status</th>
-            <th scope="col" class="col-deadline">Deadline</th>
-          </tr>
-        </thead>
-        <tbody id="oppsTableBody">
-          <tr><td colspan="7" class="empty-state"><div class="empty-icon">&#8987;</div><div class="empty-title">Loading opportunities&hellip;</div></td></tr>
-        </tbody>
-      </table>
+    <div id="oppsTableWrapper">
+      <div id="oppsTableBody"><p style="color:var(--text-faint);padding:2rem">Loading opportunities…</p></div>
     </div>
     <div id="pagination" role="navigation" aria-label="Opportunity pages"></div>
 
@@ -2542,49 +2460,7 @@ html[dir="rtl"] .hero-badge { flex-direction: row-reverse; }
   </div>
 </aside>
 
-<script>
-(async function () {
-  const resultsEl = document.getElementById('resultsCount');
-  const tbody = document.getElementById('oppsTableBody');
 
-  try {
-    const response = await fetch('./opportunitiesData.json', { cache: 'default' });
-
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
-    }
-
-    window.opportunitiesData = await response.json();
-
-    const appScript = document.createElement('script');
-    appScript.src = 'script.js';
-
-    appScript.onload = function () {
-      document.dispatchEvent(new Event('DOMContentLoaded'));
-    };
-
-    document.body.appendChild(appScript);
-  } catch (error) {
-    console.error('Failed to load opportunitiesData.json:', error);
-
-    if (resultsEl) {
-      resultsEl.textContent = 'Failed to load opportunities.';
-    }
-
-    if (tbody) {
-      tbody.innerHTML = `
-        <tr>
-          <td colspan="7" class="empty-state">
-            <div class="empty-icon">&#9888;</div>
-            <div class="empty-title">Failed to load opportunitiesData.json</div>
-            <div class="empty-sub">Make sure the JSON file is in the same folder as this HTML file.</div>
-          </td>
-        </tr>
-      `;
-    }
-  }
-})();
-</script>
 <script>
 /* ============================================================
    INVEST SAUDI DEMO — Inline JS
@@ -2906,7 +2782,6 @@ function translatePage(lang) {
   if (resetBtn) resetBtn.textContent = t.resetBtn;
 
   // Table headers
-  const ths = document.querySelectorAll('thead th');
   const thTexts = [t.thTitle, t.thType, t.thRegion, t.thEligibility, t.thFunding, t.thStatus, t.thDeadline];
   ths.forEach((th, i) => { if (thTexts[i]) th.textContent = thTexts[i]; });
 
