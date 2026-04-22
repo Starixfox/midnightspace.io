@@ -1,32 +1,19 @@
 /* ============================================================
    MIDNIGHT SPACE - main.js
-   Shared JS: nav, theme toggle, mobile menu, form, scroll FX
+   Shared JS: nav, mobile menu, scroll fx, fade-in animations
    ============================================================ */
 (function () {
   'use strict';
 
-  const html = document.documentElement;
-  const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  let currentTheme = systemDark ? 'dark' : 'light';
-  html.setAttribute('data-theme', currentTheme);
-
-  function updateThemeToggleIcon(btn, theme) {
-    if (!btn) return;
-    btn.setAttribute('aria-label', 'Switch to ' + (theme === 'dark' ? 'light' : 'dark') + ' mode');
-    btn.innerHTML = theme === 'dark' ? '' : '';
+  /* ── Navbar scroll effect ─────────────────────────────── */
+  var siteNav = document.querySelector('.site-nav');
+  if (siteNav) {
+    window.addEventListener('scroll', function () {
+      siteNav.classList.toggle('scrolled', window.scrollY > 8);
+    }, { passive: true });
   }
 
-  document.querySelectorAll('[data-theme-toggle]').forEach(function (btn) {
-    updateThemeToggleIcon(btn, currentTheme);
-    btn.addEventListener('click', function () {
-      currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      html.setAttribute('data-theme', currentTheme);
-      document.querySelectorAll('[data-theme-toggle]').forEach(function (b) {
-        updateThemeToggleIcon(b, currentTheme);
-      });
-    });
-  });
-
+  /* ── Active nav link highlight ────────────────────────── */
   (function highlightNav() {
     var page = window.location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(function (a) {
@@ -40,13 +27,7 @@
     });
   })();
 
-  var siteNav = document.querySelector('.site-nav');
-  if (siteNav) {
-    window.addEventListener('scroll', function () {
-      siteNav.classList.toggle('scrolled', window.scrollY > 8);
-    }, { passive: true });
-  }
-
+  /* ── Mobile hamburger menu ────────────────────────────── */
   var hamburger = document.querySelector('.hamburger');
   var mobileMenu = document.querySelector('.mobile-menu');
   if (hamburger && mobileMenu) {
@@ -64,7 +45,9 @@
       });
     });
     document.addEventListener('click', function (e) {
-      if (mobileMenu.classList.contains('open') && !mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
+      if (mobileMenu.classList.contains('open') &&
+          !mobileMenu.contains(e.target) &&
+          !hamburger.contains(e.target)) {
         hamburger.setAttribute('aria-expanded', 'false');
         mobileMenu.classList.remove('open');
         document.body.style.overflow = '';
@@ -72,6 +55,7 @@
     });
   }
 
+  /* ── Smooth scroll for anchor links ──────────────────── */
   document.querySelectorAll('a[href^="#"]').forEach(function (a) {
     a.addEventListener('click', function (e) {
       var id = a.getAttribute('href');
@@ -83,14 +67,43 @@
     });
   });
 
-  /* Contact form uses NATIVE HTML submit to Formspree. No AJAX. */
-  var contactForm = document.getElementById('contact-form');
-  if (contactForm) {
-    contactForm.querySelectorAll('input, textarea, select').forEach(function (field) {
-      field.addEventListener('input', function () { field.classList.remove('error'); });
-    });
+  /* ── Intersection Observer — fade-in animations ────────
+     Handles: .fade-in  .fade-in-left  .fade-in-right  .reveal
+     All elements start at opacity:0 in CSS and become visible
+     when the observer adds the .visible class.
+  ────────────────────────────────────────────────────────── */
+  var ANIM_SELECTOR = '.fade-in, .fade-in-left, .fade-in-right, .reveal';
+
+  function runObserver() {
+    var elements = document.querySelectorAll(ANIM_SELECTOR);
+    if (!elements.length) return;
+
+    if (!('IntersectionObserver' in window)) {
+      /* Fallback: just show everything immediately */
+      elements.forEach(function (el) { el.classList.add('visible'); });
+      return;
+    }
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    elements.forEach(function (el) { observer.observe(el); });
   }
 
+  /* Run observer after DOM is ready */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', runObserver);
+  } else {
+    runObserver();
+  }
+
+  /* ── Contact form: Formspree success message ─────────── */
   if (/[?&]submitted=1/.test(window.location.search)) {
     var formSuccess = document.getElementById('form-success');
     var cf = document.getElementById('contact-form');
@@ -101,24 +114,4 @@
     }
   }
 
-  if ('IntersectionObserver' in window) {
-    var observer = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
-    );
-    document.querySelectorAll('.reveal').forEach(function (el) { observer.observe(el); });
-  } else {
-    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('visible'); });
-  }
-
-  var style = document.createElement('style');
-  style.textContent = '.form-input.error, .form-textarea.error { border-color: #ff6b6b; box-shadow: 0 0 0 3px rgba(255,107,107,0.15); }';
-  document.head.appendChild(style);
 })();
