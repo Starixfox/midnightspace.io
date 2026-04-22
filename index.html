@@ -1,3270 +1,439 @@
-
-
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
-
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Saudi Opportunity Hub","url":"https://starixfox.github.io","creator":{"@type":"SoftwareApplication","name":"Perplexity Computer","url":"https://www.perplexity.ai/computer"}}</script>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Invest Saudi – Opportunity Hub (Pilot Demo)</title>
-<meta name="description" content="Explore grants, tenders, accelerators, and investment programs across Saudi Arabia, the GCC, and global programs — spanning 15 key sectors including Energy, ICT, Healthcare, Agriculture, and more.">
-<meta name="theme-color" content="#006C35">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-<style>
-/* =============================================
-   Saudi Opportunity Hub — styles.css
-   Dark navy/space bg + Saudi green accent
-   ============================================= */
-
-/* ── TOKENS ─────────────────────────────────── */
-:root {
-  --text-xs:   clamp(0.70rem,  0.65rem + 0.25vw, 0.813rem);
-  --text-sm:   clamp(0.813rem, 0.75rem + 0.30vw, 0.938rem);
-  --text-base: clamp(0.938rem, 0.88rem + 0.25vw, 1.063rem);
-  --text-lg:   clamp(1.063rem, 0.95rem + 0.60vw, 1.375rem);
-  --text-xl:   clamp(1.375rem, 1.1rem  + 1.10vw, 2.125rem);
-  --text-2xl:  clamp(1.875rem, 1.2rem  + 2.30vw, 3.375rem);
-
-  --space-1:  0.25rem;
-  --space-2:  0.5rem;
-  --space-3:  0.75rem;
-  --space-4:  1rem;
-  --space-5:  1.25rem;
-  --space-6:  1.5rem;
-  --space-8:  2rem;
-  --space-10: 2.5rem;
-  --space-12: 3rem;
-  --space-16: 4rem;
-  --space-20: 5rem;
-  --space-24: 6rem;
-
-  --radius-sm:   0.375rem;
-  --radius-md:   0.5rem;
-  --radius-lg:   0.75rem;
-  --radius-xl:   1rem;
-  --radius-full: 9999px;
-
-  --transition: 180ms cubic-bezier(0.16, 1, 0.3, 1);
-  --content-wide: 1280px;
-  --nav-height: 60px;
-
-  --font-display: 'Space Grotesk', 'Inter', sans-serif;
-  --font-body: 'Inter', system-ui, sans-serif;
-}
-
-/* ── DARK THEME (default) ────────────────────── */
-:root, [data-theme="dark"] {
-  --bg:               #0a0d14;
-  --bg-deep:          #060810;
-  --surface:          #0f1420;
-  --surface-2:        #141928;
-  --surface-3:        #1a2035;
-  --surface-elevated: #1f2740;
-  --border:           #1e2840;
-  --border-light:     #252f48;
-  --divider:          #161d30;
-
-  --text:             #e8eaf2;
-  --text-muted:       #7c89ab;
-  --text-faint:       #3f4a68;
-  --text-inverse:     #080c14;
-
-  --green:            #00a651;
-  --green-hover:      #00c460;
-  --green-dim:        #00361a;
-  --green-glow:       rgba(0, 166, 81, 0.15);
-  --green-highlight:  rgba(0, 166, 81, 0.10);
-
-  --gold:             #f5a623;
-  --gold-dim:         #3d2800;
-  --blue:             #4f9cf9;
-  --blue-dim:         #0d2040;
-
-  --status-open-bg:         rgba(0, 166, 81, 0.12);
-  --status-open-text:       #34d97b;
-  --status-open-border:     rgba(0, 166, 81, 0.30);
-  --status-recurring-bg:    rgba(245, 166, 35, 0.12);
-  --status-recurring-text:  #f5c842;
-  --status-recurring-border:rgba(245, 166, 35, 0.30);
-  --status-closed-bg:       rgba(239, 83, 80, 0.10);
-  --status-closed-text:     #ef9090;
-  --status-closed-border:   rgba(239, 83, 80, 0.25);
-
-  --pill-grant:        rgba(0, 166, 81, 0.15);
-  --pill-grant-text:   #34d97b;
-  --pill-tender:       rgba(245, 166, 35, 0.15);
-  --pill-tender-text:  #f5c842;
-  --pill-accel:        rgba(79, 156, 249, 0.15);
-  --pill-accel-text:   #80b8fb;
-  --pill-invest:       rgba(176, 113, 249, 0.15);
-  --pill-invest-text:  #c89efb;
-  --pill-fellow:       rgba(246, 179, 132, 0.15);
-  --pill-fellow-text:  #f6b384;
-  --pill-other:        rgba(124, 137, 171, 0.15);
-  --pill-other-text:   #9da6bf;
-
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.30);
-  --shadow-md: 0 4px 16px rgba(0,0,0,0.40);
-  --shadow-lg: 0 12px 40px rgba(0,0,0,0.50);
-  --shadow-green: 0 0 20px rgba(0, 166, 81, 0.12);
-}
-
-/* ── LIGHT THEME ─────────────────────────────── */
-[data-theme="light"] {
-  --bg:               #f5f7fa;
-  --bg-deep:          #eef1f6;
-  --surface:          #ffffff;
-  --surface-2:        #f9fafb;
-  --surface-3:        #f0f4f9;
-  --surface-elevated: #ffffff;
-  --border:           #e2e8f0;
-  --border-light:     #edf0f5;
-  --divider:          #edf2f7;
-
-  --text:             #1a1f36;
-  --text-muted:       #64748b;
-  --text-faint:       #94a3b8;
-  --text-inverse:     #f8fafc;
-
-  --green:            #007a3d;
-  --green-hover:      #006232;
-  --green-dim:        #e0f5ec;
-  --green-glow:       rgba(0, 122, 61, 0.10);
-  --green-highlight:  rgba(0, 122, 61, 0.08);
-
-  --gold:             #b45309;
-  --gold-dim:         #fef3c7;
-  --blue:             #1d6fbc;
-  --blue-dim:         #dbeafe;
-
-  --status-open-bg:         #dcfce7;
-  --status-open-text:       #15803d;
-  --status-open-border:     #86efac;
-  --status-recurring-bg:    #fef9c3;
-  --status-recurring-text:  #a16207;
-  --status-recurring-border:#fde047;
-  --status-closed-bg:       #fee2e2;
-  --status-closed-text:     #dc2626;
-  --status-closed-border:   #fca5a5;
-
-  --pill-grant:        #dcfce7;
-  --pill-grant-text:   #15803d;
-  --pill-tender:       #fef9c3;
-  --pill-tender-text:  #a16207;
-  --pill-accel:        #dbeafe;
-  --pill-accel-text:   #1d4ed8;
-  --pill-invest:       #f3e8ff;
-  --pill-invest-text:  #7e22ce;
-  --pill-fellow:       #ffedd5;
-  --pill-fellow-text:  #c2410c;
-  --pill-other:        #f1f5f9;
-  --pill-other-text:   #475569;
-
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
-  --shadow-md: 0 4px 16px rgba(0,0,0,0.10);
-  --shadow-lg: 0 12px 40px rgba(0,0,0,0.15);
-  --shadow-green: 0 0 20px rgba(0, 122, 61, 0.08);
-}
-
-/* ── BASE RESET ──────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  scroll-behavior: smooth;
-  scroll-padding-top: var(--nav-height);
-}
-
-body {
-  min-height: 100dvh;
-  line-height: 1.6;
-  font-family: var(--font-body);
-  font-size: var(--text-base);
-  color: var(--text);
-  background-color: var(--bg);
-  transition: background-color 0.3s, color 0.3s;
-  overflow-x: hidden;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display);
-  line-height: 1.2;
-  text-wrap: balance;
-}
-
-p, li { text-wrap: pretty; }
-img, picture, video, canvas, svg { display: block; max-width: 100%; }
-input, button, textarea, select { font: inherit; color: inherit; }
-button { cursor: pointer; background: none; border: none; }
-table { border-collapse: collapse; width: 100%; }
-a { color: var(--green); text-decoration: none; }
-a:hover { text-decoration: underline; }
-
-:focus-visible {
-  outline: 2px solid var(--green);
-  outline-offset: 3px;
-  border-radius: var(--radius-sm);
-}
-
-::selection { background: var(--green-glow); color: var(--text); }
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-/* ── STARFIELD ───────────────────────────────── */
-[data-theme="dark"] body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image:
-    radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.50) 0%, transparent 100%),
-    radial-gradient(1px 1px at 25% 60%, rgba(255,255,255,0.35) 0%, transparent 100%),
-    radial-gradient(1px 1px at 40% 30%, rgba(255,255,255,0.40) 0%, transparent 100%),
-    radial-gradient(1px 1px at 55% 80%, rgba(255,255,255,0.30) 0%, transparent 100%),
-    radial-gradient(1px 1px at 70% 20%, rgba(255,255,255,0.45) 0%, transparent 100%),
-    radial-gradient(1px 1px at 85% 55%, rgba(255,255,255,0.35) 0%, transparent 100%),
-    radial-gradient(1px 1px at 95% 10%, rgba(255,255,255,0.40) 0%, transparent 100%),
-    radial-gradient(1px 1px at 15% 90%, rgba(255,255,255,0.30) 0%, transparent 100%),
-    radial-gradient(1px 1px at 35% 45%, rgba(255,255,255,0.25) 0%, transparent 100%),
-    radial-gradient(1px 1px at 60% 70%, rgba(255,255,255,0.35) 0%, transparent 100%),
-    radial-gradient(1px 1px at 75% 40%, rgba(255,255,255,0.30) 0%, transparent 100%),
-    radial-gradient(2px 2px at 50% 50%, rgba(0,166,81,0.15) 0%, transparent 100%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* ── NAVIGATION ──────────────────────────────── */
-.navbar {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  height: var(--nav-height);
-  background-color: var(--bg-deep);
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 var(--space-6);
-  gap: var(--space-4);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  transition: background-color 0.3s, border-color 0.3s;
-}
-
-[data-theme="dark"] .navbar { background-color: rgba(6, 8, 16, 0.92); }
-
-.nav-logo {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  text-decoration: none;
-  flex-shrink: 0;
-}
-
-.nav-logo-icon { width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; }
-
-.nav-logo-text {
-  font-family: var(--font-display);
-  font-size: var(--text-sm);
-  font-weight: 700;
-  color: var(--text);
-  letter-spacing: -0.01em;
-  white-space: nowrap;
-}
-
-.nav-logo-text span { color: var(--green); }
-
-.navbar-links {
-  display: flex;
-  align-items: center;
-  gap: var(--space-1);
-  list-style: none;
-}
-
-.navbar-links a {
-  font-size: var(--text-sm);
-  font-weight: 500;
-  color: var(--text-muted);
-  padding: var(--space-2) var(--space-3);
-  border-radius: var(--radius-md);
-  text-decoration: none;
-  transition: color var(--transition), background-color var(--transition);
-  white-space: nowrap;
-}
-
-.navbar-links a:hover { color: var(--text); background-color: var(--surface-3); text-decoration: none; }
-.navbar-links a.active { color: var(--green); background-color: var(--green-highlight); }
-
-.nav-actions { display: flex; align-items: center; gap: var(--space-2); flex-shrink: 0; }
-
-.theme-toggle {
-  width: 34px; height: 34px;
-  border-radius: var(--radius-md);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--text-muted);
-  border: 1px solid var(--border);
-  background: var(--surface);
-  transition: all var(--transition);
-}
-
-.theme-toggle:hover { color: var(--text); background-color: var(--surface-3); border-color: var(--border-light); }
-
-.hamburger {
-  display: none;
-  width: 34px; height: 34px;
-  border-radius: var(--radius-md);
-  align-items: center; justify-content: center;
-  color: var(--text-muted);
-  border: 1px solid var(--border);
-  background: var(--surface);
-}
-
-/* ── MAIN LAYOUT ─────────────────────────────── */
-main {
-  position: relative;
-  z-index: 1;
-  max-width: var(--content-wide);
-  margin: 0 auto;
-  padding: 0 var(--space-6) var(--space-24);
-}
-
-section {
-  padding-block: clamp(var(--space-12), 6vw, var(--space-20));
-  border-bottom: 1px solid var(--divider);
-}
-
-section:last-of-type { border-bottom: none; }
-
-.section-label {
-  font-size: var(--text-xs);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--green);
-  margin-bottom: var(--space-3);
-}
-
-.section-heading {
-  font-size: var(--text-xl);
-  font-weight: 700;
-  color: var(--text);
-  letter-spacing: -0.02em;
-  margin-bottom: var(--space-2);
-}
-
-.section-sub {
-  font-size: var(--text-base);
-  color: var(--text-muted);
-  max-width: 640px;
-  line-height: 1.7;
-  margin-bottom: var(--space-8);
-}
-
-/* ── HERO ────────────────────────────────────── */
-#overview { padding-top: clamp(var(--space-12), 8vw, var(--space-24)); }
-
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-12);
-  align-items: center;
-  margin-bottom: var(--space-10);
-}
-
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  padding: var(--space-1) var(--space-3);
-  background: var(--green-highlight);
-  border: 1px solid rgba(0, 166, 81, 0.20);
-  border-radius: var(--radius-full);
-  font-size: var(--text-xs);
-  font-weight: 600;
-  color: var(--green);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  margin-bottom: var(--space-5);
-}
-
-.hero-badge::before {
-  content: '';
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--green);
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(1.3); }
-}
-
-.hero-title {
-  font-size: var(--text-2xl);
-  font-weight: 700;
-  color: var(--text);
-  letter-spacing: -0.03em;
-  line-height: 1.1;
-  margin-bottom: var(--space-5);
-}
-
-.hero-title .accent { color: var(--green); }
-
-.hero-desc {
-  font-size: var(--text-base);
-  color: var(--text-muted);
-  line-height: 1.7;
-  max-width: 52ch;
-  margin-bottom: var(--space-6);
-}
-
-.hero-desc strong { color: var(--text); font-weight: 500; }
-
-.hero-ctas { display: flex; gap: var(--space-3); flex-wrap: wrap; }
-
-.btn-primary {
-  display: inline-flex; align-items: center; gap: var(--space-2);
-  padding: var(--space-3) var(--space-5);
-  background: var(--green); color: #fff;
-  font-size: var(--text-sm); font-weight: 600;
-  border-radius: var(--radius-lg); text-decoration: none;
-  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
-  border: none; cursor: pointer;
-}
-
-.btn-primary:hover {
-  background: var(--green-hover);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-green);
-  text-decoration: none; color: #fff;
-}
-
-.btn-secondary {
-  display: inline-flex; align-items: center; gap: var(--space-2);
-  padding: var(--space-3) var(--space-5);
-  background: var(--surface); color: var(--text-muted);
-  font-size: var(--text-sm); font-weight: 500;
-  border-radius: var(--radius-lg); text-decoration: none;
-  border: 1px solid var(--border);
-  transition: all var(--transition); cursor: pointer;
-}
-
-.btn-secondary:hover {
-  background: var(--surface-3); color: var(--text);
-  border-color: var(--border-light); text-decoration: none;
-}
-
-/* KPI CARDS */
-.kpi-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-4); }
-
-.kpi-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-xl);
-  padding: var(--space-5) var(--space-6);
-  display: flex; align-items: flex-start; gap: var(--space-4);
-  transition: border-color var(--transition), box-shadow var(--transition);
-  position: relative; overflow: hidden;
-}
-
-.kpi-card::before {
-  content: '';
-  position: absolute; left: 0; top: 0; bottom: 0;
-  width: 3px; border-radius: var(--radius-lg) 0 0 var(--radius-lg);
-}
-
-.kpi-card.saudi::before { background: var(--green); }
-.kpi-card.gcc::before   { background: var(--gold); }
-.kpi-card.global::before { background: var(--blue); }
-
-.kpi-card:hover { border-color: var(--border-light); box-shadow: var(--shadow-md); }
-
-.kpi-icon {
-  font-size: 1.5rem; flex-shrink: 0;
-  width: 44px; height: 44px;
-  display: flex; align-items: center; justify-content: center;
-  border-radius: var(--radius-lg);
-  background: var(--surface-2);
-}
-
-.kpi-icon.saudi { background: var(--green-highlight); }
-.kpi-icon.gcc   { background: rgba(245, 166, 35, 0.10); }
-.kpi-icon.global { background: rgba(79, 156, 249, 0.10); }
-
-.kpi-body { flex: 1; }
-.kpi-value { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; color: var(--text); line-height: 1; margin-bottom: 4px; }
-.kpi-label { font-size: var(--text-sm); font-weight: 500; color: var(--text); margin-bottom: 2px; }
-.kpi-note  { font-size: var(--text-xs); color: var(--text-faint); line-height: 1.4; }
-
-/* WHO STRIP */
-.who-strip {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--space-6);
-  padding: var(--space-8) 0 0;
-  border-top: 1px solid var(--divider);
-}
-
-.who-item { padding: 0; }
-
-.who-role {
-  font-family: var(--font-display);
-  font-size: var(--text-sm);
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: var(--space-2);
-}
-
-.who-desc { font-size: var(--text-sm); color: var(--text-muted); line-height: 1.6; }
-
-/* ── OPPORTUNITIES SECTION ───────────────────── */
-#opportunities { padding-block: var(--space-16); }
-
-/* FILTER BAR */
-.filter-bar {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-xl);
-  padding: var(--space-5) var(--space-6);
-  margin-bottom: var(--space-6);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-  box-shadow: var(--shadow-sm);
-}
-
-.filter-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-4);
-  align-items: flex-end;
-}
-
-.filter-group { display: flex; flex-direction: column; gap: var(--space-2); min-width: 0; }
-.filter-group.search { flex: 1; min-width: 220px; }
-
-.filter-label {
-  font-size: var(--text-xs);
-  font-weight: 600;
-  color: var(--text-faint);
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-  display: flex; align-items: center; gap: 5px;
-  white-space: nowrap;
-}
-
-.filter-input {
-  width: 100%;
-  height: 38px;
-  padding: 0 var(--space-4);
-  background: var(--surface-2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  color: var(--text);
-  font-size: var(--text-sm);
-  transition: border-color var(--transition), box-shadow var(--transition);
-}
-
-.filter-input::placeholder { color: var(--text-faint); }
-.filter-input:focus { border-color: var(--green); box-shadow: 0 0 0 3px var(--green-glow); outline: none; }
-
-.filter-select {
-  height: 38px;
-  padding: 0 var(--space-8) 0 var(--space-4);
-  background: var(--surface-2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  color: var(--text);
-  font-size: var(--text-sm);
-  cursor: pointer;
-  appearance: none;
-  -webkit-appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237c89ab' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right var(--space-3) center;
-  background-size: 14px;
-  transition: border-color var(--transition);
-  white-space: nowrap;
-}
-
-.filter-select:focus { border-color: var(--green); outline: none; }
-
-/* Profile chips row */
-.filter-profile-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-2);
-  padding-top: var(--space-3);
-  border-top: 1px solid var(--divider);
-}
-
-.filter-profile-row .filter-label { margin-right: var(--space-2); }
-
-.profile-chips { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; flex: 1; }
-
-.profile-chip {
-  display: inline-flex; align-items: center; gap: 6px;
-  height: 32px;
-  padding: 0 var(--space-4);
-  border-radius: var(--radius-full);
-  font-size: var(--text-xs);
-  font-weight: 600;
-  color: var(--text-muted);
-  background: var(--surface-2);
-  border: 1px solid var(--border);
-  cursor: pointer;
-  transition: all var(--transition);
-  white-space: nowrap;
-  user-select: none;
-}
-
-.profile-chip:hover { color: var(--text); border-color: var(--border-light); background: var(--surface-3); }
-.profile-chip.active { color: var(--green); border-color: var(--green); background: var(--green-highlight); }
-
-/* NEW chip special style */
-.profile-chip[data-profile="new"] { border-style: dashed; }
-.profile-chip[data-profile="new"].active {
-  background: rgba(0, 196, 96, 0.15);
-  border-color: #00c460;
-  color: #00c460;
-  border-style: solid;
-}
-
-.profile-chip .chip-icon { font-size: 1em; }
-
-.reset-btn {
-  margin-left: auto;
-  font-size: var(--text-xs);
-  color: var(--text-faint);
-  padding: var(--space-2) var(--space-3);
-  border-radius: var(--radius-md);
-  transition: color var(--transition), background var(--transition);
-  flex-shrink: 0;
-}
-
-.reset-btn:hover { color: var(--text); background: var(--surface-3); }
-
-/* INFO ICON */
-.info-icon {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 14px; height: 14px;
-  border-radius: 50%;
-  background: var(--surface-3);
-  color: var(--text-faint);
-  font-size: 10px;
-  font-weight: 700;
-  cursor: default;
-  border: 1px solid var(--border);
-}
-
-/* RESULTS BAR */
-.results-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: var(--space-4);
-  flex-wrap: wrap;
-  gap: var(--space-3);
-}
-
-#resultsCount {
-  font-size: var(--text-sm);
-  color: var(--text-muted);
-}
-
-/* ── TABLE ───────────────────────────────────── */
-.table-wrapper {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-
-
-.table-scroll::-webkit-scrollbar { width: 6px; height: 6px; }
-.table-scroll::-webkit-scrollbar-track { background: var(--surface); }
-.table-scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-.table-scroll::-webkit-scrollbar-thumb:hover { background: var(--text-faint); }
-
-/* Sticky header inside scrollable table */
-
-
-
-
-
-
-
-
-
-.title-wrap { display: flex; align-items: flex-start; gap: 6px; flex-wrap: wrap; margin-bottom: 3px; }
-
-.opp-title-link {
-  color: var(--text);
-  font-weight: 500;
-  text-decoration: none;
-  line-height: 1.4;
-  transition: color var(--transition);
-}
-
-.opp-title-link:hover { color: var(--green); text-decoration: underline; }
-
-.opp-sponsor {
-  font-size: var(--text-xs);
-  color: var(--text-faint);
-  line-height: 1.4;
-  margin-top: 2px;
-}
-
-/* EMPTY STATE */
-.empty-state {
-  text-align: center;
-  padding: var(--space-16) var(--space-8) !important;
-  color: var(--text-faint);
-}
-
-.empty-icon { font-size: 2.5rem; margin-bottom: var(--space-4); }
-.empty-title { font-weight: 600; color: var(--text-muted); margin-bottom: var(--space-2); }
-.empty-sub { font-size: var(--text-sm); }
-
-/* PILLS / BADGES */
-.pill {
-  display: inline-block;
-  padding: 3px 9px;
-  border-radius: var(--radius-full);
-  font-size: var(--text-xs);
-  font-weight: 600;
-  white-space: nowrap;
-  letter-spacing: 0.02em;
-}
-
-.type-grant   { background: var(--pill-grant);  color: var(--pill-grant-text); }
-.type-tender  { background: var(--pill-tender); color: var(--pill-tender-text); }
-.type-accel   { background: var(--pill-accel);  color: var(--pill-accel-text); }
-.type-invest  { background: var(--pill-invest); color: var(--pill-invest-text); }
-.type-fellow  { background: var(--pill-fellow); color: var(--pill-fellow-text); }
-.type-other   { background: var(--pill-other);  color: var(--pill-other-text); }
-
-.pill-xs { padding: 2px 7px; font-size: 10px; }
-
-.region-tag {
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 600;
-  padding: 2px 8px;
-  border-radius: var(--radius-full);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  white-space: nowrap;
-}
-
-[data-theme="dark"] .region-saudi { background: rgba(0,168,89,0.14);  color: #00d46e; }
-[data-theme="dark"] .region-gcc   { background: rgba(245,166,35,0.14); color: #f5c842; }
-[data-theme="dark"] .region-global { background: rgba(79,156,249,0.14); color: #80b8fb; }
-
-[data-theme="light"] .region-saudi { background: #dcfce7; color: #15803d; }
-[data-theme="light"] .region-gcc   { background: #fef9c3; color: #a16207; }
-[data-theme="light"] .region-global { background: #dbeafe; color: #1d4ed8; }
-
-.tag-xs { padding: 1px 7px; font-size: 10px; }
-
-.status-badge {
-  display: inline-block;
-  padding: 3px 9px;
-  border-radius: var(--radius-full);
-  font-size: 11px;
-  font-weight: 600;
-  white-space: nowrap;
-  letter-spacing: 0.02em;
-}
-
-.status-open      { background: var(--status-open-bg);      color: var(--status-open-text);      border: 1px solid var(--status-open-border); }
-.status-recurring { background: var(--status-recurring-bg); color: var(--status-recurring-text); border: 1px solid var(--status-recurring-border); }
-.status-closed    { background: var(--status-closed-bg);    color: var(--status-closed-text);    border: 1px solid var(--status-closed-border); }
-
-.badge-xs { padding: 2px 6px; font-size: 10px; }
-
-.badge-new {
-  display: inline-block;
-  font-size: 9px;
-  font-weight: 700;
-  padding: 1px 6px;
-  border-radius: var(--radius-full);
-  background: rgba(0, 196, 96, 0.18);
-  color: #00c460;
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-  vertical-align: middle;
-  margin-left: 4px;
-  line-height: 1.5;
-  flex-shrink: 0;
-}
-
-/* ── TOOLTIP ─────────────────────────────────── */
-.tooltip-box {
-  position: fixed;
-  z-index: 200;
-  pointer-events: none;
-  background: var(--surface-elevated);
-  color: var(--text-muted);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-md);
-  padding: var(--space-2) var(--space-3);
-  font-size: var(--text-xs);
-  max-width: 280px;
-  box-shadow: var(--shadow-md);
-  opacity: 0;
-  transition: opacity 0.15s;
-  line-height: 1.5;
-}
-
-.tooltip-box.visible { opacity: 1; }
-
-/* ── DETAIL PANEL ────────────────────────────── */
-.panel-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.55);
-  z-index: 110;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.25s;
-  backdrop-filter: blur(3px);
-}
-
-.panel-overlay.visible { opacity: 1; pointer-events: auto; }
-
-.detail-panel {
-  position: fixed;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: min(440px, 96vw);
-  background: var(--surface);
-  border-left: 1px solid var(--border);
-  z-index: 120;
-  display: flex;
-  flex-direction: column;
-  transform: translateX(100%);
-  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: -8px 0 32px rgba(0,0,0,0.3);
-}
-
-.detail-panel.open { transform: translateX(0); }
-.detail-panel[aria-hidden="true"] { visibility: hidden; }
-.detail-panel.open[aria-hidden="false"] { visibility: visible; }
-
-.panel-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: var(--space-3);
-  padding: var(--space-5) var(--space-5) var(--space-4);
-  border-bottom: 1px solid var(--border);
-  flex-shrink: 0;
-}
-
-.panel-title {
-  font-family: var(--font-display);
-  font-size: var(--text-base);
-  font-weight: 600;
-  color: var(--text);
-  line-height: 1.3;
-}
-
-.panel-close {
-  flex-shrink: 0; width: 30px; height: 30px;
-  display: flex; align-items: center; justify-content: center;
-  background: var(--surface-2); border: 1px solid var(--border);
-  border-radius: var(--radius-md); cursor: pointer; color: var(--text-muted);
-  font-size: 18px; line-height: 1;
-  transition: background 0.15s, color 0.15s;
-}
-
-.panel-close:hover { background: var(--surface-3); color: var(--text); }
-
-.panel-badges {
-  display: flex; flex-wrap: wrap; gap: 6px;
-  padding: var(--space-3) var(--space-5);
-  flex-shrink: 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.panel-body {
-  flex: 1;
-  overflow-y: auto;
-  padding: var(--space-4) var(--space-5);
-  scrollbar-width: thin;
-  scrollbar-color: var(--border) transparent;
-}
-
-.panel-field { margin-bottom: var(--space-4); }
-
-.panel-field-label {
-  font-size: var(--text-xs);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-  color: var(--text-faint);
-  margin-bottom: 4px;
-}
-
-.panel-field-value {
-  font-size: var(--text-sm);
-  color: var(--text-muted);
-  line-height: 1.55;
-}
-
-.panel-description {
-  font-size: var(--text-sm);
-  color: var(--text-muted);
-  line-height: 1.65;
-  margin-bottom: var(--space-5);
-  padding-bottom: var(--space-4);
-  border-bottom: 1px solid var(--divider);
-}
-
-.panel-footer {
-  padding: var(--space-4) var(--space-5);
-  border-top: 1px solid var(--border);
-  flex-shrink: 0;
-}
-
-.panel-link-btn {
-  display: block; width: 100%;
-  padding: 12px var(--space-4);
-  background: var(--green); color: #fff;
-  font-weight: 600; font-size: var(--text-sm);
-  text-align: center; text-decoration: none;
-  border-radius: var(--radius-lg);
-  transition: background 0.2s, transform 0.1s;
-}
-
-.panel-link-btn:hover { background: var(--green-hover); transform: translateY(-1px); text-decoration: none; color: #fff; }
-
-/* ── RECENTLY ADDED WIDGET ───────────────────── */
-.recently-added-widget {
-  margin-top: var(--space-8);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-}
-
-.widget-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--space-4) var(--space-5);
-  border-bottom: 1px solid var(--border);
-  background: var(--surface-2);
-}
-
-.widget-title {
-  font-family: var(--font-display);
-  font-size: var(--text-sm);
-  font-weight: 600;
-  color: var(--text);
-  display: flex; align-items: center; gap: var(--space-2);
-}
-
-.widget-badge {
-  font-size: 9px;
-  font-weight: 700;
-  padding: 1px 6px;
-  border-radius: var(--radius-full);
-  background: rgba(0,196,96,0.18);
-  color: #00c460;
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-}
-
-.widget-body { padding: var(--space-2) 0; }
-
-.changelog-list { display: flex; flex-direction: column; }
-
-.changelog-item {
-  padding: var(--space-3) var(--space-5);
-  border-bottom: 1px solid var(--divider);
-}
-
-.changelog-item:last-child { border-bottom: none; }
-.changelog-item-title { margin-bottom: 5px; }
-
-.changelog-link {
-  color: var(--text);
-  font-size: var(--text-sm);
-  font-weight: 500;
-  line-height: 1.4;
-  text-decoration: none;
-}
-
-.changelog-link:hover { color: var(--green); text-decoration: underline; }
-
-.changelog-item-meta {
-  display: flex; flex-wrap: wrap; align-items: center; gap: 5px;
-}
-
-.changelog-date { font-size: var(--text-xs); color: var(--text-faint); }
-
-.no-recent { padding: var(--space-5); color: var(--text-faint); font-size: var(--text-sm); }
-
-/* ── INSIGHTS ────────────────────────────────── */
-.insights-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 1fr);
-  gap: var(--space-6);
-}
-
-.insight-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-xl);
-  padding: var(--space-6);
-  box-shadow: var(--shadow-sm);
-}
-
-.insight-card-title {
-  font-family: var(--font-display);
-  font-size: var(--text-base);
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: var(--space-1);
-}
-
-.insight-card-sub {
-  font-size: var(--text-xs);
-  color: var(--text-faint);
-  margin-bottom: var(--space-5);
-}
-
-.chart-container {
-  position: relative;
-  width: 100%;
-}
-
-/* ── ABOUT ───────────────────────────────────── */
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-12);
-}
-
-.about-prose { color: var(--text-muted); line-height: 1.75; }
-.about-prose p { margin-bottom: var(--space-4); }
-.about-prose p:last-child { margin-bottom: 0; }
-.about-prose strong { color: var(--text); font-weight: 500; }
-
-.about-meta-list { display: flex; flex-direction: column; gap: var(--space-4); }
-
-.about-meta-item {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-xl);
-  padding: var(--space-4) var(--space-5);
-}
-
-.about-meta-label {
-  font-size: var(--text-xs);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--green);
-  margin-bottom: var(--space-1);
-}
-
-.about-meta-value {
-  font-size: var(--text-sm);
-  color: var(--text-muted);
-  line-height: 1.6;
-}
-
-/* ── AUDIENCE CARDS ──────────────────────────── */
-.audience-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: var(--space-4);
-  margin-top: var(--space-8);
-}
-
-.audience-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-xl);
-  padding: var(--space-5) var(--space-6);
-  transition: border-color var(--transition), box-shadow var(--transition);
-}
-
-.audience-card:hover { border-color: var(--border-light); box-shadow: var(--shadow-md); }
-
-.audience-icon { font-size: 1.5rem; margin-bottom: var(--space-3); }
-
-.audience-role {
-  font-family: var(--font-display);
-  font-size: var(--text-sm);
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: var(--space-2);
-}
-
-.audience-desc { font-size: var(--text-sm); color: var(--text-muted); line-height: 1.6; }
-
-/* ── CONTRIBUTE / FEEDBACK FORM ─────────────── */
-#feedback { padding-block: var(--space-16); border-bottom: none; }
-
-.feedback-container {
-  max-width: 640px;
-}
-
-.feedback-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-xl);
-  padding: var(--space-8);
-  box-shadow: var(--shadow-sm);
-}
-
-.feedback-banner {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--space-4);
-  padding: var(--space-4);
-  background: var(--green-highlight);
-  border: 1px solid rgba(0, 166, 81, 0.2);
-  border-radius: var(--radius-lg);
-  margin-bottom: var(--space-6);
-}
-
-.feedback-banner-text {
-  font-size: var(--text-sm);
-  color: var(--text-muted);
-  line-height: 1.6;
-}
-
-.feedback-banner-text strong { color: var(--text); }
-
-.form-group {
-  margin-bottom: var(--space-5);
-}
-
-.form-label {
-  display: block;
-  font-size: var(--text-xs);
-  font-weight: 600;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: var(--space-2);
-}
-
-.form-input,
-.form-select,
-.form-textarea {
-  width: 100%;
-  padding: var(--space-3) var(--space-4);
-  font-size: var(--text-sm);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border);
-  background: var(--surface-2);
-  color: var(--text);
-  outline: none;
-  transition: border-color var(--transition), box-shadow var(--transition);
-  font-family: var(--font-body);
-  box-sizing: border-box;
-}
-
-.form-input:focus,
-.form-select:focus,
-.form-textarea:focus {
-  border-color: var(--green);
-  box-shadow: 0 0 0 3px var(--green-glow);
-}
-
-.form-textarea {
-  resize: vertical;
-  min-height: 100px;
-  line-height: 1.6;
-}
-
-.form-textarea::placeholder,
-.form-input::placeholder { color: var(--text-faint); }
-
-.form-select { cursor: pointer; }
-
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-4);
-}
-
-.btn-submit {
-  width: 100%;
-  padding: var(--space-4);
-  background: var(--green);
-  color: #fff;
-  font-size: var(--text-sm);
-  font-weight: 600;
-  border-radius: var(--radius-lg);
-  border: none;
-  cursor: pointer;
-  font-family: var(--font-body);
-  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
-  margin-top: var(--space-2);
-}
-
-.btn-submit:hover {
-  background: var(--green-hover);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-green);
-}
-
-.btn-submit:focus-visible {
-  outline: 2px solid var(--green);
-  outline-offset: 2px;
-}
-
-.form-success {
-  display: none;
-  padding: var(--space-4);
-  background: var(--green-highlight);
-  border: 1px solid rgba(0, 166, 81, 0.2);
-  border-radius: var(--radius-lg);
-  font-size: var(--text-sm);
-  color: var(--green);
-  text-align: center;
-  font-weight: 500;
-  margin-top: var(--space-4);
-}
-
-/* ── FOOTER ──────────────────────────────────── */
-footer {
-  position: relative;
-  z-index: 1;
-  background: var(--bg-deep);
-  border-top: 1px solid var(--border);
-  padding: var(--space-8) var(--space-6);
-}
-
-.footer-inner {
-  max-width: var(--content-wide);
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-4);
-}
-
-.footer-logo {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  text-decoration: none;
-}
-
-.footer-logo-text {
-  font-family: var(--font-display);
-  font-size: var(--text-xs);
-  font-weight: 600;
-  color: var(--text-faint);
-}
-
-.footer-logo-text span { color: var(--green); }
-
-.footer-links {
-  display: flex; flex-wrap: wrap; gap: var(--space-4);
-  list-style: none;
-}
-
-.footer-links a {
-  font-size: var(--text-xs);
-  color: var(--text-faint);
-  text-decoration: none;
-  transition: color var(--transition);
-}
-
-.footer-links a:hover { color: var(--text-muted); }
-
-.footer-attribution {
-  font-size: var(--text-xs);
-  color: var(--text-faint);
-}
-
-.footer-attribution a {
-  color: var(--green);
-  text-decoration: none;
-}
-
-.footer-attribution a:hover { text-decoration: underline; }
-
-.footer-disclaimer {
-  width: 100%;
-  font-size: var(--text-xs);
-  color: var(--text-faint);
-  border-top: 1px solid var(--divider);
-  padding-top: var(--space-4);
-  line-height: 1.6;
-}
-
-/* ── FADE-UP ANIMATION ───────────────────────── */
-.fade-up {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.fade-up.in-view { opacity: 1; transform: translateY(0); }
-
-/* ── MOBILE PANEL ────────────────────────────── */
-body.panel-open { overflow: hidden; }
-
-/* ── RESPONSIVE ──────────────────────────────── */
-@media (min-width: 1100px) {
-}
-
-@media (max-width: 900px) {
-  .hero-grid { grid-template-columns: 1fr; gap: var(--space-8); }
-  .about-grid { grid-template-columns: 1fr; gap: var(--space-8); }
-  .contribute-grid { grid-template-columns: 1fr; gap: var(--space-8); }
-  .insights-grid { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 768px) {
-  main { padding: 0 var(--space-4) var(--space-16); }
-
-  .navbar { padding: 0 var(--space-4); }
-  .navbar-links { display: none; flex-direction: column; align-items: stretch; gap: 0; }
-  .navbar-links.mobile-open {
-    display: flex;
-    position: absolute;
-    top: var(--nav-height);
-    left: 0; right: 0;
-    background: var(--bg-deep);
-    border-bottom: 1px solid var(--border);
-    padding: var(--space-2) var(--space-4);
-    box-shadow: var(--shadow-lg);
-    z-index: 99;
-  }
-  .navbar-links.mobile-open li { width: 100%; }
-  .navbar-links.mobile-open a { display: block; padding: var(--space-3) var(--space-4); }
-  .hamburger { display: flex; }
-
-  .filter-row { flex-direction: column; }
-  .filter-group.search { min-width: 0; }
-
-  .who-strip { grid-template-columns: 1fr 1fr; }
-
-  .detail-panel { width: 100vw; }
-  .table-wrapper { border-radius: var(--radius-lg); }
-
-  .audience-grid { grid-template-columns: 1fr; }
-  .form-row { grid-template-columns: 1fr; }
-  .feedback-card { padding: var(--space-5); }
-}
-
-@media (max-width: 480px) {
-  .who-strip { grid-template-columns: 1fr; }
-  .hero-ctas { flex-direction: column; }
-  .btn-primary, .btn-secondary { justify-content: center; }
-  .filter-profile-row { flex-direction: column; align-items: flex-start; }
-}
-
-
-/* ── PAGINATION ───────────────────────────────── */
-#pagination {
-  display: flex;
-  align-items: center;
-  gap: var(--space-1);
-  flex-wrap: wrap;
-  margin-top: var(--space-6);
-  justify-content: center;
-}
-.page-btn {
-  min-width: 36px;
-  height: 36px;
-  padding: 0 var(--space-2);
-  border: 1px solid var(--border-light);
-  background: var(--surface-2);
-  color: var(--text-muted);
-  border-radius: var(--radius-sm);
-  font-size: var(--text-sm);
-  font-family: var(--font-body);
-  cursor: pointer;
-  transition: var(--transition);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.page-btn:hover:not(:disabled) {
-  background: var(--surface-elevated);
-  color: var(--text);
-  border-color: var(--green);
-}
-.page-btn.active {
-  background: var(--green);
-  color: #fff;
-  border-color: var(--green);
-  font-weight: 600;
-}
-.page-btn:disabled {
-  opacity: 0.35;
-  cursor: not-allowed;
-}
-.page-ellipsis {
-  color: var(--text-faint);
-  font-size: var(--text-sm);
-  padding: 0 4px;
-  line-height: 36px;
-}
-.page-info {
-  color: var(--text-muted);
-  font-size: var(--text-xs);
-  margin-left: var(--space-3);
-}
-
-
-
-/* =============================================
-   INVEST SAUDI – White-Label Skin (Pilot Demo)
-   Overrides existing palette with IS brand
-   Deep green #006C35 · Gold #C9A66B
-   Light backgrounds, government-portal feel
-   ============================================= */
-
-/* ── IS THEME: Force light + IS palette ─────── */
-html[data-theme="light"],
-:root {
-  /* IS Brand Colors */
-  --is-green:        #006C35;
-  --is-green-hover:  #005229;
-  --is-green-dim:    #e6f2ec;
-  --is-green-glow:   rgba(0, 108, 53, 0.12);
-  --is-green-hl:     rgba(0, 108, 53, 0.08);
-  --is-gold:         #C9A66B;
-  --is-gold-dim:     #faf3e7;
-  --is-gold-dark:    #9a7d4c;
-
-  /* Override existing green vars for IS brand */
-  --green:            #006C35;
-  --green-hover:      #005229;
-  --green-dim:        #e6f2ec;
-  --green-glow:       rgba(0, 108, 53, 0.12);
-  --green-highlight:  rgba(0, 108, 53, 0.08);
-  --gold:             #C9A66B;
-  --gold-dim:         #faf3e7;
-
-  /* Clean light backgrounds */
-  --bg:               #f7f8fa;
-  --bg-deep:          #eef1f6;
-  --surface:          #ffffff;
-  --surface-2:        #f9fafb;
-  --surface-3:        #f2f5f8;
-  --surface-elevated: #ffffff;
-  --border:           #dde3ed;
-  --border-light:     #e8edf5;
-  --divider:          #edf2f7;
-
-  --text:             #12243a;
-  --text-muted:       #4a5568;
-  --text-faint:       #8fa0b8;
-  --text-inverse:     #ffffff;
-
-  /* Status badges */
-  --status-open-bg:          #e6f4ed;
-  --status-open-text:        #15803d;
-  --status-open-border:      #86efac;
-  --status-recurring-bg:     #fef9c3;
-  --status-recurring-text:   #a16207;
-  --status-recurring-border: #fde047;
-  --status-closed-bg:        #fee2e2;
-  --status-closed-text:      #dc2626;
-  --status-closed-border:    #fca5a5;
-
-  /* Pills */
-  --pill-grant:       #dcfce7;
-  --pill-grant-text:  #15803d;
-  --pill-tender:      #fef9c3;
-  --pill-tender-text: #a16207;
-  --pill-accel:       #dbeafe;
-  --pill-accel-text:  #1d4ed8;
-  --pill-invest:      #f3e8ff;
-  --pill-invest-text: #7e22ce;
-  --pill-fellow:      #ffedd5;
-  --pill-fellow-text: #c2410c;
-  --pill-other:       #f1f5f9;
-  --pill-other-text:  #475569;
-
-  --shadow-sm:    0 1px 4px rgba(0,0,0,0.07);
-  --shadow-md:    0 4px 18px rgba(0,0,0,0.10);
-  --shadow-lg:    0 12px 40px rgba(0,0,0,0.13);
-  --shadow-green: 0 0 20px rgba(0,108,53,0.10);
-}
-
-/* ── REMOVE DARK STARFIELD (not fitting IS light brand) ── */
-[data-theme="light"] body::before { display: none; }
-body::before { display: none; }
-
-/* ── IS TOP UTILITY BAR ──────────────────────── */
-.is-top-bar {
-  background: #006C35;
-  padding: 6px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 11.5px;
-  color: rgba(255,255,255,0.82);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  letter-spacing: 0.01em;
-}
-.is-top-bar a { color: rgba(255,255,255,0.82); text-decoration: none; }
-.is-top-bar a:hover { color: #fff; text-decoration: underline; }
-.is-top-bar-left { display: flex; gap: 18px; align-items: center; }
-.is-top-bar-right { display: flex; gap: 14px; align-items: center; }
-
-/* ── IS PILOT DEMO BADGE ─────────────────────── */
-.is-pilot-banner {
-  background: #fff8ee;
-  border-bottom: 1px solid #f0d9a8;
-  padding: 7px 24px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 12px;
-  color: #7a5c1e;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-.is-pilot-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  background: #C9A66B;
-  color: #fff;
-  font-size: 10px;
-  font-weight: 700;
-  padding: 2px 8px;
-  border-radius: 100px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  flex-shrink: 0;
-}
-.is-pilot-banner-text { color: #7a5c1e; }
-
-/* ── IS NAVBAR OVERRIDES ─────────────────────── */
-.navbar {
-  height: 68px;
-  background: #ffffff !important;
-  border-bottom: 2px solid #006C35 !important;
-  box-shadow: 0 2px 8px rgba(0,108,53,0.08);
-  padding: 0 32px;
-}
-[data-theme="light"] .navbar { background: #ffffff !important; }
-
-/* IS Logo block */
-.is-logo-block {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  flex-shrink: 0;
-}
-.is-logo-rect {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 112px;
-  height: 40px;
-  background: #006C35;
-  border-radius: 6px;
-  flex-shrink: 0;
-}
-.is-logo-rect-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  line-height: 1;
-}
-.is-logo-name {
-  color: #ffffff;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-.is-logo-tagline {
-  color: #C9A66B;
-  font-size: 7.5px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  margin-top: 2px;
-}
-.is-logo-divider {
-  width: 1px;
-  height: 28px;
-  background: #dde3ed;
-  margin: 0 4px;
-}
-.is-logo-hub-text {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  color: #12243a;
-  letter-spacing: -0.01em;
-  white-space: nowrap;
-}
-.is-logo-hub-text span { color: #006C35; }
-
-/* Hide original nav-logo, show IS version */
-.nav-logo { display: none !important; }
-
-/* IS Nav links */
-.navbar-links a {
-  font-size: 13.5px;
-  font-weight: 500;
-  color: #4a5568;
-  padding: 6px 14px;
-  border-radius: 6px;
-  transition: color 0.15s, background 0.15s;
-}
-.navbar-links a:hover {
-  color: #006C35;
-  background: rgba(0,108,53,0.07);
-  text-decoration: none;
-}
-.navbar-links a.active {
-  color: #006C35;
-  background: rgba(0,108,53,0.08);
-  font-weight: 600;
-}
-
-/* ── IS HERO OVERRIDES ───────────────────────── */
-.hero-badge {
-  background: rgba(0, 108, 53, 0.08);
-  border-color: rgba(0, 108, 53, 0.18);
-  color: #006C35;
-}
-.hero-badge::before { background: #006C35; }
-
-.hero-title .accent { color: #006C35; }
-
-/* ── IS STATS STRIP (above table) ────────────── */
-.is-stats-strip {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: 20px;
-  padding: 16px 20px;
-  background: #f7faf9;
-  border: 1px solid #d0e8dc;
-  border-radius: 10px;
-}
-.is-stat-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  color: #2d5c3e;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-weight: 500;
-}
-.is-stat-item::before {
-  content: '';
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #006C35;
-  flex-shrink: 0;
-}
-.is-stat-divider { width: 1px; height: 20px; background: #c5ddd1; flex-shrink: 0; }
-
-/* ── IS FILTER BAR OVERRIDES ─────────────────── */
-.filter-bar {
-  background: #ffffff;
-  border-color: #dde3ed;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-}
-.filter-input, .filter-select {
-  background: #f9fafb;
-  border-color: #dde3ed;
-  color: #12243a;
-  border-radius: 7px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-.filter-input:focus { border-color: #006C35; box-shadow: 0 0 0 3px rgba(0,108,53,0.10); }
-.filter-select:focus { border-color: #006C35; }
-.profile-chip.active {
-  color: #006C35;
-  border-color: #006C35;
-  background: rgba(0,108,53,0.08);
-}
-
-/* ── IS BUTTONS ──────────────────────────────── */
-.btn-primary {
-  background: #006C35;
-  border-radius: 7px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-.btn-primary:hover { background: #005229; color: #fff; }
-
-.btn-secondary {
-  border-color: #dde3ed;
-  color: #4a5568;
-  border-radius: 7px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-.btn-secondary:hover { border-color: #006C35; color: #006C35; }
-
-/* ── IS TABLE OVERRIDES ──────────────────────── */
-.table-wrapper {
-  border-color: #dde3ed;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.07);
-}
-
-.opp-title-link:hover { color: #006C35; }
-
-/* ── IS SECTION LABEL ────────────────────────── */
-.section-label { color: #006C35; }
-
-/* ── IS KPI CARDS ────────────────────────────── */
-.kpi-card { border-color: #dde3ed; }
-.kpi-card.saudi::before { background: #006C35; }
-.kpi-card.gcc::before   { background: #C9A66B; }
-.kpi-card.global::before { background: #4a90d9; }
-.kpi-icon.saudi { background: rgba(0,108,53,0.08); }
-
-/* ── IS PAGINATION ───────────────────────────── */
-.page-btn.active { background: #006C35; border-color: #006C35; }
-.page-btn:hover:not(:disabled) { border-color: #006C35; color: #006C35; }
-
-/* ── IS PANEL LINK BUTTON ────────────────────── */
-.panel-link-btn { background: #006C35; border-radius: 7px; }
-.panel-link-btn:hover { background: #005229; }
-
-/* ── IS FORM OVERRIDES ───────────────────────── */
-.form-input:focus, .form-select:focus, .form-textarea:focus {
-  border-color: #006C35;
-  box-shadow: 0 0 0 3px rgba(0,108,53,0.10);
-}
-.btn-submit { background: #006C35; border-radius: 7px; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-.btn-submit:hover { background: #005229; }
-
-/* ── IS FOOTER ───────────────────────────────── */
-footer {
-  background: #12243a;
-  border-top: 3px solid #006C35;
-}
-.footer-logo-text { color: rgba(255,255,255,0.6); }
-.footer-logo-text span { color: #C9A66B; }
-.footer-links a { color: rgba(255,255,255,0.55); }
-.footer-links a:hover { color: rgba(255,255,255,0.9); }
-.footer-attribution { color: rgba(255,255,255,0.45); }
-.footer-attribution a { color: #C9A66B; }
-.footer-disclaimer { color: rgba(255,255,255,0.38); border-top-color: rgba(255,255,255,0.1); }
-
-/* ── IS ABOUT META ───────────────────────────── */
-.about-meta-label { color: #006C35; }
-
-/* ── IS FEEDBACK BANNER ──────────────────────── */
-.feedback-banner {
-  background: rgba(0,108,53,0.07);
-  border-color: rgba(0,108,53,0.18);
-}
-
-/* ── IS REGION TAGS (light theme) ─────────────── */
-[data-theme="light"] .region-saudi { background: #e6f4ed; color: #15803d; }
-[data-theme="light"] .region-gcc   { background: #faf3e7; color: #9a7d4c; }
-[data-theme="light"] .region-global { background: #dbeafe; color: #1d4ed8; }
-
-/* ── IS FONT OVERRIDE: system-ui everywhere ──── */
-body, input, button, textarea, select {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-}
-h1, h2, h3, h4, h5, h6,
-.nav-logo-text, .kpi-value, .widget-title, .insight-card-title,
-.audience-role, .about-meta-label, .section-heading {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-}
-
-/* ── IS SECTION HEADING ACCENT ───────────────── */
-.section-heading { color: #12243a; }
-
-/* ── IS WHO-STRIP ─────────────────────────────── */
-.who-role { color: #006C35; }
-.who-strip { border-top-color: #d0e8dc; }
-
-/* ── IS RECENTLY ADDED WIDGET ─────────────────── */
-.recently-added-widget { border-color: #dde3ed; }
-.widget-header { background: #f2f7f5; border-bottom-color: #dde3ed; }
-.widget-badge { background: rgba(0,108,53,0.12); color: #006C35; }
-
-/* ── IS INSIGHT CARDS ─────────────────────────── */
-.insight-card { border-color: #dde3ed; }
-.insight-card-title { color: #12243a; }
-
-/* ── IS DETAIL PANEL ──────────────────────────── */
-.detail-panel { background: #ffffff; border-left-color: #dde3ed; }
-.panel-title { color: #12243a; }
-.panel-field-label { color: #006C35; }
-
-/* ── RESPONSIVE IS ADJUSTMENTS ────────────────── */
-@media (max-width: 768px) {
-  .is-top-bar { display: none; }
-  .is-pilot-banner { padding: 6px 16px; font-size: 11px; }
-  .is-stats-strip { padding: 12px 14px; }
-  .navbar { padding: 0 16px; height: 60px; }
-  .is-logo-rect { width: 90px; height: 34px; }
-}
-
-
-/* ── IS LANGUAGE BUTTONS ─────────────────────── */
-.is-lang-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: rgba(255,255,255,0.82);
-  font-size: 11.5px;
-  padding: 2px 4px;
-  border-radius: 3px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  transition: color 0.15s;
-}
-.is-lang-btn:hover { color: #fff; }
-.is-lang-btn {
-  display: inline-block;
-  text-decoration: none;
-}
-.is-lang-btn:visited { color: inherit; }
-
-.is-lang-btn.is-lang-active {
-  color: #C9A66B;
-  font-weight: 700;
-  text-decoration: underline;
-}
-.is-lang-sep {
-  color: rgba(255,255,255,0.35);
-  font-size: 11px;
-  user-select: none;
-}
-
-/* RTL support when Arabic is active */
-html[dir="rtl"] {
-  direction: rtl;
-  text-align: right;
-}
-html[dir="rtl"] .navbar { flex-direction: row-reverse; }
-html[dir="rtl"] .navbar-links { flex-direction: row-reverse; }
-html[dir="rtl"] .nav-actions { flex-direction: row-reverse; }
-html[dir="rtl"] .is-top-bar { flex-direction: row-reverse; }
-html[dir="rtl"] .is-top-bar-left { flex-direction: row-reverse; }
-html[dir="rtl"] .is-top-bar-right { flex-direction: row-reverse; }
-html[dir="rtl"] .hero-grid { direction: rtl; }
-html[dir="rtl"] .hero-text { text-align: right; }
-html[dir="rtl"] .hero-ctas { justify-content: flex-end; }
-html[dir="rtl"] .filter-bar { direction: rtl; }
-html[dir="rtl"] .filter-row { flex-direction: row-reverse; flex-wrap: wrap; }
-html[dir="rtl"] .filter-label { flex-direction: row-reverse; }
-html[dir="rtl"] .results-bar { flex-direction: row-reverse; }
-html[dir="rtl"] .is-stats-strip { flex-direction: row-reverse; }
-html[dir="rtl"] .is-logo-block { flex-direction: row-reverse; }
-html[dir="rtl"] .section-label,
-html[dir="rtl"] .section-heading,
-html[dir="rtl"] .section-sub { text-align: right; }
-html[dir="rtl"] .profile-chips { flex-direction: row-reverse; }
-html[dir="rtl"] .kpi-card { flex-direction: row-reverse; text-align: right; }
-html[dir="rtl"] .filter-profile-row { flex-direction: row-reverse; }
-html[dir="rtl"] .reset-btn { margin-left: 0; margin-right: auto; }
-html[dir="rtl"] .is-pilot-banner { flex-direction: row-reverse; }
-html[dir="rtl"] .title-wrap { flex-direction: row-reverse; text-align: right; }
-html[dir="rtl"] .panel-header { flex-direction: row-reverse; }
-html[dir="rtl"] .panel-badges { flex-direction: row-reverse; }
-html[dir="rtl"] .footer-inner { flex-direction: row-reverse; }
-html[dir="rtl"] .footer-links { flex-direction: row-reverse; }
-html[dir="rtl"] .who-strip { direction: rtl; }
-html[dir="rtl"] .about-grid { direction: rtl; }
-html[dir="rtl"] .about-prose { text-align: right; }
-html[dir="rtl"] .hero-badge { flex-direction: row-reverse; }
-
-/* ── IS DARK THEME OVERRIDES ─────────────────── */
-[data-theme="dark"] {
-  --green:           #00a651;
-  --green-hover:     #00c460;
-  --green-dim:       #00361a;
-  --green-glow:      rgba(0,166,81,0.15);
-  --green-highlight: rgba(0,166,81,0.10);
-}
-
-/* IS Navbar in dark mode */
-[data-theme="dark"] .navbar {
-  background: rgba(6,8,16,0.95) !important;
-  border-bottom-color: #006C35 !important;
-}
-[data-theme="dark"] .is-logo-hub-text { color: #e8eaf2; }
-[data-theme="dark"] .is-logo-hub-text span { color: #00a651; }
-[data-theme="dark"] .is-logo-divider { background: #1e2840; }
-[data-theme="dark"] .navbar-links a { color: #7c89ab; }
-[data-theme="dark"] .navbar-links a:hover { color: #e8eaf2; background: rgba(255,255,255,0.06); }
-[data-theme="dark"] .navbar-links a.active { color: #00a651; background: rgba(0,166,81,0.10); }
-
-/* IS Top bar in dark mode */
-[data-theme="dark"] .is-top-bar {
-  background: #021a0a;
-  border-bottom: 1px solid #00361a;
-}
-[data-theme="dark"] .is-pilot-banner {
-  background: #1a1200;
-  border-bottom-color: #3d2800;
-}
-[data-theme="dark"] .is-pilot-badge { background: #9a7d4c; }
-[data-theme="dark"] .is-pilot-banner-text { color: #c9a66b; }
-
-/* IS Stats strip in dark mode */
-[data-theme="dark"] .is-stats-strip {
-  background: #0d1f16;
-  border-color: #00361a;
-}
-[data-theme="dark"] .is-stat-item { color: #a3c9b1; }
-[data-theme="dark"] .is-stat-item::before { background: #00a651; }
-[data-theme="dark"] .is-stat-divider { background: #1a3d28; }
-
-/* IS Filter bar in dark mode */
-[data-theme="dark"] .filter-bar { background: #0f1420; border-color: #1e2840; }
-[data-theme="dark"] .filter-input, [data-theme="dark"] .filter-select {
-  background: #141928; border-color: #1e2840; color: #e8eaf2;
-}
-
-/* IS Table in dark mode */
-
-/* IS Footer in dark mode (already dark) */
-[data-theme="dark"] footer { background: #060810; border-top-color: #006C35; }
-[data-theme="dark"] .footer-logo-text { color: rgba(255,255,255,0.45); }
-[data-theme="dark"] .footer-logo-text span { color: #C9A66B; }
-
-/* IS Lang buttons in dark mode */
-[data-theme="dark"] .is-lang-btn { color: rgba(255,255,255,0.7); }
-[data-theme="dark"] .is-lang-btn.is-lang-active { color: #C9A66B; }
-[data-theme="dark"] .is-lang-sep { color: rgba(255,255,255,0.3); }
-
-
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Midnight Space — Investment Intelligence for Saudi Arabia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<!-- IS TOP UTILITY BAR -->
-<div class="is-top-bar">
-  <div class="is-top-bar-left">
-    <span>&#x1F1F8;&#x1F1E6; Kingdom of Saudi Arabia</span>
-    <span>Vision 2030 Investment Platform</span>
-  </div>
-  <div class="is-top-bar-right">
-        <a id="langAr" class="is-lang-btn" href="ar.html" lang="ar" dir="rtl">العربية</a>
-        <span class="is-lang-sep">|</span>
-        <a id="langEn" class="is-lang-btn is-lang-active" href="index.html" lang="en">English</a>
-      </div>
-    </div>
-<!-- IS PILOT DEMO BANNER -->
-<div class="is-pilot-banner" role="note" aria-label="Demo notice">
-  <span class="is-pilot-badge">&#9679; Pilot Demo</span>
-  <span class="is-pilot-banner-text">This is a white-label demo view of the Invest Saudi Opportunity Hub — <strong>not for public use</strong>. For evaluation purposes only.</span>
-</div>
-<header>
-  <nav class="navbar" role="navigation" aria-label="Main navigation">
-    <!-- IS LOGO BLOCK -->
-    <a href="#overview" class="is-logo-block" aria-label="Invest Saudi Opportunity Hub Home">
-      <div class="is-logo-rect" aria-hidden="true">
-        <div class="is-logo-rect-inner">
-          <span class="is-logo-name">Invest Saudi</span>
-          <span class="is-logo-tagline">Opportunity Hub</span>
-        </div>
-      </div>
-      <div class="is-logo-divider" aria-hidden="true"></div>
-      <span class="is-logo-hub-text">Opportunity <span>Hub</span></span>
+<!-- ── Navbar ─────────────────────────────────────────── -->
+<nav class="site-nav" id="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span class="logo-midnight">MIDNIGHT</span><span class="logo-space"> SPACE</span>
     </a>
-
-    <a href="#overview" class="nav-logo" aria-label="Saudi Opportunity Hub Home">
-      <div class="nav-logo-icon">
-        <svg width="34" height="34" viewBox="0 0 36 36" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="18" cy="18" r="17" stroke="#00a651" stroke-width="1.5" opacity="0.3"/>
-          <ellipse cx="18" cy="18" rx="17" ry="6.5" stroke="#00a651" stroke-width="1.5" opacity="0.6" transform="rotate(-25 18 18)"/>
-          <circle cx="18" cy="18" r="3.5" fill="#00a651"/>
-          <circle cx="28.5" cy="10" r="1.8" fill="#00a651" opacity="0.8"/>
-          <circle cx="9" cy="26" r="1.2" fill="#00a651" opacity="0.5"/>
-        </svg>
-      </div>
-      <span class="nav-logo-text"><span>Saudi</span> Opportunity Hub</span>
-    </a>
-
-    <ul class="navbar-links" id="navLinks" role="list">
-      <li><a href="#overview" class="active">Overview</a></li>
-      <li><a href="#opportunities">Opportunities</a></li>
-      <li><a href="#insights">Insights</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#feedback">Feedback</a></li>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="use-cases.html">Use Cases</a></li>
+      <li><a href="roadmap.html">Roadmap</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
-
     <div class="nav-actions">
-      <button class="theme-toggle" data-theme-toggle aria-label="Toggle light/dark mode" title="Toggle theme">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="themeIcon" aria-hidden="true">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-        </svg>
-      </button>
-      <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <path d="M3 6h18M3 12h18M3 18h18"/>
-        </svg>
+      <a href="contact.html" class="btn btn-primary btn-sm">Request access</a>
+      <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
       </button>
     </div>
-  </nav>
-</header>
+  </div>
+</nav>
 
-<main>
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html">Home</a>
+  <a href="products.html">Products</a>
+  <a href="use-cases.html">Use Cases</a>
+  <a href="roadmap.html">Roadmap</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="btn btn-primary" style="margin-top:0.5rem;text-align:center;border-radius:50px;">Request access</a>
+</div>
 
-  <section id="overview" aria-label="Overview">
-    <div class="hero-grid">
+<!-- ── SECTION 1: Hero Parallax ───────────────────────── -->
+<section class="parallax" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920');">
+  <div class="parallax-content">
+    <div class="container">
       <div class="hero-text">
-        <div class="hero-badge">Pilot Demo &middot; Invest Saudi Platform</div>
-        <h1 class="hero-title">
-          Invest Saudi –<br><span class="accent">Opportunity Hub</span>
-        </h1>
-        <p class="hero-desc">
-          Demo view: <strong>funding opportunities relevant to Saudi investors and partners</strong> — grants, tenders, accelerators, fellowships and investment programs across <strong>15 sectors</strong> spanning Energy, ICT, Healthcare, Agriculture and more, covering <strong>Saudi Arabia, the GCC, and global programs</strong> open to Saudi entities.
-        </p>
-        <div class="hero-ctas">
-          <a href="#opportunities" class="btn-primary">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-            Browse opportunities
-          </a>
-          <a href="mailto:jblancoapodaca@gmail.com?subject=Dataset%20Suggestion" class="btn-secondary">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
-            Suggest an entry
-          </a>
-        </div>
-      </div>
-
-      <div class="kpi-grid">
-        <div class="kpi-card saudi" data-tooltip="Programs issued in or led by Saudi institutions — grants, tenders, accelerators, and public-sector programs from SSA, CST, RDIA, Monsha'at, KAUST and more.">
-          <div class="kpi-icon saudi">&#x1F1F8;&#x1F1E6;</div>
-          <div class="kpi-body">
-            <div class="kpi-value" id="kpiSaudi">&#8212;</div>
-            <div class="kpi-label">Saudi opportunities</div>
-            <div class="kpi-note">Programs issued in or led by Saudi institutions</div>
-          </div>
-        </div>
-        <div class="kpi-card gcc" data-tooltip="Programs led by UAE, Oman, Qatar, Bahrain, Kuwait, and other regional partners.">
-          <div class="kpi-icon gcc">&#x1F310;</div>
-          <div class="kpi-body">
-            <div class="kpi-value" id="kpiGcc">&#8212;</div>
-            <div class="kpi-label">GCC regional</div>
-            <div class="kpi-note">Led by UAE, Oman, Qatar and regional partners</div>
-          </div>
-        </div>
-        <div class="kpi-card global" data-tooltip="International programs globally open or partially accessible to Saudi-based startups, researchers, and institutions.">
-          <div class="kpi-icon global">&#x1F30D;</div>
-          <div class="kpi-body">
-            <div class="kpi-value" id="kpiGlobal">&#8212;</div>
-            <div class="kpi-label">Global (Saudi-eligible)</div>
-            <div class="kpi-note">International programs open to Saudi actors</div>
-          </div>
-        </div>
-        <div class="kpi-card" style="border-left: 3px solid var(--green);" data-tooltip="Total tracked opportunities in the dataset across all regions.">
-          <div class="kpi-icon">&#x2726;</div>
-          <div class="kpi-body">
-            <div class="kpi-value" id="kpiTotal">&#8212;</div>
-            <div class="kpi-label">Total opportunities</div>
-            <div class="kpi-note">Across all regions and program types</div>
-          </div>
+        <div class="hero-badge">LIVE PLATFORM · 1,034 OPPORTUNITIES</div>
+        <h1>Investment intelligence for<br>Saudi Arabia</h1>
+        <p>We map funding programs, grants, accelerators, and investment opportunities across 15 sectors — giving governments, investors, and ecosystem builders a single, searchable source of truth.</p>
+        <div class="btn-group">
+          <a href="products.html" class="btn btn-primary">Explore the platform</a>
+          <a href="contact.html" class="btn btn-secondary">Request early access</a>
         </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="who-strip" role="list">
-      <div class="who-item" role="listitem">
-        <div class="who-role">Startups & SMEs</div>
-        <div class="who-desc">Find grants, accelerators, and investors aligned to your stage and sector — from Agriculture to ICT.</div>
-      </div>
-      <div class="who-item" role="listitem">
-        <div class="who-role">Researchers & Universities</div>
-        <div class="who-desc">Discover fellowships, research calls, and international collaboration tracks across all key sectors.</div>
-      </div>
-      <div class="who-item" role="listitem">
-        <div class="who-role">Government & Public Sector</div>
-        <div class="who-desc">Scan tenders, ecosystem initiatives, and capacity-building programs relevant to public-sector priorities.</div>
-      </div>
-      <div class="who-item" role="listitem">
-        <div class="who-role">Investors & Ecosystem</div>
-        <div class="who-desc">Map active programs in Saudi, GCC, and globally to identify deal-flow and co-investment opportunities across sectors.</div>
-      </div>
-    </div>
-  </section>
-
-  <section id="opportunities" aria-label="Opportunities database">
-    <div class="section-label">Database</div>
-    <h2 class="section-heading">Invest Saudi – Opportunities</h2>
-    <p class="section-sub">
-      Search and filter structured records of grants, tenders, accelerators, investment programs, fellowships, and ecosystem initiatives — curated for Saudi investors and partners across 15 key sectors in Saudi Arabia, the GCC, and globally.
-    </p>
-
-    <!-- IS STATS STRIP -->
-    <div class="is-stats-strip" role="list" aria-label="Platform highlights">
-      <div class="is-stat-item" role="listitem">1,000+ active funding opportunities</div>
-      <div class="is-stat-divider" aria-hidden="true"></div>
-      <div class="is-stat-item" role="listitem">15 sectors relevant to Saudi entities</div>
-      <div class="is-stat-divider" aria-hidden="true"></div>
-      <div class="is-stat-item" role="listitem">Demo snapshot — data as of March 2026</div>
-      <div class="is-stat-divider" aria-hidden="true"></div>
-      <div class="is-stat-item" role="listitem">API integration available for Invest Saudi platforms</div>
-    </div>
-
-    <div class="filter-bar" role="search" aria-label="Filter opportunities">
-      <div class="filter-row">
-        <div class="filter-group search">
-          <label for="searchInput" class="filter-label">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-            Search by title or sponsor
-          </label>
-          <input id="searchInput" class="filter-input" type="text" placeholder="e.g. KAUST, Energy, Healthcare, Agriculture&hellip;" autocomplete="off" aria-label="Search opportunities">
-        </div>
-
-        <div class="filter-group">
-          <label for="sectorFilter" class="filter-label">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-            Sector
-          </label>
-          <select id="sectorFilter" class="filter-select" aria-label="Filter by sector">
-            <option value="all">All sectors</option>
-            <option value="agriculture">Agriculture & Food Processing</option>
-            <option value="energy">Energy</option>
-            <option value="healthcare">Healthcare & Life Sciences</option>
-            <option value="environment">Environment Services</option>
-            <option value="industrial">Industrial & Manufacturing</option>
-            <option value="pharma">Pharma & Biotech</option>
-            <option value="chemicals">Chemicals</option>
-            <option value="realestate">Real Estate</option>
-            <option value="financial">Financial Services</option>
-            <option value="transport">Transport & Logistics</option>
-            <option value="mining">Mining & Metals</option>
-            <option value="tourism">Tourism & Quality of Life</option>
-            <option value="education">Education</option>
-            <option value="ict">ICT</option>
-            <option value="innovation">Innovation & Entrepreneurship</option>
-          </select>
-        </div>
-
-        <div class="filter-group">
-          <label for="countryFilter" class="filter-label">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.4 7.1 12.4 7.7 13 .3.3.9.3 1.2 0 .6-.6 7.1-7.6 7.1-13a8 8 0 0 0-8-8z"/></svg>
-            Country group
-            <span class="info-icon" data-tooltip="Saudi: programs from Saudi institutions. GCC: UAE, Oman, Qatar, Bahrain, Kuwait. Global: international programs open to Saudi actors." tabindex="0" aria-label="Country group info">i</span>
-          </label>
-          <select id="countryFilter" class="filter-select" aria-label="Filter by country group">
-            <option value="all">All regions</option>
-            <option value="saudi">Saudi Arabia</option>
-            <option value="gcc">GCC</option>
-            <option value="global">Global</option>
-          </select>
-        </div>
-
-        <div class="filter-group">
-          <label for="typeFilter" class="filter-label">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-            Type
-          </label>
-          <select id="typeFilter" class="filter-select" aria-label="Filter by opportunity type">
-            <option value="all">All types</option>
-            <option value="grant">Grant</option>
-            <option value="tender">Tender / Competition</option>
-            <option value="accelerator">Accelerator</option>
-            <option value="investment_program">Investment program</option>
-            <option value="fellowship">Fellowship</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
-
-        <div class="filter-group">
-          <label for="statusFilter" class="filter-label">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            Status
-          </label>
-          <select id="statusFilter" class="filter-select" aria-label="Filter by status">
-            <option value="all">All statuses</option>
-            <option value="open">Open</option>
-            <option value="closed_but_recurring">Recurring</option>
-            <option value="closed">Closed</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="filter-profile-row">
-        <span class="filter-label">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="7" r="4"/><path d="M5.2 20a7 7 0 0 1 13.6 0"/></svg>
-          Profile
-        </span>
-        <div class="profile-chips" role="group" aria-label="Filter by profile">
-          <button class="profile-chip active" data-profile="all" aria-pressed="true">
-            <span class="chip-icon" aria-hidden="true"></span> All profiles
-          </button>
-          <button class="profile-chip" data-profile="startup" aria-pressed="false">
-            <span class="chip-icon" aria-hidden="true"></span> Startup / SME
-          </button>
-          <button class="profile-chip" data-profile="researcher" aria-pressed="false">
-            <span class="chip-icon" aria-hidden="true"></span> Researcher / University
-          </button>
-          <button class="profile-chip" data-profile="government" aria-pressed="false">
-            <span class="chip-icon" aria-hidden="true"></span> Government
-          </button>
-          <button class="profile-chip" data-profile="investor" aria-pressed="false">
-            <span class="chip-icon" aria-hidden="true"></span> Investor
-          </button>
-          <button class="profile-chip" data-profile="student" aria-pressed="false">
-            <span class="chip-icon" aria-hidden="true"></span> Student
-          </button>
-          <button class="profile-chip" data-profile="new" aria-pressed="false" title="Show only newly added opportunities">
-            <span class="chip-icon" aria-hidden="true">&#x2726;</span> NEW
-          </button>
-        </div>
-        <button class="reset-btn" id="resetFilters" aria-label="Reset all filters">Reset filters</button>
-      </div>
-    </div>
-
-    <div class="results-bar" aria-live="polite" aria-atomic="true">
-      <span id="resultsCount">Loading&hellip;</span>
-    </div>
-
-    <div id="oppsTableWrapper">
-      <div id="oppsTableBody"><p style="color:var(--text-faint);padding:2rem">Loading opportunities…</p></div>
-    </div>
-    <div id="pagination" role="navigation" aria-label="Opportunity pages"></div>
-
-    <div class="recently-added-widget" aria-label="Recently added opportunities">
-      <div class="widget-header">
-        <div class="widget-title">
-          Recently added to the dataset
-          <span class="widget-badge">NEW</span>
-        </div>
-      </div>
-      <div class="widget-body">
-        <div class="changelog-list" id="recentlyAddedList"></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="insights" aria-label="Data insights and analytics">
-    <div class="section-label">Analytics</div>
-    <h2 class="section-heading">Insights</h2>
-    <p class="section-sub">
-      A high-level view of the landscape &mdash; program types, regional distribution, and status breakdown across all sectors and regions.
-    </p>
-    <div class="insights-grid">
-      <div class="insight-card">
-        <div class="insight-card-title">By program type</div>
-        <div class="insight-card-sub">Distribution across grants, tenders, accelerators, fellowships, and investment programs</div>
-        <div class="chart-container" style="max-height:280px;">
-          <canvas id="typeChart" aria-label="Program type distribution chart"></canvas>
-        </div>
-      </div>
-      <div class="insight-card">
-        <div class="insight-card-title">By region</div>
-        <div class="insight-card-sub">Breakdown between Saudi Arabia, GCC, and globally open programs</div>
-        <div class="chart-container" style="max-height:180px;">
-          <canvas id="regionChart" aria-label="Regional distribution chart"></canvas>
-        </div>
-      </div>
-      <div class="insight-card">
-        <div class="insight-card-title">By status</div>
-        <div class="insight-card-sub">Currently open vs. recurring (closed but returning) vs. closed programs</div>
-        <div class="chart-container" style="max-height:180px;">
-          <canvas id="statusChart" aria-label="Status distribution chart"></canvas>
-        </div>
-      </div>
-      <div class="insight-card">
-        <div class="insight-card-title">Top institutions by program count</div>
-        <div class="insight-card-sub">Organizations with the most tracked opportunities in the dataset</div>
-        <div class="chart-container" style="max-height:320px;">
-          <canvas id="sponsorChart" aria-label="Top sponsors chart"></canvas>
-        </div>
-      </div>
-    </div>
-
-    <p class="section-sub" style="margin-top:var(--space-8);margin-bottom:0;">
-      <strong style="color:var(--text);">Landscape snapshot (March 2026):</strong>
-      Saudi Arabia's opportunity landscape has expanded into a multi-sector, multi-region ecosystem spanning Vision 2030-aligned investment programs (PIF, SVC), regulatory facilitation (CST, SDAIA), world-class research infrastructure (KAUST, KACST), and a growing pipeline of GCC and global programs open to Saudi actors across Energy, ICT, Healthcare, Agriculture, Financial Services, and more.
-    </p>
-  </section>
-
-  <section id="about" aria-label="About this hub">
-    <div class="section-label">About</div>
-    <h2 class="section-heading">About the Hub</h2>
-    <div class="about-grid">
-      <div class="about-prose">
-        <p>The <strong>Saudi Opportunity Hub</strong> is a private demo platform tracking grants, tenders, accelerators, investment programs, and fellowships across <strong>15 key sectors</strong> of Saudi Arabia's evolving economy.</p>
-        <p>Saudi Arabia's Vision 2030 commitments have generated a diverse portfolio of funding and partnership opportunities across Agriculture, Energy, Healthcare, ICT, Financial Services, Tourism, and more &mdash; from government-backed programs to global accelerators actively recruiting Saudi startups, researchers, and institutions. This hub aggregates those signals in one place.</p>
-        <p>Coverage spans three tiers: <strong>Saudi</strong> programs issued by Saudi institutions (CST, RDIA, Monsha'at, KAUST, KACST, PIF-backed entities); <strong>GCC</strong> programs from UAE, Oman, Qatar, Bahrain, and Kuwait open to Saudi entities; and <strong>Global</strong> programs from international agencies, accelerators, and companies actively open to Saudi participants.</p>
-        <p>This is a proprietary demo built for Invest Saudi evaluation purposes. It is <strong>not affiliated with, endorsed by, or representative of</strong> the Saudi government, any Saudi authority, or any program listed. Always verify details directly with the sponsoring organization.</p>
-        <div class="audience-grid">
-          <div class="audience-card">
-            <div class="audience-role">Startups & SMEs</div>
-            <div class="audience-desc">Filter by sector, grant, accelerator, or investment type. Use profile chips to see programs targeting your entity type.</div>
+<!-- ── SECTION 2: Platform Preview ────────────────────── -->
+<section class="section" style="background: var(--bg-primary);">
+  <div class="container">
+    <div class="split">
+      <!-- Left: Description -->
+      <div class="fade-in-left">
+        <div class="section-label">LIVE PLATFORM</div>
+        <h2>Saudi Opportunity Hub</h2>
+        <p style="margin-top:1rem;">Our working platform consolidates over 1,000 investment opportunities, government funding programs, grants, and accelerators across 15 sectors of the Saudi economy — all in one searchable, filterable dashboard designed for decision-makers.</p>
+        <p style="margin-top:1rem;">Built for government teams, investment offices, and ecosystem builders who need to see what is happening across the full Saudi economy — without spending weeks hunting through fragmented sources.</p>
+        <div class="stats-row" style="margin-top:2rem;">
+          <div class="stat-box">
+            <span class="stat-number">1,034</span>
+            <span class="stat-label">Opportunities Tracked</span>
           </div>
-          <div class="audience-card">
-            <div class="audience-role">Researchers & Universities</div>
-            <div class="audience-desc">Filter to fellowships, grants, and joint-research calls across any sector relevant to academic institutions.</div>
+          <div class="stat-box">
+            <span class="stat-number">15</span>
+            <span class="stat-label">Sectors Covered</span>
           </div>
-          <div class="audience-card">
-            <div class="audience-role">Government</div>
-            <div class="audience-desc">Track tenders, regulatory programs, and multilateral partnerships across all sectors relevant to public-sector entities.</div>
-          </div>
-          <div class="audience-card">
-            <div class="audience-role">Investors</div>
-            <div class="audience-desc">Map active investment programs, co-investment vehicles, and ecosystem initiatives across sectors in Saudi and GCC.</div>
+          <div class="stat-box">
+            <span class="stat-number">Vision 2030</span>
+            <span class="stat-label">Aligned</span>
           </div>
         </div>
-      </div>
-      <div class="about-meta-list">
-        <div class="about-meta-item">
-          <div class="about-meta-label">Coverage scope</div>
-          <div class="about-meta-value">Saudi Arabia &middot; GCC &middot; Global programs open to Saudi actors &mdash; across 15 key sectors</div>
-        </div>
-        <div class="about-meta-item">
-          <div class="about-meta-label">Program types tracked</div>
-          <div class="about-meta-value">Grants &middot; Tenders & Competitions &middot; Accelerators &middot; Investment Programs &middot; Fellowships &middot; Regulatory & Ecosystem Programs &mdash; spanning Agriculture, Energy, Healthcare, ICT, Financial Services, Tourism, and 9 more sectors</div>
-        </div>
-        <div class="about-meta-item">
-          <div class="about-meta-label">Data sources</div>
-          <div class="about-meta-value">Official program websites &middot; Press releases &middot; Bilateral MoU announcements &middot; Space agency portals &middot; VC fund disclosures &middot; IAF and UN agency records</div>
-        </div>
-        <div class="about-meta-item">
-          <div class="about-meta-label">Last dataset update</div>
-          <div class="about-meta-value">March 2026</div>
-        </div>
-        <div class="about-meta-item">
-          <div class="about-meta-label">Legal disclaimer</div>
-          <div class="about-meta-value">Not an official government source. All information is provided for research and awareness purposes only. Verify deadlines, eligibility, and terms directly with the sponsoring organization.</div>
-        </div>
-        <div class="about-meta-item">
-          <div class="about-meta-label">Contact</div>
-          <div class="about-meta-value"><a href="mailto:jblancoapodaca@gmail.com">jblancoapodaca@gmail.com</a> &mdash; to suggest additions, corrections, or partnerships.</div>
+        <div style="margin-top:2rem;">
+          <a href="products.html" class="btn btn-primary">View product description</a>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section id="feedback" aria-label="Contribute to the hub">
-    <div class="section-label">Contribute</div>
-    <h2 class="section-heading">Help keep this hub current</h2>
-    <p class="section-sub">
-      Use this form to send internal feedback, corrections, or notes directly to the development team.
-    </p>
-
-    <div class="feedback-container">
-      <div class="feedback-card">
-        <div class="feedback-banner">
-          <div class="feedback-banner-text">
-            <strong>Internal feedback only.</strong> This form is for authorised reviewers and the internal team &mdash; not publicly accessible.
+      <!-- Right: Dashboard mock -->
+      <div class="fade-in-right">
+        <div class="dashboard-card">
+          <div class="dashboard-card-header">
+            <h4>Saudi Opportunity Hub — Live</h4>
+            <span class="badge badge-active">Live</span>
           </div>
-        </div>
-
-        <form id="feedbackForm" novalidate>
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label" for="feedbackType">Type of feedback</label>
-              <select id="feedbackType" name="type" class="form-select">
-                <option value="new">Suggest a new opportunity</option>
-                <option value="update">Update / correct an existing record</option>
-                <option value="other">Other feedback</option>
-              </select>
+          <div class="dashboard-stats">
+            <div class="dashboard-stat">
+              <span class="dashboard-stat-num">1,034 <span class="dashboard-stat-up">↑</span></span>
+              <span class="dashboard-stat-label">Opportunities</span>
             </div>
-            <div class="form-group">
-              <label class="form-label" for="feedbackContact">How can we contact you? <span style="color: var(--text-faint); font-weight: 400; text-transform: none;">(optional)</span></label>
-              <input id="feedbackContact" name="contact" type="email" class="form-input" placeholder="your@email.com">
+            <div class="dashboard-stat">
+              <span class="dashboard-stat-num">15</span>
+              <span class="dashboard-stat-label">Sectors</span>
+            </div>
+            <div class="dashboard-stat">
+              <span class="dashboard-stat-num">KSA</span>
+              <span class="dashboard-stat-label">Focus Region</span>
             </div>
           </div>
-
-          <div class="form-group">
-            <label class="form-label" for="feedbackText">Details &mdash; links, IDs, corrections, comments</label>
-            <textarea id="feedbackText" name="details" rows="4" class="form-textarea" required placeholder="e.g. SA-005 deadline updated to March 2026, or 'New call from KAUST for satellite research grants&hellip;'"></textarea>
+          <div class="dashboard-rows">
+            <div class="dashboard-row">
+              <span class="dashboard-row-name">Energy &amp; Renewables Programs</span>
+              <span class="badge badge-open">Open</span>
+            </div>
+            <div class="dashboard-row">
+              <span class="dashboard-row-name">Technology &amp; Digital Economy</span>
+              <span class="badge badge-open">Open</span>
+            </div>
+            <div class="dashboard-row">
+              <span class="dashboard-row-name">Space &amp; Advanced Industries</span>
+              <span class="badge badge-reviewing">Reviewing</span>
+            </div>
+            <div class="dashboard-row">
+              <span class="dashboard-row-name">Tourism &amp; Hospitality Fund</span>
+              <span class="badge badge-open">Open</span>
+            </div>
           </div>
-
-          <button type="submit" class="btn-submit">
-            Send feedback &rarr;
-          </button>
-
-          <div class="form-success" id="formSuccess">
-            &#10003; Thanks for your contribution! We'll review and update the dataset shortly.
+          <div style="margin-top:1.5rem; border-radius:10px; overflow:hidden;">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600" alt="Analytics dashboard" loading="lazy" style="width:100%;height:160px;object-fit:cover;">
           </div>
-        </form>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-</main>
-
-<footer>
-  <div class="footer-inner">
-    <a href="#overview" class="footer-logo" aria-label="Saudi Opportunity Hub">
-      <svg width="28" height="28" viewBox="0 0 36 36" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="18" cy="18" r="17" stroke="#C9A66B" stroke-width="1.5" opacity="0.5"/>
-        <ellipse cx="18" cy="18" rx="17" ry="6.5" stroke="#C9A66B" stroke-width="1.5" opacity="0.7" transform="rotate(-25 18 18)"/>
-        <circle cx="18" cy="18" r="3.5" fill="#C9A66B"/>
-      </svg>
-      <span class="footer-logo-text"><span>Invest Saudi</span> · Opportunity Hub</span>
-    </a>
-    <ul class="footer-links" role="list">
-      <li><a href="#overview">Overview</a></li>
-      <li><a href="#opportunities">Opportunities</a></li>
-      <li><a href="#insights">Insights</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#feedback">Feedback</a></li>
-      <li><a href="mailto:jblancoapodaca@gmail.com">Contact</a></li>
-    </ul>
-    <div class="footer-attribution">
-      </a>
+<!-- ── SECTION 3: What We Are — Parallax ──────────────── -->
+<section class="parallax" style="background-image: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=1920'); min-height: 80vh;">
+  <div class="parallax-content">
+    <div class="container">
+      <div style="max-width:700px;">
+        <div class="section-label">WHAT WE ARE</div>
+        <h2>Investment intelligence across the Saudi economy</h2>
+        <p style="margin-top:1rem;font-size:1.1rem;">Midnight Space is a data platform built to make Saudi Arabia's investment and funding landscape fully navigable. The Saudi Opportunity Hub maps 1,034 opportunities across 15 sectors — from energy and technology to tourism, healthcare, and beyond — aligned with Vision 2030 priorities.</p>
+        <div class="btn-group" style="margin-top:2rem;">
+          <a href="contact.html" class="btn btn-primary">Become a pilot partner</a>
+          <a href="roadmap.html" class="btn btn-secondary">See the roadmap</a>
+        </div>
+        <!-- Info cards below the text -->
+        <div class="card-grid" style="margin-top:3rem;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));">
+          <div class="info-card fade-in">
+            <h4>Current Status</h4>
+            <p>Live platform. Saudi Opportunity Hub is active with 1,034 tracked opportunities across 15 sectors.</p>
+          </div>
+          <div class="info-card fade-in">
+            <h4>Next Goal</h4>
+            <p>First pilot partner. V1 product with API access, weekly updates, and white-label dashboard.</p>
+          </div>
+          <div class="info-card fade-in">
+            <h4>Looking For</h4>
+            <p>Government agencies, investment offices, and ecosystem builders ready to run a 3-month pilot.</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <p class="footer-disclaimer">
-      This is a private demo build for internal evaluation only. Not for public distribution. All program information is provided for awareness and research purposes only. Verify all details directly with sponsoring organizations. Last updated: March 2026.
-    </p>
+  </div>
+</section>
+
+<!-- ── SECTION 4: 15 Sectors ───────────────────────────── -->
+<section class="section" style="background: #0a0e1a;">
+  <div class="container">
+    <div class="section-header section-center">
+      <div class="section-label">COVERAGE</div>
+      <h2>15 sectors, one platform</h2>
+      <p>The Saudi Opportunity Hub covers the full breadth of Vision 2030's economic transformation agenda — not just one vertical.</p>
+    </div>
+    <div class="card-grid" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;">
+      <div class="info-card fade-in" style="text-align:center;padding:1.25rem 1rem;">
+        <h4 style="font-size:0.95rem;">Energy &amp; Renewables</h4>
+      </div>
+      <div class="info-card fade-in" style="text-align:center;padding:1.25rem 1rem;">
+        <h4 style="font-size:0.95rem;">Technology &amp; Digital</h4>
+      </div>
+      <div class="info-card fade-in" style="text-align:center;padding:1.25rem 1rem;">
+        <h4 style="font-size:0.95rem;">Space &amp; Advanced Industries</h4>
+      </div>
+      <div class="info-card fade-in" style="text-align:center;padding:1.25rem 1rem;">
+        <h4 style="font-size:0.95rem;">Tourism &amp; Hospitality</h4>
+      </div>
+      <div class="info-card fade-in" style="text-align:center;padding:1.25rem 1rem;">
+        <h4 style="font-size:0.95rem;">Healthcare &amp; Life Sciences</h4>
+      </div>
+      <div class="info-card fade-in" style="text-align:center;padding:1.25rem 1rem;">
+        <h4 style="font-size:0.95rem;">Financial Services</h4>
+      </div>
+      <div class="info-card fade-in" style="text-align:center;padding:1.25rem 1rem;">
+        <h4 style="font-size:0.95rem;">Manufacturing &amp; Industry</h4>
+      </div>
+      <div class="info-card fade-in" style="text-align:center;padding:1.25rem 1rem;">
+        <h4 style="font-size:0.95rem;">Real Estate &amp; Infrastructure</h4>
+      </div>
+      <div class="info-card fade-in" style="text-align:center;padding:1.25rem 1rem;">
+        <h4 style="font-size:0.95rem;">Logistics &amp; Transport</h4>
+      </div>
+      <div class="info-card fade-in" style="text-align:center;padding:1.25rem 1rem;">
+        <h4 style="font-size:0.95rem;">Agriculture &amp; Food</h4>
+      </div>
+      <div class="info-card fade-in" style="text-align:center;padding:1.25rem 1rem;">
+        <h4 style="font-size:0.95rem;">Education &amp; Human Capital</h4>
+      </div>
+      <div class="info-card fade-in" style="text-align:center;padding:1.25rem 1rem;">
+        <h4 style="font-size:0.95rem;">Media &amp; Entertainment</h4>
+      </div>
+      <div class="info-card fade-in" style="text-align:center;padding:1.25rem 1rem;">
+        <h4 style="font-size:0.95rem;">Sports &amp; Recreation</h4>
+      </div>
+      <div class="info-card fade-in" style="text-align:center;padding:1.25rem 1rem;">
+        <h4 style="font-size:0.95rem;">Mining &amp; Natural Resources</h4>
+      </div>
+      <div class="info-card fade-in" style="text-align:center;padding:1.25rem 1rem;">
+        <h4 style="font-size:0.95rem;">Environment &amp; Sustainability</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SECTION 5: Core Capabilities ───────────────────── -->
+<section class="section" style="background: var(--bg-surface);">
+  <div class="container">
+    <div class="section-header section-center">
+      <div class="section-label">CORE CAPABILITIES</div>
+      <h2>Built around data, not a single vertical</h2>
+      <p>Everything Midnight Space does is about making Saudi Arabia's investment and opportunity landscape readable, navigable, and actionable.</p>
+    </div>
+    <div class="card-grid">
+      <!-- Card 1 -->
+      <div class="card fade-in">
+        <img class="card-img" src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=400" alt="Opportunity mapping" loading="lazy">
+        <div class="card-body">
+          <h3>Opportunity Mapping</h3>
+          <p>Funding calls, grants, accelerators, and government programs across 15 sectors — consolidated in one searchable database with filters by sector, type, and status.</p>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="card fade-in">
+        <img class="card-img" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400" alt="Program tracking" loading="lazy">
+        <div class="card-body">
+          <h3>Program Tracking</h3>
+          <p>Monitor open and closed program cycles, recurring calls, and application windows across the full Saudi investment landscape — so you never miss a deadline.</p>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="card fade-in">
+        <img class="card-img" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400" alt="Ecosystem dashboards" loading="lazy">
+        <div class="card-body">
+          <h3>Ecosystem Dashboards</h3>
+          <p>Visual summaries and charts for leadership teams. Turn fragmented government data into a clear picture of where opportunity is concentrating.</p>
+        </div>
+      </div>
+      <!-- Card 4 -->
+      <div class="card fade-in">
+        <img class="card-img" src="https://images.unsplash.com/photo-1563986768609-322da13575f2?w=400" alt="Signals and alerts" loading="lazy">
+        <div class="card-body">
+          <h3>Signals &amp; Alerts <span class="badge badge-planned" style="vertical-align:middle;margin-left:0.3rem;">Planned</span></h3>
+          <p>Notifications when new funding calls open or programs change status across any tracked sector. Coming in a future version of the platform.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SECTION 6: Who It's For — Parallax ─────────────── -->
+<section class="parallax" style="background-image: url('https://images.unsplash.com/photo-1516849841032-87cbac4d88f7?w=1920'); min-height: auto; padding: 7rem 0;">
+  <div class="parallax-content">
+    <div class="container">
+      <div class="section-header section-center">
+        <div class="section-label">WHO IT'S FOR</div>
+        <h2>Built for decision-makers navigating Saudi Arabia</h2>
+      </div>
+      <div class="card-grid">
+        <!-- Card 1 -->
+        <div class="card fade-in">
+          <img class="card-img" src="https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?w=400" alt="Governments and public agencies" loading="lazy">
+          <div class="card-body">
+            <h3>Governments &amp; Public Agencies</h3>
+            <p>Track national programs, identify funding gaps across sectors, benchmark against Vision 2030 targets, and build strategy on real data.</p>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="card fade-in">
+          <img class="card-img" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400" alt="Investment promotion offices" loading="lazy">
+          <div class="card-body">
+            <h3>Investment Promotion Offices</h3>
+            <p>Map where public money is flowing across all 15 sectors, identify overlapping programs, and build investor attraction strategy on real data.</p>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="card fade-in">
+          <img class="card-img" src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400" alt="Investors and funds" loading="lazy">
+          <div class="card-body">
+            <h3>Investors &amp; Funds</h3>
+            <p>Identify where government investment is concentrating before commercial dealflow follows. Use grant data as a leading indicator across any Saudi sector.</p>
+          </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="card fade-in">
+          <img class="card-img" src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=400" alt="Ecosystem builders and startups" loading="lazy">
+          <div class="card-body">
+            <h3>Startups &amp; Ecosystem Builders</h3>
+            <p>Accelerators, clusters, and founders benefit from a clear picture of all active programs and open funding opportunities relevant to their sector.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SECTION 7: Prototype Showcase ──────────────────── -->
+<section class="section" style="background: var(--bg-primary);">
+  <div class="container">
+    <div class="split">
+      <!-- Left: Description -->
+      <div class="fade-in-left">
+        <div class="section-label">LIVE PLATFORM</div>
+        <h2>Saudi Opportunity Hub</h2>
+        <ul class="checklist" style="margin-top:1.5rem;">
+          <li>1,034 investment opportunities mapped and categorised</li>
+          <li>Covers 15 sectors aligned with Vision 2030</li>
+          <li>Filters by sector, program type, funding source, and status</li>
+          <li>Charts and summary views for leadership teams</li>
+          <li>Saudi-focused with weekly data updates (pilot tier)</li>
+          <li>White-label dashboard and API access (V1)</li>
+        </ul>
+        <div style="margin-top:2rem;">
+          <a href="products.html" class="btn btn-primary">View product description</a>
+        </div>
+      </div>
+      <!-- Right: Dashboard mock -->
+      <div class="fade-in-right">
+        <div class="dashboard-card">
+          <div class="dashboard-card-header">
+            <h4>Saudi Opportunity Hub — April 2026</h4>
+            <span class="badge badge-active">Live</span>
+          </div>
+          <div class="dashboard-stats">
+            <div class="dashboard-stat">
+              <span class="dashboard-stat-num">1,034</span>
+              <span class="dashboard-stat-label">Opportunities</span>
+            </div>
+            <div class="dashboard-stat">
+              <span class="dashboard-stat-num">15</span>
+              <span class="dashboard-stat-label">Sectors</span>
+            </div>
+            <div class="dashboard-stat">
+              <span class="dashboard-stat-num">KSA</span>
+              <span class="dashboard-stat-label">Market</span>
+            </div>
+          </div>
+          <div class="dashboard-rows">
+            <div class="dashboard-row">
+              <span class="dashboard-row-name">NEOM Technology Fund 2026</span>
+              <span class="badge badge-open">Open</span>
+            </div>
+            <div class="dashboard-row">
+              <span class="dashboard-row-name">Saudi Green Initiative Grant</span>
+              <span class="badge badge-open">Open</span>
+            </div>
+            <div class="dashboard-row">
+              <span class="dashboard-row-name">Vision 2030 Tourism Accelerator</span>
+              <span class="badge badge-reviewing">Reviewing</span>
+            </div>
+            <div class="dashboard-row">
+              <span class="dashboard-row-name">Giga-Project Supply Chain Fund</span>
+              <span class="badge badge-planned">Planned</span>
+            </div>
+          </div>
+        </div>
+        <p class="note" style="margin-top:1rem;text-align:center;">Illustrative dashboard interface — live platform available on request</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SECTION 8: CTA Parallax ────────────────────────── -->
+<section class="parallax" style="background-image: url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=1920'); min-height: 70vh;">
+  <div class="parallax-content">
+    <div class="container">
+      <div style="max-width:680px;">
+        <div class="section-label">OPEN TO PILOT PARTNERS</div>
+        <h2>We are onboarding pilot partners now</h2>
+        <p style="margin-top:1rem;font-size:1.1rem;">If your organisation works in investment promotion, economic development, policy, or sector strategy in Saudi Arabia — we want to hear what data problems you are trying to solve.</p>
+        <div class="btn-group" style="margin-top:2rem;">
+          <a href="contact.html" class="btn btn-primary">Talk to the founder</a>
+          <a href="use-cases.html" class="btn btn-secondary">See use cases</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ──────────────────────────────────────────── -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <span class="logo-midnight">MIDNIGHT</span><span class="logo-space"> SPACE</span>
+        </div>
+        <p class="footer-tagline">Investment intelligence tools for governments, agencies, and investors navigating the Saudi economy.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Platform</h5>
+        <ul>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="use-cases.html">Use Cases</a></li>
+          <li><a href="roadmap.html">Roadmap</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="contact.html">Early Access</a></li>
+          <li><a href="#">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Midnight Space. Live platform — pilot access available.</p>
+      <p>Built by a solo founder.</p>
+    </div>
   </div>
 </footer>
 
-<div class="panel-overlay" id="panelOverlay" role="presentation" aria-hidden="true"></div>
-
-<aside class="detail-panel" id="detailPanel" aria-label="Opportunity details" aria-hidden="true" role="dialog">
-  <div class="panel-header">
-    <h3 class="panel-title" id="panelTitle">Opportunity Details</h3>
-    <button class="panel-close" id="panelClose" aria-label="Close details panel">&#x2715;</button>
-  </div>
-  <div class="panel-badges" id="panelBadges" aria-label="Program badges"></div>
-  <div class="panel-body">
-    <p class="panel-description" id="panelDesc"></p>
-    <div id="panelFields"></div>
-  </div>
-  <div class="panel-footer">
-    <a class="panel-link-btn" id="panelLink" href="#" target="_blank" rel="noopener noreferrer">Visit official page &rarr;</a>
-  </div>
-</aside>
-
-
-<script>
-/* ============================================================
-   INVEST SAUDI DEMO — Inline JS
-   1) Theme toggle (light / dark)
-   2) Arabic / English language switcher (RTL + translated UI)
-   ============================================================ */
-
-/* ── 1. THEME TOGGLE ──────────────────────────────────────── */
-(function () {
-  const html = document.documentElement;
-  const btn  = document.querySelector('[data-theme-toggle]');
-  const icon = document.getElementById('themeIcon');
-
-  // Moon path (shown in light → click to go dark)
-  const MOON = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
-  // Sun path (shown in dark → click to go light)
-  const SUN  = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
-
-  function applyTheme(theme) {
-    html.setAttribute('data-theme', theme);
-    localStorage.setItem('is-demo-theme', theme);
-    if (icon) {
-      icon.innerHTML = theme === 'dark' ? SUN : MOON;
-    }
-    if (btn) {
-      btn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
-      btn.setAttribute('title', theme === 'dark' ? 'Light mode' : 'Dark mode');
-    }
-  }
-
-  // Load saved preference (default: light for IS skin)
-  const saved = localStorage.getItem('is-demo-theme') || 'light';
-  applyTheme(saved);
-
-  if (btn) {
-    btn.addEventListener('click', function () {
-      const current = html.getAttribute('data-theme');
-      applyTheme(current === 'dark' ? 'light' : 'dark');
-    });
-  }
-})();
-
-
-/* ── 2. LANGUAGE SWITCHER ─────────────────────────────────── */
-
-// All translatable strings keyed by element selector or ID
-const TRANSLATIONS = {
-  en: {
-    // Page title
-    pageTitle: 'Invest Saudi – Opportunity Hub (Pilot Demo)',
-    // Top bar
-    topBarCountry: 'Kingdom of Saudi Arabia',
-    topBarVision:  'Vision 2030 Investment Platform',
-    // Pilot banner
-    pilotBannerText: 'This is a <strong>private demo build</strong> of the Invest Saudi Opportunity Hub — for internal evaluation and authorised stakeholder review only. Not for public distribution.',
-    // Nav links
-    navOverview:      'Overview',
-    navOpportunities: 'Opportunities',
-    navInsights:      'Insights',
-    navAbout:         'About',
-    navContribute:    'Feedback',
-    // Hero
-    heroBadge:    'Pilot Demo · Invest Saudi Platform',
-    heroTitle:    'Invest Saudi –<br><span class="accent">Opportunity Hub</span>',
-    heroDesc:     'Demo view: <strong>funding opportunities relevant to Saudi investors and partners</strong> — grants, tenders, accelerators, fellowships and investment programs across <strong>15 sectors</strong> spanning Energy, ICT, Healthcare, Agriculture and more, covering <strong>Saudi Arabia, the GCC, and global programs</strong> open to Saudi entities.',
-    heroCta1:     'Browse opportunities',
-    heroCta2:     'Suggest an entry',
-    // KPI cards
-    kpiSaudiLabel:  'Saudi opportunities',
-    kpiSaudiNote:   'Programs issued in or led by Saudi institutions',
-    kpiGccLabel:    'GCC regional',
-    kpiGccNote:     'Led by UAE, Oman, Qatar and regional partners',
-    kpiGlobalLabel: 'Global (Saudi-eligible)',
-    kpiGlobalNote:  'International programs open to Saudi actors',
-    kpiTotalLabel:  'Total opportunities',
-    kpiTotalNote:   'Across all regions and program types',
-    // Who strip
-    who1Role: 'Startups & SMEs',
-    who1Desc: 'Find grants, accelerators, and investors aligned to your stage and sector — from Agriculture to ICT.',
-    who2Role: 'Researchers & Universities',
-    who2Desc: 'Discover fellowships, research calls, and international collaboration tracks across all key sectors.',
-    who3Role: 'Government & Public Sector',
-    who3Desc: 'Scan tenders, ecosystem initiatives, and capacity-building programs relevant to public-sector priorities.',
-    who4Role: 'Investors & Ecosystem',
-    who4Desc: 'Map active programs in Saudi, GCC, and globally to identify deal-flow and co-investment opportunities.',
-    // Stats strip
-    stat1: '1,000+ active funding opportunities',
-    stat2: '15 sectors relevant to Saudi entities',
-    stat3: 'Demo snapshot — data as of March 2026',
-    stat4: 'API integration available for Invest Saudi platforms',
-    // Section labels & headings
-    sectionLabelOpps:     'Database',
-    sectionHeadingOpps:   'Invest Saudi – Opportunities',
-    sectionSubOpps:       'Search and filter structured records of grants, tenders, accelerators, investment programs, fellowships, and ecosystem initiatives — curated for Saudi investors and partners across 15 key sectors in Saudi Arabia, the GCC, and globally.',
-    sectionLabelInsights: 'Analytics',
-    sectionHeadingInsights: 'Insights',
-    sectionSubInsights:   'A high-level view of the landscape — program types, regional distribution, and status breakdown across all sectors and regions.',
-    sectionLabelAbout:    'About',
-    sectionHeadingAbout:  'About the Hub',
-    sectionLabelContrib:  'Feedback',
-    sectionHeadingContrib:'Demo Feedback & Notes',
-    // Filter labels
-    filterSearch:   'Search by title or sponsor',
-    filterSector:   'Sector',
-    filterCountry:  'Country group',
-    filterType:     'Type',
-    filterStatus:   'Status',
-    filterProfile:  'Profile',
-    resetBtn:       'Reset filters',
-    // Table headers
-    thTitle:       'Title & Sponsor',
-    thType:        'Type',
-    thRegion:      'Region',
-    thEligibility: 'Eligibility',
-    thFunding:     'Funding',
-    thStatus:      'Status',
-    thDeadline:    'Deadline',
-    // Theme toggle
-    themeToggleTip: 'Toggle theme',
-    // Footer
-    footerDisclaimer: 'This is a private demo build for internal evaluation only. Not for public distribution. All program information is provided for awareness and research purposes only. Verify all details directly with sponsoring organizations. Last updated: March 2026.',
-    // IS logo hub text
-    logoHubText: 'Opportunity <span>Hub</span>',
-    dir: 'ltr',
-    lang: 'en',
-  },
-  ar: {
-    pageTitle: 'استثمر في السعودية – مركز الفرص (نسخة تجريبية)',
-    topBarCountry: 'المملكة العربية السعودية',
-    topBarVision:  'منصة استثمار رؤية 2030',
-    pilotBannerText: 'هذا <strong>إصدار تجريبي خاص</strong> لمنصة فرص "استثمر في السعودية" — مخصص للتقييم الداخلي ومراجعة أصحاب المصلحة المعتمدين فقط. غير مخصص للتوزيع العام.',
-    navOverview:      'نظرة عامة',
-    navOpportunities: 'الفرص',
-    navInsights:      'التحليلات',
-    navAbout:         'عن المنصة',
-    navContribute:    'ملاحظات',
-    heroBadge:    'نسخة تجريبية · منصة استثمر في السعودية',
-    heroTitle:    'استثمر في السعودية –<br><span class="accent">مركز الفرص</span>',
-    heroDesc:     'عرض تجريبي: <strong>فرص التمويل المتاحة للمستثمرين والشركاء السعوديين</strong> — منح وعطاءات ومسرّعات وزمالات وبرامج استثمارية عبر <strong>15 قطاعاً</strong> تشمل الطاقة وتقنية المعلومات والرعاية الصحية والزراعة وغيرها، في <strong>المملكة العربية السعودية ودول الخليج والبرامج الدولية</strong> المفتوحة للكيانات السعودية.',
-    heroCta1:     'استعرض الفرص',
-    heroCta2:     'اقترح إدخالاً',
-    kpiSaudiLabel:  'الفرص السعودية',
-    kpiSaudiNote:   'برامج صادرة عن أو تقودها مؤسسات سعودية',
-    kpiGccLabel:    'دول مجلس التعاون الخليجي',
-    kpiGccNote:     'تقودها الإمارات وعُمان وقطر وشركاء إقليميون',
-    kpiGlobalLabel: 'عالمي (مؤهل سعودي)',
-    kpiGlobalNote:  'برامج دولية مفتوحة للكيانات السعودية',
-    kpiTotalLabel:  'إجمالي الفرص',
-    kpiTotalNote:   'عبر جميع المناطق وأنواع البرامج',
-    who1Role: 'الشركات الناشئة والمتوسطة',
-    who1Desc: 'ابحث عن المنح ومسرّعات الأعمال والمستثمرين المناسبين لقطاعك ومرحلتك من الزراعة إلى تقنية المعلومات.',
-    who2Role: 'الباحثون والجامعات',
-    who2Desc: 'اكتشف الزمالات والنداءات البحثية ومسارات التعاون الدولي عبر جميع القطاعات الرئيسية.',
-    who3Role: 'الحكومة والقطاع العام',
-    who3Desc: 'تابع العطاءات ومبادرات النظام البيئي وبرامج بناء القدرات ذات الصلة بأولويات القطاع العام.',
-    who4Role: 'المستثمرون والنظام البيئي',
-    who4Desc: 'رسم خريطة البرامج الاستثمارية النشطة في السعودية ودول الخليج وعالمياً لتحديد فرص الاستثمار المشترك.',
-    stat1: 'أكثر من 1,000 فرصة تمويل نشطة',
-    stat2: '15 قطاعاً ذا صلة بالكيانات السعودية',
-    stat3: 'لقطة تجريبية — بيانات حتى مارس 2026',
-    stat4: 'تكامل API متاح لمنصات استثمر في السعودية',
-    sectionLabelOpps:     'قاعدة البيانات',
-    sectionHeadingOpps:   'استثمر في السعودية – الفرص',
-    sectionSubOpps:       'ابحث وصفّ السجلات المنظمة للمنح والعطاءات ومسرّعات الأعمال وبرامج الاستثمار والزمالات ومبادرات النظام البيئي — مُعدّة خصيصاً للمستثمرين والشركاء السعوديين عبر 15 قطاعاً رئيسياً في المملكة ودول الخليج والعالم.',
-    sectionLabelInsights: 'التحليلات',
-    sectionHeadingInsights: 'رؤى وتحليلات',
-    sectionSubInsights:   'نظرة شاملة على المشهد — أنواع البرامج والتوزيع الإقليمي وحالة البرامج عبر جميع القطاعات والمناطق.',
-    sectionLabelAbout:    'عن المنصة',
-    sectionHeadingAbout:  'عن مركز الفرص',
-    sectionLabelContrib:  'ملاحظات',
-    sectionHeadingContrib:'ملاحظات العرض التجريبي',
-    filterSearch:   'ابحث بالعنوان أو الجهة الراعية',
-    filterSector:   'القطاع',
-    filterCountry:  'المجموعة الجغرافية',
-    filterType:     'النوع',
-    filterStatus:   'الحالة',
-    filterProfile:  'الملف الشخصي',
-    resetBtn:       'إعادة تعيين',
-    thTitle:        'العنوان والجهة الراعية',
-    thType:         'النوع',
-    thRegion:       'المنطقة',
-    thEligibility:  'الأهلية',
-    thFunding:      'التمويل',
-    thStatus:       'الحالة',
-    thDeadline:     'الموعد النهائي',
-    themeToggleTip: 'تبديل المظهر',
-    footerDisclaimer: 'هذا إصدار تجريبي خاص للتقييم الداخلي فقط، وليس للتوزيع العام. جميع المعلومات المقدمة لأغراض التوعية والبحث فقط. يُرجى التحقق من جميع التفاصيل مباشرة مع المنظمات الراعية. آخر تحديث: مارس 2026.',
-    logoHubText: 'مركز <span>الفرص</span>',
-    dir: 'rtl',
-    lang: 'ar',
-  }
-};
-
-// Elements we can translate by selector
-function translatePage(lang) {
-  const t = TRANSLATIONS[lang];
-  if (!t) return;
-  const html = document.documentElement;
-
-  // Direction & lang attribute
-  html.setAttribute('dir', t.dir);
-  html.setAttribute('lang', t.lang);
-  document.title = t.pageTitle;
-
-  // Helper: set innerHTML safely
-  function set(sel, val) {
-    const el = document.querySelector(sel);
-    if (el) el.innerHTML = val;
-  }
-  function setText(sel, val) {
-    const el = document.querySelector(sel);
-    if (el) el.textContent = val;
-  }
-
-  // Top bar
-  const tbLeft = document.querySelector('.is-top-bar-left');
-  if (tbLeft) {
-    const spans = tbLeft.querySelectorAll('span');
-    if (spans[0]) spans[0].textContent = t.topBarCountry;
-    if (spans[1]) spans[1].textContent = t.topBarVision;
-  }
-
-  // Pilot banner text
-  set('.is-pilot-banner-text', t.pilotBannerText);
-
-  // Nav links
-  const navLinks = document.querySelectorAll('#navLinks a');
-  const navTexts = [t.navOverview, t.navOpportunities, t.navInsights, t.navAbout, t.navContribute];
-  navLinks.forEach((a, i) => { if (navTexts[i]) a.textContent = navTexts[i]; });
-
-  // IS logo hub text
-  const logoHub = document.querySelector('.is-logo-hub-text');
-  if (logoHub) logoHub.innerHTML = t.logoHubText;
-
-  // Hero badge
-  set('.hero-badge', t.heroBadge);
-
-  // Hero title
-  set('.hero-title', t.heroTitle);
-
-  // Hero description
-  set('.hero-desc', t.heroDesc);
-
-  // Hero CTAs
-  const ctas = document.querySelectorAll('.hero-ctas a');
-  if (ctas[0]) {
-    const svg = ctas[0].querySelector('svg');
-    ctas[0].innerHTML = (svg ? svg.outerHTML : '') + ' ' + t.heroCta1;
-  }
-  if (ctas[1]) {
-    const svg = ctas[1].querySelector('svg');
-    ctas[1].innerHTML = (svg ? svg.outerHTML : '') + ' ' + t.heroCta2;
-  }
-
-  // KPI cards
-  const kpiLabels = document.querySelectorAll('.kpi-label');
-  const kpiNotes  = document.querySelectorAll('.kpi-note');
-  const kpiLabelTexts = [t.kpiSaudiLabel, t.kpiGccLabel, t.kpiGlobalLabel, t.kpiTotalLabel];
-  const kpiNoteTexts  = [t.kpiSaudiNote,  t.kpiGccNote,  t.kpiGlobalNote,  t.kpiTotalNote];
-  kpiLabels.forEach((el, i) => { if (kpiLabelTexts[i]) el.textContent = kpiLabelTexts[i]; });
-  kpiNotes.forEach((el, i)  => { if (kpiNoteTexts[i])  el.textContent = kpiNoteTexts[i]; });
-
-  // Who strip
-  const whoRoles = document.querySelectorAll('.who-role');
-  const whoDescs = document.querySelectorAll('.who-desc');
-  const whoRoleTexts = [t.who1Role, t.who2Role, t.who3Role, t.who4Role];
-  const whoDescTexts = [t.who1Desc, t.who2Desc, t.who3Desc, t.who4Desc];
-  whoRoles.forEach((el, i) => { if (whoRoleTexts[i]) el.textContent = whoRoleTexts[i]; });
-  whoDescs.forEach((el, i)  => { if (whoDescTexts[i])  el.textContent = whoDescTexts[i]; });
-
-  // Stats strip
-  const statItems = document.querySelectorAll('.is-stat-item');
-  const statTexts = [t.stat1, t.stat2, t.stat3, t.stat4];
-  statItems.forEach((el, i) => { if (statTexts[i]) el.textContent = statTexts[i]; });
-
-  // Section labels & headings
-  const sectionLabels   = document.querySelectorAll('.section-label');
-  const sectionHeadings = document.querySelectorAll('.section-heading');
-  const sectionSubs     = document.querySelectorAll('.section-sub');
-
-  const labelTexts   = [t.sectionLabelOpps, t.sectionLabelInsights, t.sectionLabelAbout, t.sectionLabelContrib];
-  const headingTexts = [t.sectionHeadingOpps, t.sectionHeadingInsights, t.sectionHeadingAbout, t.sectionHeadingContrib];
-  sectionLabels.forEach((el, i)   => { if (labelTexts[i])   el.textContent = labelTexts[i]; });
-  sectionHeadings.forEach((el, i) => { if (headingTexts[i]) el.textContent = headingTexts[i]; });
-  if (sectionSubs[0]) sectionSubs[0].textContent = t.sectionSubOpps;
-  if (sectionSubs[1]) sectionSubs[1].textContent = t.sectionSubInsights;
-
-  // Filter labels
-  const filterLabels = document.querySelectorAll('.filter-label');
-  // They contain SVG + text — update only the text node
-  function setLabelText(el, text) {
-    if (!el) return;
-    // Get child nodes, find the text node and update it
-    el.childNodes.forEach(node => {
-      if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
-        node.textContent = ' ' + text + ' ';
-      }
-    });
-    // Fallback: if no text node found, check for last text content
-    const allText = [...el.childNodes].filter(n => n.nodeType === Node.TEXT_NODE);
-    if (allText.length === 0) {
-      // Label has only SVG, append text
-      el.appendChild(document.createTextNode(' ' + text));
-    }
-  }
-  if (filterLabels[0]) setLabelText(filterLabels[0], t.filterSearch);
-  if (filterLabels[1]) setLabelText(filterLabels[1], t.filterSector);
-  if (filterLabels[2]) setLabelText(filterLabels[2], t.filterCountry);
-  if (filterLabels[3]) setLabelText(filterLabels[3], t.filterType);
-  if (filterLabels[4]) setLabelText(filterLabels[4], t.filterStatus);
-  if (filterLabels[5]) setLabelText(filterLabels[5], t.filterProfile);
-
-  // Search input placeholder
-  const searchInput = document.getElementById('searchInput');
-  if (searchInput) searchInput.placeholder = lang === 'ar' ? 'مثال: KAUST، طاقة، رعاية صحية…' : 'e.g. KAUST, Energy, Healthcare, Agriculture…';
-
-  // Reset button
-  const resetBtn = document.getElementById('resetFilters');
-  if (resetBtn) resetBtn.textContent = t.resetBtn;
-
-  // Table headers
-  const thTexts = [t.thTitle, t.thType, t.thRegion, t.thEligibility, t.thFunding, t.thStatus, t.thDeadline];
-  ths.forEach((th, i) => { if (thTexts[i]) th.textContent = thTexts[i]; });
-
-  // Theme toggle title
-  const themeBtn = document.querySelector('[data-theme-toggle]');
-  if (themeBtn) themeBtn.setAttribute('title', t.themeToggleTip);
-
-  // Footer disclaimer
-  set('.footer-disclaimer', t.footerDisclaimer);
-
-  // Update active language button states
-  document.getElementById('langAr').classList.toggle('is-lang-active', lang === 'ar');
-  document.getElementById('langEn').classList.toggle('is-lang-active', lang === 'en');
-
-  // Persist
-  localStorage.setItem('is-demo-lang', lang);
-}
-
-// Public function called by onclick
-function setLang(lang) {
-  if (lang === 'ar') {
-    localStorage.setItem('is-demo-lang', 'ar');
-    window.location.href = 'ar.html';
-    return;
-  }
-  localStorage.setItem('is-demo-lang', 'en');
-  window.location.href = 'index.html';
-}
-
-// Apply saved language on load
-document.addEventListener('DOMContentLoaded', function () {
-  localStorage.setItem('is-demo-lang', 'en');
-  translatePage('en');
-});
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
-</body>
-<script>
-(function () {
-  const PER_PAGE = 10;
-  let currentPage = 1;
-  let filteredData = [];
-  let selectedProfile = 'all';
-  let booted = false;
-
-  function dataSource() {
-    if (Array.isArray(window.opportunitiesData)) return window.opportunitiesData;
-    if (Array.isArray(window.allOpportunities)) return window.allOpportunities;
-    return [];
-  }
-
-  function norm(v) { return (v || '').toString().trim().toLowerCase(); }
-  function pretty(v) { return (v || '').toString().replace(/_/g, ' ').replace(/\w/g, c => c.toUpperCase()); }
-
-  function regionGroup(item) {
-    const country = norm(item.country);
-    const region = norm(item.eligibility_region);
-    if (country.includes('saudi') || region.includes('saudi')) return 'saudi';
-    if (country.includes('uae') || country.includes('qatar') || country.includes('oman') || country.includes('bahrain') || country.includes('kuwait') || region === 'gcc') return 'gcc';
-    return 'global';
-  }
-
-  function typeClass(type) {
-    const t = norm(type);
-    if (t.includes('grant')) return 'type-grant';
-    if (t.includes('tender')) return 'type-tender';
-    if (t.includes('accelerator')) return 'type-accel';
-    if (t.includes('investment')) return 'type-invest';
-    if (t.includes('fellow')) return 'type-fellow';
-    return 'type-other';
-  }
-
-  function statusClass(status) {
-    const s = norm(status);
-    if (s.includes('open')) return 'status-open';
-    if (s.includes('recurring')) return 'status-recurring';
-    return 'status-closed';
-  }
-
-  function profileMatch(item) {
-    if (selectedProfile === 'all') return true;
-    if (selectedProfile === 'new') return !!item.isNew;
-    const profiles = Array.isArray(item.profiles) ? item.profiles.map(norm) : [];
-    if (selectedProfile === 'startup') return profiles.some(p => p.includes('startup') || p.includes('sme'));
-    if (selectedProfile === 'researcher') return profiles.some(p => p.includes('research') || p.includes('university') || p.includes('academic'));
-    if (selectedProfile === 'government') return profiles.some(p => p.includes('government') || p.includes('public'));
-    if (selectedProfile === 'investor') return profiles.some(p => p.includes('investor') || p.includes('vc') || p.includes('fund'));
-    if (selectedProfile === 'student') return profiles.some(p => p.includes('student'));
-    return profiles.includes(selectedProfile);
-  }
-
-  function matchesFilters(item) {
-    const q = norm(document.getElementById('searchInput')?.value);
-    const sector = norm(document.getElementById('sectorFilter')?.value || 'all');
-    const country = norm(document.getElementById('countryFilter')?.value || 'all');
-    const type = norm(document.getElementById('typeFilter')?.value || 'all');
-    const status = norm(document.getElementById('statusFilter')?.value || 'all');
-
-    const haystack = [
-      item.id, item.title, item.description_short, item.sponsor_institution,
-      item.country, item.eligibility_region, item.eligibility_entities,
-      item.funding_amount, item.funding_type, item.deadline_date,
-      item.status, item.language, item.notes, item.last_verified,
-      ...(item.profiles || []), ...(item.sectors || [])
-    ].filter(Boolean).join(' ').toLowerCase();
-
-    if (q && !haystack.includes(q)) return false;
-    if (sector !== 'all' && !(Array.isArray(item.sectors) && item.sectors.map(norm).includes(sector))) return false;
-    if (country !== 'all' && regionGroup(item) !== country) return false;
-    if (type !== 'all' && norm(item.type) !== type) return false;
-    if (status !== 'all') {
-      const s = norm(item.status);
-      if (status === 'open' && !s.includes('open')) return false;
-      if (status === 'closedbutrecurring' && !(s.includes('recurring') || s.includes('closed_but_recurring'))) return false;
-      if (status === 'closed' && (s.includes('open') || s.includes('recurring'))) return false;
-    }
-    if (!profileMatch(item)) return false;
-    return true;
-  }
-
-  function updateCounts(allData) {
-    const saudi = allData.filter(d => regionGroup(d) === 'saudi').length;
-    const gcc = allData.filter(d => regionGroup(d) === 'gcc').length;
-    const global = allData.filter(d => regionGroup(d) === 'global').length;
-    const total = allData.length;
-    const setText = (id, value) => { const el = document.getElementById(id); if (el) el.textContent = value; };
-    setText('resultsCount', `${filteredData.length} opportunities found`);
-    setText('kpiSaudi', saudi);
-    setText('kpiGcc', gcc);
-    setText('kpiGlobal', global);
-    setText('kpiTotal', total);
-  }
-
-  function renderRecentlyAdded() {
-    const el = document.getElementById('recentlyAddedList');
-    if (!el) return;
-    const recent = dataSource().filter(item => item.isNew).slice(0, 5);
-    if (!recent.length) {
-      el.innerHTML = '<div class="no-recent">No newly flagged opportunities.</div>';
-      return;
-    }
-    el.innerHTML = recent.map(item => `
-      <div class="changelog-item">
-        <div class="changelog-item-title"><a class="changelog-link" href="${item.application_link || '#'}" ${item.application_link ? 'target="_blank" rel="noopener noreferrer"' : ''}>${item.title || 'Untitled opportunity'}</a></div>
-        <div class="changelog-item-meta"><span class="pill ${typeClass(item.type)} pill-xs">${pretty(item.type || 'Other')}</span><span class="changelog-date">${item.last_verified || 'Recently added'}</span></div>
-      </div>
-    `).join('');
-  }
-
-  function renderPagination() {
-    const pagination = document.getElementById('pagination');
-    if (!pagination) return;
-    const totalPages = Math.max(1, Math.ceil(filteredData.length / PER_PAGE));
-    if (currentPage > totalPages) currentPage = totalPages;
-    if (totalPages <= 1) { pagination.innerHTML = ''; return; }
-    let html = `<button class="page-btn" ${currentPage === 1 ? 'disabled' : ''} data-page="prev">‹</button>`;
-    const pages = [];
-    if (totalPages <= 7) {
-      for (let i = 1; i <= totalPages; i++) pages.push(i);
-    } else {
-      pages.push(1);
-      const start = Math.max(2, currentPage - 1);
-      const end = Math.min(totalPages - 1, currentPage + 1);
-      if (start > 2) pages.push('...');
-      for (let i = start; i <= end; i++) pages.push(i);
-      if (end < totalPages - 1) pages.push('...');
-      pages.push(totalPages);
-    }
-    pages.forEach(p => {
-      if (p === '...') html += `<span class="page-ellipsis">…</span>`;
-      else html += `<button class="page-btn ${p === currentPage ? 'active' : ''}" data-page="${p}">${p}</button>`;
-    });
-    html += `<button class="page-btn" ${currentPage === totalPages ? 'disabled' : ''} data-page="next">›</button>`;
-    html += `<span class="page-info">Page ${currentPage} of ${totalPages}</span>`;
-    pagination.innerHTML = html;
-    pagination.querySelectorAll('.page-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const value = btn.dataset.page;
-        if (value === 'prev' && currentPage > 1) currentPage--;
-        else if (value === 'next' && currentPage < totalPages) currentPage++;
-        else if (!isNaN(Number(value))) currentPage = Number(value);
-        renderCards();
-        const oppSection = document.getElementById('opportunities');
-        if (oppSection) oppSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
-    });
-  }
-
-  const SECTOR_IMAGES = { agriculture: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=640&q=80', energy: 'https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=640&q=80', healthcare: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=640&q=80', environment: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=640&q=80', industrial: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=640&q=80', pharma: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=640&q=80', chemicals: 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=640&q=80', realestate: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=640&q=80', financial: 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=640&q=80', transport: 'https://images.unsplash.com/photo-1494412651409-8963ce7935a7?w=640&q=80', mining: 'https://images.unsplash.com/photo-1582901867919-4a4d1a3e7b4a?w=640&q=80', tourism: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=640&q=80', education: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=640&q=80', ict: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=640&q=80', innovation: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=640&q=80' }; function sectorImg(item) { const sectors = (item.sectors || []).map(s => norm(s)); for (const s of sectors) { for (const key of Object.keys(SECTOR_IMAGES)) { if (s.includes(key)) return SECTOR_IMAGES[key]; } } return SECTOR_IMAGES.innovation; } function renderCards() {
-    const tbody = document.getElementById('oppsTableBody');
-    if (!tbody) return;
-    const start = (currentPage - 1) * PER_PAGE;
-    const pageItems = filteredData.slice(start, start + PER_PAGE);
-    if (!pageItems.length) {
-      tbody.innerHTML = '<tr><td colspan="7" class="empty-state"><div class="empty-icon">⌕</div><div class="empty-title">No opportunities found</div><div class="empty-sub">Try adjusting the filters or search term.</div></td></tr>';
-      renderPagination();
-      updateCounts(dataSource());
-      return;
-    }
-    tbody.innerHTML = pageItems.map(item => {
-      const region = regionGroup(item);
-      const chips = [pretty(item.funding_type), ...(item.profiles || []).slice(0,2).map(pretty), ...(item.sectors || []).slice(0,2).map(pretty)].filter(Boolean).slice(0,5);
-      return `
-        <tr class="opp-card-row" data-id="${item.id || ''}">
-          <td colspan="7" class="opp-card-cell">
-            <article class="opp-card-noimg">
-              <div class="opp-card-content">
-                <h3 class="opp-card-title">${item.title || 'Untitled opportunity'}</h3>
-                <div class="opp-card-meta">
-                  <span class="opp-meta-item">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="10" width="18" height="11" rx="2"/><path d="M7 10V6a1 1 0 0 1 1-1h2v5M15 10V4h1a1 1 0 0 1 1 1v5"/></svg>
-                    <span>${pretty(item.type || 'Opportunity')}</span>
-                  </span>
-                  <span class="opp-meta-item">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 21s7-4.35 7-10a7 7 0 1 0-14 0c0 5.65 7 10 7 10Z"/><circle cx="12" cy="11" r="2.5"/></svg>
-                    <span>${item.country || pretty(item.eligibility_region) || 'Global'}</span>
-                  </span>
-                </div>
-                <p class="opp-card-desc">${item.description_short || 'No description available.'}</p>
-                <div class="opp-card-chips">${chips.map(c => `<span class="opp-card-chip">${c}</span>`).join('')}</div>
-                <div class="opp-card-stats">
-                  <div class="opp-card-stat">
-                    <div class="opp-card-value">${item.funding_amount || 'See details'}</div>
-                    <div class="opp-card-label">Funding / Size</div>
-                  </div>
-                  <div class="opp-card-stat">
-                    <div class="opp-card-value">${pretty(item.status || 'Unknown')}</div>
-                    <div class="opp-card-label">Status</div>
-                  </div>
-                  <div class="opp-card-stat">
-                    <div class="opp-card-value">${item.deadline_date || item.last_verified || 'TBA'}</div>
-                    <div class="opp-card-label">Deadline / Verified</div>
-                  </div>
-                </div>
-                <div class="opp-card-actions">
-                  <div class="opp-card-badges">
-                    <span class="pill ${typeClass(item.type)}">${pretty(item.type || 'Other')}</span>
-                    <span class="region-tag region-${region}">${region}</span>
-                    <span class="status-badge ${statusClass(item.status)}">${pretty(item.status || 'Unknown')}</span>
-                    ${item.isNew ? '<span class="badge-new">New</span>' : ''}
-                  </div>
-                  <a class="panel-link-btn opp-card-link" href="${item.application_link || '#'}" ${item.application_link ? 'target="_blank" rel="noopener noreferrer"' : ''}>I'm Interested</a>
-                </div>
-                <div class="opp-card-sponsor">${item.sponsor_institution ? `<strong>Sponsor:</strong> ${item.sponsor_institution}` : ''}</div>
-              </div>
-            <div class="opp-card-image"><img src="${sectorImg(item)}" alt="" loading="lazy" onerror="this.style.display='none';this.parentNode.classList.add('opp-card-image-fallback');"/></div></article>
-          </td>
-        </tr>
-      `;
-    }).join('');
-    renderPagination();
-    updateCounts(dataSource());
-  }
-
-  function applyFilters() {
-    filteredData = dataSource().filter(matchesFilters);
-    currentPage = 1;
-    renderCards();
-  }
-
-  function wireFilters() {
-    ['searchInput','sectorFilter','countryFilter','typeFilter','statusFilter'].forEach(id => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      el.addEventListener('input', applyFilters);
-      el.addEventListener('change', applyFilters);
-    });
-    document.querySelectorAll('.profile-chip').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.profile-chip').forEach(b => {
-          b.classList.remove('active');
-          b.setAttribute('aria-pressed', 'false');
-        });
-        btn.classList.add('active');
-        btn.setAttribute('aria-pressed', 'true');
-        selectedProfile = btn.dataset.profile || 'all';
-        applyFilters();
-      });
-    });
-    const reset = document.getElementById('resetFilters');
-    if (reset) reset.addEventListener('click', () => {
-      const resetValue = (id, val) => { const el = document.getElementById(id); if (el) el.value = val; };
-      resetValue('searchInput', '');
-      resetValue('sectorFilter', 'all');
-      resetValue('countryFilter', 'all');
-      resetValue('typeFilter', 'all');
-      resetValue('statusFilter', 'all');
-      document.querySelectorAll('.profile-chip').forEach(b => {
-        const active = b.dataset.profile === 'all';
-        b.classList.toggle('active', active);
-        b.setAttribute('aria-pressed', active ? 'true' : 'false');
-      });
-      selectedProfile = 'all';
-      applyFilters();
-    });
-  }
-
-  function installStyles() {
-    const style = document.createElement('style');
-    style.textContent = `
-      .table-scroll tbody { grid-template-columns: repeat(auto-fill, 1fr); align-items: stretch; } .table-scroll tbody tr { height: 100%; } .opp-card-cell { height: 100%; } .opp-card-noimg { display: flex !important; flex-direction: row !important; align-items: stretch; height: 100%; min-height: 480px; width: 1280px !important; max-width: 1280px !important; flex: 0 0 1280px; flex-direction: row !important; position: relative; overflow: hidden; } .opp-card-image { flex: 0 0 320px; width: 320px; align-self: stretch; order: 2; background-size: cover; background-position: center; background-repeat: no-repeat; border-top-right-radius: 26px; border-bottom-right-radius: 26px; z-index: 2; overflow: hidden; background: linear-gradient(135deg, #1e3a4f 0%, #0e1a26 100%); } .opp-card-image img { width: 100%; height: 100%; object-fit: cover; display: block; } .opp-card-image-fallback { background: linear-gradient(135deg, #35d5c5 0%, #006C35 100%) !important; } .opp-card-content { display: flex; flex-direction: column; flex: 1 1 auto; min-width: 0; order: 1; } .opp-card-actions { margin-top: auto; } .opp-card-title { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; } .opp-card-desc { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; } .table-scroll { max-height: none; overflow: visible !important; }
-      .table-scroll table { min-width: 100%; }
-      .table-scroll thead { display: none; }
-      .table-scroll tbody { display: grid; gap: 14px; }
-      .table-scroll tbody tr { display: block; border-bottom: none; cursor: default; background: transparent !important; }
-      .opp-card-cell { padding: 0 !important; }
-      .opp-card-noimg {
-        position: relative; display: block; min-height: 0; max-width: 100%;
-        background: linear-gradient(180deg, #0c2030 0%, #0a1b29 100%);
-        border-radius: 26px; overflow: hidden; box-shadow: var(--shadow-md);
-      }
-      .opp-card-noimg::after {
-        content: ''; position: absolute; inset: auto 0 0 0; height: 140px;
-        background: radial-gradient(circle at 18% 100%, rgba(53,213,197,.20), transparent 28%), radial-gradient(circle at 48% 100%, rgba(126,78,182,.18), transparent 26%);
-        pointer-events: none;
-      }
-      .opp-card-content { padding: 22px 24px 16px; display: flex; flex-direction: column; position: relative; z-index: 1; }
-      .opp-card-title { font-size: clamp(21px, 1.8vw, 30px); line-height: 1.08; letter-spacing: -.025em; color: #fff; margin: 0 0 10px; max-width: 22ch; }
-      .opp-card-meta { display: flex; gap: 12px; flex-wrap: wrap; color: rgba(255,255,255,.80); font-size: 12px; font-weight: 500; margin-bottom: 10px; }
-      .opp-meta-item { display: inline-flex; align-items: center; gap: 10px; }
-      .opp-meta-item svg { color: #35d5c5; }
-      .opp-card-desc { color: rgba(255,255,255,.90); font-size: clamp(13px, 0.95vw, 15px); line-height: 1.55; margin: 0 0 12px; max-width: 78ch; font-weight: 400; }
-      .opp-card-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
-      .opp-card-chip { padding: 5px 9px; border-radius: var(--radius-full); border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.07); color: rgba(255,255,255,.74); font-size: 10px; font-weight: 600; }
-      .opp-card-stats { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); margin-top: 0; margin-bottom: 12px; }
-      .opp-card-stat { padding-right: 12px; border-right: 1px solid rgba(255,255,255,.14); }
-      .opp-card-stat:nth-child(2) { padding-left: 12px; }
-      .opp-card-stat:last-child { border-right: 0; padding-left: 12px; padding-right: 0; }
-      .opp-card-value { color: #fff; font-size: clamp(15px,1.05vw,19px); line-height: 1.15; font-weight: 700; margin-bottom: 4px; letter-spacing: -.015em; }
-      .opp-card-label { color: rgba(255,255,255,.72); font-size: 11px; }
-      .opp-card-actions { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
-      .opp-card-badges { display: flex; flex-wrap: wrap; gap: 5px; align-items: center; }
-      .opp-card-link { width: auto; white-space: nowrap; background: #35d5c5; border-radius: 999px; box-shadow: 0 6px 16px rgba(47,213,199,.16); padding: 8px 14px; font-size: 12px; }
-      .opp-card-sponsor { margin-top: 8px; color: rgba(255,255,255,.66); font-size: 11px; }
-      .pagination { gap: 4px; margin-top: 14px; }
-      .page-btn { min-width: 30px; height: 30px; padding: 0 8px; font-size: 12px; border-radius: 8px; }
-      .page-ellipsis { color: var(--text-faint); font-size: 12px; padding: 0 2px; line-height: 30px; }
-      .page-info { font-size: 11px; margin-left: 8px; }
-      @media (max-width: 900px) { .pagination { gap: 3px; } .page-btn { min-width: 28px; height: 28px; font-size: 11px; border-radius: 7px; } .page-info { width: 100%; margin-left: 0; text-align: center; margin-top: 4px; } }
-      .opp-card-sponsor strong { color: rgba(255,255,255,.88); }
-      @media (max-width: 900px) {
-        .opp-card-content { padding: 16px; }
-        .opp-card-stats { grid-template-columns: 1fr; gap: 18px; }
-        .opp-card-stat, .opp-card-stat:nth-child(2), .opp-card-stat:last-child { padding: 0 0 18px; border-right: 0; border-bottom: 1px solid rgba(255,255,255,.14); }
-        .opp-card-stat:last-child { border-bottom: 0; padding-bottom: 0; }
-        .opp-card-actions { flex-direction: column; align-items: flex-start; }
-      }
-    `;
-    document.head.appendChild(style);
-  }
-
-  function boot() {
-    if (booted) return;
-    booted = true;
-    installStyles();
-    wireFilters();
-    renderRecentlyAdded();
-    filteredData = dataSource().slice();
-    applyFilters();
-  }
-
-  const wait = setInterval(() => {
-    if (Array.isArray(window.opportunitiesData) || Array.isArray(window.allOpportunities)) {
-      clearInterval(wait);
-      boot();
-    }
-  }, 200);
-})();
-</script>
-<script>
-/* In-page Arabic toggle for index.html — translates UI + sets RTL on demand. */
-(function(){
-  const HTML = document.documentElement;
-  const CACHE_KEY = 'isDemoArCacheV1';
-  const SKIP_TAGS = new Set(['SCRIPT','STYLE','NOSCRIPT','IFRAME','SVG','PATH','CODE','PRE','CANVAS']);
-  const ATTRS = ['placeholder','title','aria-label'];
-  const AR_RE = /[\u0600-\u06FF]/;
-  const EN_RE = /[A-Za-z]/;
-  let CACHE = {};
-  try { CACHE = JSON.parse(localStorage.getItem(CACHE_KEY) || '{}') || {}; } catch(e) { CACHE = {}; }
-  function saveCache(){ try { localStorage.setItem(CACHE_KEY, JSON.stringify(CACHE)); } catch(e){} }
-  function norm(s){ return (s||'').replace(/\s+/g,' ').trim(); }
-  function needs(s){ s = norm(s); if (!s) return false; if (!EN_RE.test(s)) return false; if (AR_RE.test(s)) return false; return true; }
-  async function translateOne(text){
-    const k = norm(text); if (!needs(k)) return text;
-    if (CACHE[k]) return CACHE[k];
-    try {
-      const url = 'https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ar&dt=t&q=' + encodeURIComponent(k);
-      const r = await fetch(url); const d = await r.json();
-      const t = Array.isArray(d?.[0]) ? d[0].map(x=>x[0]).join('').trim() : k;
-      CACHE[k] = t || k; saveCache(); return CACHE[k];
-    } catch(e){ CACHE[k] = k; return k; }
-  }
-  async function translateMany(items){
-    const list = Array.from(new Set(items.map(norm).filter(needs)));
-    for (let i=0;i<list.length;i+=8){ const chunk = list.slice(i,i+8); await Promise.all(chunk.map(translateOne)); }
-    return items.map(s => CACHE[norm(s)] || s);
-  }
-  function getTextNodes(root){
-    const out = [];
-    const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, { acceptNode(n){
-      if (!n || !n.nodeValue) return NodeFilter.FILTER_REJECT;
-      const p = n.parentElement; if (!p) return NodeFilter.FILTER_REJECT;
-      if (SKIP_TAGS.has(p.tagName)) return NodeFilter.FILTER_REJECT;
-      if (p.closest('script,style,noscript,svg,code,pre,canvas')) return NodeFilter.FILTER_REJECT;
-      if (p.closest('#langAr,#langEn,.is-lang-btn')) return NodeFilter.FILTER_REJECT;
-      if (!needs(norm(n.nodeValue))) return NodeFilter.FILTER_REJECT;
-      return NodeFilter.FILTER_ACCEPT;
-    }});
-    let n; while ((n = w.nextNode())) out.push(n);
-    return out;
-  }
-  async function translateNodes(root){
-    const nodes = getTextNodes(root); if (!nodes.length) return;
-    const orig = nodes.map(n => norm(n.nodeValue));
-    const tr = await translateMany(orig);
-    nodes.forEach((n,i) => { if (!n.__originalEn) n.__originalEn = n.nodeValue; const s = norm(n.nodeValue); if (tr[i] && tr[i] !== s) n.nodeValue = n.nodeValue.replace(s, tr[i]); });
-  }
-  async function translateAttrs(root){
-    const els = [root, ...root.querySelectorAll('*')];
-    const work = [];
-    els.forEach(el => ATTRS.forEach(a => { const v = el.getAttribute && el.getAttribute(a); if (needs(v)) work.push({el,a,v:norm(v)}); }));
-    if (!work.length) return;
-    const tr = await translateMany(work.map(x => x.v));
-    work.forEach((it,i) => { if (!it.el.dataset['en'+it.a]) it.el.dataset['en'+it.a] = it.v; if (tr[i] && tr[i] !== it.v) it.el.setAttribute(it.a, tr[i]); });
-  }
-  async function translateOptions(root){
-    const opts = Array.from(root.querySelectorAll('option'));
-    if (!opts.length) return;
-    const orig = opts.map(o => norm(o.textContent));
-    const tr = await translateMany(orig);
-    opts.forEach((o,i) => { if (!o.dataset.en) o.dataset.en = orig[i]; if (tr[i] && tr[i] !== orig[i]) o.textContent = tr[i]; });
-  }
-  async function translateAll(root){ root = root || document.body; await translateNodes(root); await translateAttrs(root); await translateOptions(root); }
-  function restoreEnglish(){
-    function walk(node){
-      if (node.nodeType === 3 && node.__originalEn) { node.nodeValue = node.__originalEn; return; }
-      if (node.nodeType === 1) { for (const a of ATTRS) { const k = 'en'+a; if (node.dataset && node.dataset[k]) node.setAttribute(a, node.dataset[k]); } if (node.tagName === 'OPTION' && node.dataset.en) node.textContent = node.dataset.en; }
-      node.childNodes && node.childNodes.forEach(walk);
-    }
-    walk(document.body);
-  }
-  let scheduled = false;
-  function schedule(){ if (scheduled) return; scheduled = true; requestAnimationFrame(async () => { scheduled = false; if (window.__lang === 'ar') await translateAll(document.body); }); }
-  let observer = null;
-  function startObserver(){
-    if (observer) return;
-    observer = new MutationObserver(muts => { if (window.__lang !== 'ar') return; schedule(); });
-    observer.observe(document.body, { childList: true, subtree: true, characterData: true });
-  }
-  function stopObserver(){ if (observer) { observer.disconnect(); observer = null; } }
-  async function activateArabic(){
-    window.__lang = 'ar';
-    HTML.setAttribute('lang','ar'); HTML.setAttribute('dir','rtl');
-    document.body.dir = 'rtl';
-    const ar = document.getElementById('langAr'); const en = document.getElementById('langEn');
-    if (ar) { ar.classList.add('is-lang-active'); ar.setAttribute('aria-current','page'); }
-    if (en) { en.classList.remove('is-lang-active'); en.removeAttribute('aria-current'); }
-    try { localStorage.setItem('is-demo-lang','ar'); } catch(e){}
-    await translateAll(document.body);
-    startObserver();
-  }
-  function activateEnglish(){
-    window.__lang = 'en';
-    HTML.setAttribute('lang','en'); HTML.setAttribute('dir','ltr');
-    document.body.dir = 'ltr';
-    const ar = document.getElementById('langAr'); const en = document.getElementById('langEn');
-    if (en) { en.classList.add('is-lang-active'); en.setAttribute('aria-current','page'); }
-    if (ar) { ar.classList.remove('is-lang-active'); ar.removeAttribute('aria-current'); }
-    try { localStorage.setItem('is-demo-lang','en'); } catch(e){}
-    stopObserver();
-    restoreEnglish();
-  }
-  function wire(){
-    const ar = document.getElementById('langAr'); const en = document.getElementById('langEn');
-    if (ar && !ar.__wired) { ar.__wired = true; ar.removeAttribute('href'); ar.style.cursor='pointer'; ar.addEventListener('click', e => { e.preventDefault(); activateArabic(); }); }
-    if (en && !en.__wired) { en.__wired = true; en.removeAttribute('href'); en.style.cursor='pointer'; en.addEventListener('click', e => { e.preventDefault(); activateEnglish(); }); }
-  }
-  function init(){ wire(); if (localStorage.getItem('is-demo-lang') === 'ar') { setTimeout(activateArabic, 400); } }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
-  window.addEventListener('load', wire);
-  setTimeout(wire, 600); setTimeout(wire, 2000);
-})();
-</script>
