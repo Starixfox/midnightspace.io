@@ -1004,3 +1004,41 @@ p {
   h1 { font-size: 2rem; }
   .hero-text p { font-size: 1rem; }
 }
+
+/* ── Animation fallback ─────────────────────────────────
+   If JS observer doesn't fire (wrong script, slow load),
+   force all animated elements visible after 0.5s via CSS.
+   When JS works correctly, .visible is added and the
+   smooth transition plays normally.
+────────────────────────────────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-35px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(35px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.fade-in {
+  animation: fadeInUp 0.7s ease 0.4s both;
+}
+.fade-in-left {
+  animation: fadeInLeft 0.7s ease 0.3s both;
+}
+.fade-in-right {
+  animation: fadeInRight 0.7s ease 0.3s both;
+}
+
+/* Once JS adds .visible, snap to final state immediately */
+.fade-in.visible,
+.fade-in-left.visible,
+.fade-in-right.visible {
+  animation: none;
+  opacity: 1;
+  transform: none;
+}
