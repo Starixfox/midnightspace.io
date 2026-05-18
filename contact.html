@@ -4,18 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact — Midnight Space</title>
+  <meta name="theme-color" content="#06080f">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+
+  <script defer src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script defer src="main.js"></script>
 </head>
 <body>
 
-<!-- ── Navbar ─────────────────────────────────────────── -->
+<canvas id="scene-canvas" aria-hidden="true"></canvas>
+
 <nav class="site-nav" id="site-nav">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">
-      <span class="logo-midnight">MIDNIGHT</span><span class="logo-space"> SPACE</span>
+      <span class="logo-midnight">MIDNIGHT</span><span class="logo-space">SPACE</span>
     </a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
@@ -32,40 +38,39 @@
     </div>
   </div>
 </nav>
+
 <div class="mobile-menu" id="mobile-menu">
   <a href="index.html">Home</a>
   <a href="products.html">Products</a>
   <a href="use-cases.html">Use Cases</a>
   <a href="roadmap.html">Roadmap</a>
   <a href="contact.html">Contact</a>
-  <a href="contact.html" class="btn btn-primary" style="margin-top:0.5rem;text-align:center;border-radius:50px;">Request access</a>
+  <a href="contact.html" class="btn btn-primary" style="margin-top:0.5rem;text-align:center;">Request access</a>
 </div>
 
-<!-- ── Hero Parallax ──────────────────────────────────── -->
-<section class="parallax" style="background-image: url('https://images.unsplash.com/photo-1457364887197-9150188c107b?w=1920'); min-height: 60vh;">
-  <div class="parallax-content">
-    <div class="container">
-      <div class="hero-text">
-        <div class="hero-badge">GET IN TOUCH</div>
-        <h1>Contact</h1>
-        <p>We are looking for pilot partners and early adopters. If your organisation works in investment promotion, economic development, or ecosystem building in Saudi Arabia — we want to hear from you.</p>
-      </div>
+<!-- ── Page hero ─────────────────────────────────────── -->
+<section class="page-hero">
+  <div class="container">
+    <div class="hero-text" style="max-width: 760px;">
+      <div class="hero-badge">Get in touch</div>
+      <h1>Talk to the <span class="italic-accent">founder.</span></h1>
+      <p>We're looking for pilot partners and early adopters. If your organisation works in investment promotion, economic development, or ecosystem building in Saudi Arabia — we want to hear from you.</p>
     </div>
   </div>
 </section>
 
-<!-- ── Contact Section ────────────────────────────────── -->
-<section class="section" style="background: var(--bg-primary);">
+<!-- ── Contact section ───────────────────────────────── -->
+<section class="section" style="padding-top: 2rem;">
   <div class="container">
     <div class="split">
-      <!-- Left: Context -->
-      <div class="fade-in-left">
-        <div class="section-label">WHY REACH OUT</div>
-        <h2>Talk to the founder</h2>
-        <p style="margin-top:1rem;">Midnight Space is an early-stage project built by one person. There are no sales teams or account managers — when you reach out, you are talking directly to the founder.</p>
-        <p style="margin-top:1rem;">We are specifically looking for pilot partners — organisations navigating Saudi Arabia's investment landscape across any of the 15 sectors we cover, willing to test the platform in exchange for direct input on the product.</p>
 
-        <h3 style="margin-top:2rem;margin-bottom:1rem;color:var(--accent);font-size:1rem;text-transform:uppercase;letter-spacing:1px;">What to expect</h3>
+      <div class="fade-in-left">
+        <div class="section-label">Why reach out</div>
+        <h2>Direct, founder-to-customer.<br><span class="italic-accent">No sales layer.</span></h2>
+        <p style="margin-top: 1.3rem;">Midnight Space is an early-stage project built by one person. There are no sales teams or account managers — when you reach out, you're talking directly to the founder.</p>
+        <p style="margin-top: 1rem;">We're specifically looking for pilot partners — organisations navigating Saudi Arabia's investment landscape across any of the 15 sectors we cover, willing to test the platform in exchange for direct input on the product.</p>
+
+        <h3 style="margin-top: 2.2rem; margin-bottom: 1rem; color: var(--accent); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.22em; font-weight: 600;">What to expect</h3>
         <ul class="checklist">
           <li>A response from the founder within 48 hours</li>
           <li>A short call to understand your specific data needs</li>
@@ -74,28 +79,28 @@
           <li>Input on what gets built next if you become a pilot partner</li>
         </ul>
 
-        <div style="margin-top:2.5rem;padding:1.5rem;background:var(--bg-card);border-radius:14px;border:1px solid var(--border);">
-          <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.7;">
-            <strong style="color:var(--text-primary);">Who we are looking for:</strong><br>
-            Governments and public agencies · Investment promotion offices · Economic development teams · Funds and investors · Accelerators and ecosystem builders · Anyone navigating Saudi Arabia's investment landscape
-          </p>
+        <div class="info-card" style="margin-top: 2.5rem;">
+          <h4>Who we are looking for</h4>
+          <p>Governments and public agencies · Investment promotion offices · Economic development teams · Funds and investors · Accelerators and ecosystem builders · Anyone navigating Saudi Arabia's investment landscape.</p>
         </div>
       </div>
 
-      <!-- Right: Form -->
       <div class="fade-in-right">
-        <div class="dashboard-card" style="border-radius:18px;">
-          <div style="margin-bottom:2rem;">
-            <h3 style="margin-bottom:0.4rem;">Send a message</h3>
-            <p style="font-size:0.9rem;">All fields marked * are required.</p>
+        <div class="dashboard-card" style="border-radius: 22px; padding: 2.25rem;">
+          <div style="margin-bottom: 1.75rem;">
+            <h3 style="margin-bottom: 0.5rem;">Send a message</h3>
+            <p style="font-size: 0.88rem;">All fields marked * are required.</p>
           </div>
-          <form class="contact-form" id="contactForm" action="https://formspree.io/f/xdayzqbr" method="POST"><input type="hidden" name="_next" value="https://starixfox.github.io/midnightspace.io/contact.html?submitted=1"><input type="hidden" name="_subject" value="New Midnight Space contact">
+          <form class="contact-form" id="contactForm" action="https://formspree.io/f/xdayzqbr" method="POST">
+            <input type="hidden" name="_next" value="https://starixfox.github.io/www.midnightspace.com/contact.html?submitted=1">
+            <input type="hidden" name="_subject" value="New Midnight Space contact">
+
             <div class="form-group">
-              <label for="name">Full Name *</label>
+              <label for="name">Full name *</label>
               <input type="text" id="name" name="name" placeholder="Your name" required autocomplete="name">
             </div>
             <div class="form-group">
-              <label for="email">Email Address *</label>
+              <label for="email">Email address *</label>
               <input type="email" id="email" name="email" placeholder="you@organisation.com" required autocomplete="email">
             </div>
             <div class="form-group">
@@ -103,54 +108,52 @@
               <input type="text" id="org" name="org" placeholder="Company, agency, or fund" autocomplete="organization">
             </div>
             <div class="form-group">
-              <label for="role">Your Role</label>
+              <label for="role">Your role</label>
               <input type="text" id="role" name="role" placeholder="e.g. Director of Strategy, Investment Manager">
             </div>
             <div class="form-group">
               <label for="message">Message *</label>
-              <textarea id="message" name="message" rows="5" placeholder="Tell us about your data challenge or what you are trying to solve in Saudi Arabia..." required></textarea>
+              <textarea id="message" name="message" rows="5" placeholder="Tell us about your data challenge or what you're trying to solve in Saudi Arabia…" required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary btn-lg" style="width:100%;border-radius:12px;">Send message</button>
+            <button type="submit" class="btn btn-primary btn-lg" style="width:100%; border-radius: 14px;">Send message</button>
           </form>
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- ── Additional Context ──────────────────────────────── -->
-<section class="section-sm" style="background: var(--bg-surface);">
+<!-- ── Additional context ───────────────────────────── -->
+<section class="section-sm">
   <div class="container">
-    <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+    <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
       <div class="info-card fade-in">
         <h4>Response time</h4>
-        <p>We aim to reply within 48 hours. If you are in a hurry, mention it in your message.</p>
+        <p>We aim to reply within 48 hours. If you're in a hurry, mention it in your message.</p>
       </div>
       <div class="info-card fade-in">
         <h4>What happens next</h4>
-        <p>A short introductory call to understand your needs, followed by access to the prototype if there is a fit.</p>
+        <p>A short introductory call to understand your needs, followed by access to the prototype if there's a fit.</p>
       </div>
       <div class="info-card fade-in">
         <h4>Pilot partners</h4>
-        <p>We are onboarding a small number of pilot partners. Pilot access is currently free in exchange for feedback.</p>
+        <p>We're onboarding a small number of pilot partners. Pilot access is currently free in exchange for feedback.</p>
       </div>
       <div class="info-card fade-in">
         <h4>No sales pressure</h4>
-        <p>This is a direct conversation with a founder. If the product is not right for you, we will say so honestly.</p>
+        <p>This is a direct conversation with a founder. If the product isn't right for you, we'll say so honestly.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── Footer ──────────────────────────────────────────── -->
 <footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
       <div>
-        <div class="footer-logo">
-          <span class="logo-midnight">MIDNIGHT</span><span class="logo-space"> SPACE</span>
-        </div>
-        <p class="footer-tagline">Investment intelligence tools for governments, agencies, and investors navigating the Saudi economy.</p>
+        <div class="footer-logo">MIDNIGHT SPACE</div>
+        <p class="footer-tagline">Investment intelligence for the people writing strategy, deploying capital, and building the ecosystem in Saudi Arabia.</p>
       </div>
       <div class="footer-col">
         <h5>Platform</h5>
@@ -170,12 +173,11 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 Midnight Space. Live platform — pilot access available.</p>
+      <p>© 2026 Midnight Space · Live platform · Pilot access available</p>
       <p>Built by a solo founder.</p>
     </div>
   </div>
 </footer>
 
-<script src="main.js"></script>
 </body>
 </html>

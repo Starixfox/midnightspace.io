@@ -4,18 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Roadmap — Midnight Space</title>
+  <meta name="theme-color" content="#06080f">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+
+  <script defer src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script defer src="main.js"></script>
 </head>
 <body>
 
-<!-- ── Navbar ─────────────────────────────────────────── -->
+<canvas id="scene-canvas" aria-hidden="true"></canvas>
+
 <nav class="site-nav" id="site-nav">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">
-      <span class="logo-midnight">MIDNIGHT</span><span class="logo-space"> SPACE</span>
+      <span class="logo-midnight">MIDNIGHT</span><span class="logo-space">SPACE</span>
     </a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
@@ -32,61 +38,58 @@
     </div>
   </div>
 </nav>
+
 <div class="mobile-menu" id="mobile-menu">
   <a href="index.html">Home</a>
   <a href="products.html">Products</a>
   <a href="use-cases.html">Use Cases</a>
   <a href="roadmap.html">Roadmap</a>
   <a href="contact.html">Contact</a>
-  <a href="contact.html" class="btn btn-primary" style="margin-top:0.5rem;text-align:center;border-radius:50px;">Request access</a>
+  <a href="contact.html" class="btn btn-primary" style="margin-top:0.5rem;text-align:center;">Request access</a>
 </div>
 
-<!-- ── Hero Parallax ──────────────────────────────────── -->
-<section class="parallax" style="background-image: url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=1920'); min-height: 70vh;">
-  <div class="parallax-content">
-    <div class="container">
-      <div class="hero-text">
-        <div class="hero-badge">WHERE WE'RE GOING</div>
-        <h1>Roadmap</h1>
-        <p>A transparent view of where Midnight Space is today and where it is heading. This is a living document — shaped by feedback from pilot partners.</p>
-      </div>
+<!-- ── Page hero ─────────────────────────────────────── -->
+<section class="page-hero">
+  <div class="container">
+    <div class="hero-text" style="max-width: 760px;">
+      <div class="hero-badge">Where we're going</div>
+      <h1>The <span class="italic-accent">roadmap.</span></h1>
+      <p>A transparent view of where Midnight Space is today and where it's heading. This is a living document — shaped by feedback from pilot partners.</p>
     </div>
   </div>
 </section>
 
-<!-- ── Timeline ───────────────────────────────────────── -->
-<section class="section" style="background: var(--bg-primary);">
+<!-- ── Timeline ──────────────────────────────────────── -->
+<section class="section" style="padding-top: 2rem;">
   <div class="container">
-    <div class="section-header section-center" style="margin-bottom:5rem;">
-      <div class="section-label">MILESTONES</div>
-      <h2>Four stages of development</h2>
-      <p>We are at stage one — a live platform with real data, ready for pilot partners.</p>
+    <div class="section-header section-center" style="margin-bottom: 5rem;">
+      <div class="section-label">Milestones</div>
+      <h2>Four stages of <span class="italic-accent">development.</span></h2>
+      <p>We're at stage one — a live platform with real data, ready for pilot partners.</p>
     </div>
 
     <div class="timeline">
 
-      <!-- Milestone 1: NOW -->
       <div class="timeline-item timeline-left fade-in">
         <div class="timeline-dot"></div>
         <div class="timeline-card">
-          <div class="timeline-date">NOW — April 2026</div>
+          <div class="timeline-date">Now · April 2026</div>
           <h3 class="timeline-title">Live Platform</h3>
           <ul>
             <li>Saudi Opportunity Hub live with 1,034 opportunities</li>
             <li>15 sectors covered, aligned with Vision 2030</li>
             <li>Filters by sector, program type, funding source, and status</li>
             <li>Charts and summary views for decision-makers</li>
-            <li>Solo founder — direct pilot partner engagement</li>
+            <li>Solo founder — direct pilot-partner engagement</li>
           </ul>
           <span class="badge badge-active">Active</span>
         </div>
       </div>
 
-      <!-- Milestone 2: 1-2 months -->
       <div class="timeline-item timeline-right fade-in">
         <div class="timeline-dot"></div>
         <div class="timeline-card">
-          <div class="timeline-date">1–2 MONTHS</div>
+          <div class="timeline-date">1–2 months</div>
           <h3 class="timeline-title">V1 Pilot Product</h3>
           <ul>
             <li>White-label dashboard for first pilot partner</li>
@@ -99,11 +102,10 @@
         </div>
       </div>
 
-      <!-- Milestone 3: 3-6 months -->
       <div class="timeline-item timeline-left fade-in">
         <div class="timeline-dot"></div>
         <div class="timeline-card">
-          <div class="timeline-date">3–6 MONTHS</div>
+          <div class="timeline-date">3–6 months</div>
           <h3 class="timeline-title">Expanded Intelligence</h3>
           <ul>
             <li>Deeper sector dashboards with trend and flow analysis</li>
@@ -116,11 +118,10 @@
         </div>
       </div>
 
-      <!-- Milestone 4: 6-12 months -->
       <div class="timeline-item timeline-right fade-in">
         <div class="timeline-dot"></div>
         <div class="timeline-card">
-          <div class="timeline-date">6–12 MONTHS</div>
+          <div class="timeline-date">6–12 months</div>
           <h3 class="timeline-title">Scale</h3>
           <ul>
             <li>Multi-country platform covering GCC and MENA</li>
@@ -137,17 +138,18 @@
   </div>
 </section>
 
-<!-- ── Principles Section ──────────────────────────────── -->
-<section class="section" style="background: var(--bg-surface);">
+<!-- ── How we build ──────────────────────────────────── -->
+<section class="section">
   <div class="container">
     <div class="section-header section-center">
-      <div class="section-label">HOW WE BUILD</div>
-      <h2>Honest about what we are</h2>
+      <div class="section-label">How we build</div>
+      <h2>Honest about <span class="italic-accent">what we are.</span></h2>
     </div>
-    <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+
+    <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
       <div class="info-card fade-in">
         <h4>Solo founded</h4>
-        <p>One person building, iterating, and talking to users. Fast decisions and direct conversations — no layers between you and the founder.</p>
+        <p>One person building, iterating and talking to users. Fast decisions and direct conversations — no layers between you and the founder.</p>
       </div>
       <div class="info-card fade-in">
         <h4>Live data, now</h4>
@@ -159,38 +161,31 @@
       </div>
       <div class="info-card fade-in">
         <h4>No hype</h4>
-        <p>We are not a hardware company. We are building data and intelligence tools for the people who navigate Saudi Arabia's investment ecosystem.</p>
+        <p>We're not a hardware company. We're building data and intelligence tools for the people who navigate Saudi Arabia's investment ecosystem.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── CTA ─────────────────────────────────────────────── -->
-<section class="parallax" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920'); min-height: 60vh;">
-  <div class="parallax-content">
-    <div class="container">
-      <div style="max-width:640px;">
-        <div class="section-label">SHAPE THE PRODUCT</div>
-        <h2>Want to shape the product?</h2>
-        <p style="margin-top:1rem;font-size:1.1rem;">Pilot partners get direct input on the roadmap. If there is a feature, sector, or dataset that would solve a real problem for your organisation, we want to know about it.</p>
-        <div class="btn-group" style="margin-top:2rem;">
-          <a href="contact.html" class="btn btn-primary">Talk to the founder</a>
-          <a href="products.html" class="btn btn-secondary">See the platform</a>
-        </div>
-      </div>
+<!-- ── CTA strip ────────────────────────────────────── -->
+<section class="cta-strip">
+  <div class="container" style="text-align: center;">
+    <div class="section-label" style="justify-content: center;">Shape the product</div>
+    <h2 class="fade-in">Want to shape<br><span class="italic-accent">what comes next?</span></h2>
+    <p class="fade-in" style="margin: 1.5rem auto 0; text-align:center;">Pilot partners get direct input on the roadmap. If there's a feature, sector, or dataset that would solve a real problem for your organisation — we want to know about it.</p>
+    <div class="btn-group fade-in" style="justify-content: center; margin-top: 2.5rem;">
+      <a href="contact.html" class="btn btn-primary btn-lg">Talk to the founder</a>
+      <a href="products.html" class="btn btn-secondary btn-lg">See the platform</a>
     </div>
   </div>
 </section>
 
-<!-- ── Footer ──────────────────────────────────────────── -->
 <footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
       <div>
-        <div class="footer-logo">
-          <span class="logo-midnight">MIDNIGHT</span><span class="logo-space"> SPACE</span>
-        </div>
-        <p class="footer-tagline">Investment intelligence tools for governments, agencies, and investors navigating the Saudi economy.</p>
+        <div class="footer-logo">MIDNIGHT SPACE</div>
+        <p class="footer-tagline">Investment intelligence for the people writing strategy, deploying capital, and building the ecosystem in Saudi Arabia.</p>
       </div>
       <div class="footer-col">
         <h5>Platform</h5>
@@ -210,12 +205,11 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 Midnight Space. Live platform — pilot access available.</p>
+      <p>© 2026 Midnight Space · Live platform · Pilot access available</p>
       <p>Built by a solo founder.</p>
     </div>
   </div>
 </footer>
 
-<script src="main.js"></script>
 </body>
 </html>
