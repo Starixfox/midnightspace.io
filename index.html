@@ -240,6 +240,7 @@
 
     <div class="stage" aria-hidden="true">
       <model-viewer
+        id="heroModel"
         src="./models/model.glb"
         alt="Animated cycle model"
         autoplay
@@ -248,12 +249,28 @@
         interaction-prompt="none"
         camera-orbit="0deg 75deg 4.5m"
         field-of-view="30deg"
-        exposure="1.4"
-        shadow-intensity="0.8"
-        tone-mapping="commerce"
-        environment-image="https://modelviewer.dev/shared-assets/environments/neutral.hdr"
+        exposure="1.0"
+        shadow-intensity="0"
+        tone-mapping="reinhard"
+        environment-image="legacy"
       ></model-viewer>
     </div>
+
+    <script type="module">
+      const mv = document.getElementById('heroModel');
+      mv.addEventListener('load', () => {
+        const model = mv.model;
+        // Traverse all materials and apply the Peachworlds blue/cyan look
+        [...model.materials].forEach(mat => {
+          // Base: vivid electric blue
+          mat.pbrMetallicRoughness.setBaseColorFactor([0, 0.424, 1, 1]); // #006cff
+          mat.pbrMetallicRoughness.setMetallicFactor(1);
+          mat.pbrMetallicRoughness.setRoughnessFactor(1);
+          // Emissive: glowing cyan-blue
+          mat.setEmissiveFactor([0.396, 0.647, 1]);  // #65a5ff
+        });
+      });
+    </script>
 
     <div class="content">
       <p class="eyebrow">A creative studio in orbit</p>
