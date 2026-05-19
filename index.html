@@ -775,25 +775,33 @@
          bright cyan dashes that read as lines under bloom. */
       const dashTex = (() => {
         const c = document.createElement('canvas');
-        c.width = 1024; c.height = 256;
+        c.width = 2048; c.height = 512;
         const g = c.getContext('2d');
         g.fillStyle = '#000';
         g.fillRect(0, 0, c.width, c.height);
-        g.fillStyle = '#fff';
-        const cols = 96, rows = 18;
+        // Smaller, thinner, much denser dashes — closer to the reference.
+        const cols = 200, rows = 48;
         const cellW = c.width / cols, cellH = c.height / rows;
-        const dashW = cellW * 0.42, dashH = Math.max(2, cellH * 0.22);
+        const dashW = cellW * 0.36, dashH = Math.max(2, cellH * 0.14);
         for (let r = 0; r < rows; r++) {
           const xOffset = (r % 2 === 0) ? 0 : cellW * 0.5;
           for (let i = 0; i < cols; i++) {
             const x = (i * cellW + xOffset + (cellW - dashW) / 2) % c.width;
             const y = r * cellH + (cellH - dashH) / 2;
+            // Soft-edged dash: bright core, dim falloff — bloom blurs them
+            // together into the strokes from the reference.
+            const grad = g.createLinearGradient(x, y, x, y + dashH);
+            grad.addColorStop(0, 'rgba(255,255,255,0)');
+            grad.addColorStop(0.5, '#ffffff');
+            grad.addColorStop(1, 'rgba(255,255,255,0)');
+            g.fillStyle = grad;
             g.fillRect(x, y, dashW, dashH);
           }
         }
         const t = new THREE.CanvasTexture(c);
         t.wrapS = t.wrapT = THREE.RepeatWrapping;
-        t.repeat.set(3, 1.4);
+        // Tile aggressively so dashes stay small across the whole surface.
+        t.repeat.set(6, 3);
         t.anisotropy = renderer.capabilities.getMaxAnisotropy();
         t.minFilter = THREE.LinearMipmapLinearFilter;
         t.magFilter = THREE.LinearFilter;
@@ -801,14 +809,15 @@
         return t;
       })();
 
-      /* ── material: bright cyan-white dashes, additive, no tone-map ── */
+      /* ── material: cyan-white dashes, normal blending so the cycle
+         model's silhouette stays recognisable; alphaTest cuts cleanly so
+         each dash reads as a discrete stroke instead of a blob. ── */
       const dashMaterial = new THREE.MeshBasicMaterial({
         color: new THREE.Color(0xbfeaff),
         transparent: true,
         alphaMap: dashTex,
-        alphaTest: 0.18,
+        alphaTest: 0.45,
         side: THREE.DoubleSide,
-        blending: THREE.AdditiveBlending,
         depthWrite: false,
         toneMapped: false,
       });
