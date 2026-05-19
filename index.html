@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Midnight Space — A creative studio in orbit</title>
-  <meta name="description" content="Midnight Space is an independent creative studio. We design quiet interfaces and loud ideas — digital products that feel alive after dark." />
+  <title>Midnight Space — A space-data platform, in orbit</title>
+  <meta name="description" content="Midnight Space is an honest space-data platform. We map the funding, programs, and accelerators shaping the next generation of space business — beginning with Saudi Arabia and the GCC." />
   <meta name="theme-color" content="#06040a" />
   <link rel="preload" as="fetch" href="./model.glb" crossorigin="anonymous" />
   <script type="module" src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
@@ -13,18 +13,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..800,0..100;1,9..144,300..800,0..100&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     /* ──────────────────────────────────────────────
-       Midnight Space
-       Existing 3D-hero foundation, premium editorial layer beneath.
+       Midnight Space — space-data platform
+       3D-hero foundation preserved, editorial layer beneath.
        ────────────────────────────────────────────── */
 
     :root {
-      /* preserved tokens from the existing live page */
       --bg: #06040a;
       --ink: #f4f0ff;
       --muted: #8a86a6;
       --accent: #a78bfa;
 
-      /* extended tokens for the premium layer */
       --bg-2: #0a0712;
       --bg-3: #0e0a18;
       --ink-soft: #d9d4ea;
@@ -33,6 +31,8 @@
       --accent-2: #c8b6ff;
       --accent-deep: #6d4ddb;
       --accent-glow: rgba(167, 139, 250, .18);
+      --cyan: #5fd4e0;
+      --cyan-soft: rgba(95, 212, 224, .14);
       --hair: rgba(244, 240, 255, .08);
       --hair-strong: rgba(244, 240, 255, .18);
 
@@ -47,8 +47,7 @@
 
     * { box-sizing: border-box; }
     html, body {
-      margin: 0;
-      padding: 0;
+      margin: 0; padding: 0;
       background: var(--bg);
       color: var(--ink);
       font-family: var(--sans);
@@ -70,7 +69,6 @@
       overflow: hidden;
       isolation: isolate;
     }
-
     .hero::before {
       content: "";
       position: absolute;
@@ -82,7 +80,6 @@
       z-index: 0;
       pointer-events: none;
     }
-
     .stars {
       position: absolute;
       inset: 0;
@@ -101,9 +98,7 @@
     nav.top {
       position: relative;
       z-index: 3;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      display: flex; align-items: center; justify-content: space-between;
       padding: 28px var(--rail);
     }
     nav .brand {
@@ -117,27 +112,20 @@
     }
     nav .brand .dot {
       display: inline-block;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
+      width: 8px; height: 8px; border-radius: 50%;
       background: var(--accent);
       box-shadow: 0 0 12px var(--accent);
       margin-right: 10px;
       vertical-align: middle;
     }
     nav ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      gap: 28px;
-      align-items: center;
+      list-style: none; margin: 0; padding: 0;
+      display: flex; gap: 28px; align-items: center;
     }
     nav a {
       color: var(--muted);
       text-decoration: none;
-      font-size: 13px;
-      letter-spacing: 0.08em;
+      font-size: 13px; letter-spacing: 0.08em;
       transition: color 160ms ease;
     }
     nav a:hover { color: var(--ink); }
@@ -147,20 +135,16 @@
       border-radius: 999px;
       border: 1px solid rgba(255, 255, 255, 0.18);
       color: var(--ink);
-      font-size: 12px;
-      letter-spacing: 0.08em;
+      font-size: 12px; letter-spacing: 0.08em;
       transition: border-color .2s ease, background .2s ease;
     }
     nav .nav-cta:hover { background: rgba(255, 255, 255, .04); border-color: rgba(255, 255, 255, .42); }
 
     .stage {
       position: absolute;
-      inset: 0;
-      z-index: 1;
-      display: grid;
-      place-items: center;
+      inset: 0; z-index: 1;
+      display: grid; place-items: center;
     }
-
     model-viewer {
       width: min(92vw, 900px);
       height: min(80vh, 720px);
@@ -172,8 +156,7 @@
     .content {
       position: relative;
       z-index: 2;
-      display: flex;
-      flex-direction: column;
+      display: flex; flex-direction: column;
       align-items: center;
       text-align: center;
       padding: clamp(40px, 10vh, 120px) 24px 0;
@@ -182,9 +165,7 @@
     .content > * { pointer-events: auto; }
 
     .eyebrow {
-      font-size: 12px;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
+      font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase;
       color: var(--accent);
       margin: 0 0 18px;
       opacity: 0.9;
@@ -202,7 +183,7 @@
       text-shadow: 0 0 60px rgba(167, 139, 250, 0.25);
     }
     p.tagline {
-      max-width: 540px;
+      max-width: 600px;
       margin: 22px auto 0;
       font-size: clamp(15px, 1.6vw, 18px);
       line-height: 1.6;
@@ -211,71 +192,49 @@
 
     .cta {
       margin-top: 36px;
-      display: flex;
-      gap: 14px;
-      justify-content: center;
-      flex-wrap: wrap;
+      display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
     }
     .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
+      display: inline-flex; align-items: center; gap: 10px;
       padding: 13px 22px;
       border-radius: 999px;
-      font-size: 14px;
-      letter-spacing: 0.04em;
+      font-size: 14px; letter-spacing: 0.04em;
       text-decoration: none;
       transition: transform 160ms ease, background 160ms ease, border-color 160ms ease, color 160ms ease;
     }
     .btn .arr { width: 18px; height: 1px; background: currentColor; position: relative; transition: width .2s ease; }
     .btn .arr::after { content: ""; position: absolute; right: 0; top: -3px; width: 7px; height: 7px; border-top: 1px solid currentColor; border-right: 1px solid currentColor; transform: rotate(45deg); }
     .btn:hover .arr { width: 26px; }
-    .btn.primary {
-      background: var(--ink);
-      color: #0a0612;
-      font-weight: 600;
-    }
+    .btn.primary { background: var(--ink); color: #0a0612; font-weight: 600; }
     .btn.primary:hover { transform: translateY(-1px); }
-    .btn.ghost {
-      color: var(--ink);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-    }
+    .btn.ghost { color: var(--ink); border: 1px solid rgba(255, 255, 255, 0.18); }
     .btn.ghost:hover { border-color: rgba(255, 255, 255, 0.42); background: rgba(255, 255, 255, .03); }
 
     .scroll-hint {
       position: absolute;
-      bottom: 26px;
-      left: 50%;
-      transform: translateX(-50%);
+      bottom: 26px; left: 50%; transform: translateX(-50%);
       z-index: 3;
       color: var(--muted);
-      font-size: 11px;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
+      font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
       opacity: 0.7;
     }
     .scroll-hint::after {
-      content: "";
-      display: block;
-      width: 1px;
-      height: 28px;
-      margin: 10px auto 0;
+      content: ""; display: block;
+      width: 1px; height: 28px; margin: 10px auto 0;
       background: linear-gradient(180deg, var(--muted), transparent);
     }
 
     .credit {
       position: fixed;
-      right: 14px;
-      bottom: 10px;
+      right: 14px; bottom: 10px;
       z-index: 5;
-      font-size: 10px;
-      color: rgba(255,255,255,0.35);
+      font-size: 10px; color: rgba(255,255,255,0.35);
       letter-spacing: 0.06em;
     }
     .credit a { color: inherit; text-decoration: none; }
     .credit a:hover { color: rgba(255,255,255,0.7); }
 
-    /* ─── floating header (appears past hero) ──── */
+    /* ─── floating header ───────────────────────── */
     .sticky-nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -295,18 +254,10 @@
     .sticky-nav ul { list-style: none; padding: 0; margin: 0; display: flex; gap: 24px; align-items: center; }
     .sticky-nav a { color: var(--muted); text-decoration: none; font-size: 12px; letter-spacing: .08em; transition: color .2s ease; }
     .sticky-nav a:hover { color: var(--ink); }
-    .sticky-nav .nav-cta {
-      padding: 8px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.2);
-      color: var(--ink);
-      font-size: 11px;
-      letter-spacing: .08em;
-      transition: background .2s ease, border-color .2s ease;
-    }
+    .sticky-nav .nav-cta { padding: 8px 14px; border-radius: 999px; border: 1px solid rgba(255,255,255,.2); color: var(--ink); font-size: 11px; letter-spacing: .08em; transition: background .2s ease, border-color .2s ease; }
     .sticky-nav .nav-cta:hover { background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.42); }
 
-    /* ─── premium layer (below hero) ────────────── */
+    /* ─── premium layer ─────────────────────────── */
     .wrap {
       width: 100%;
       max-width: 1320px;
@@ -333,9 +284,7 @@
     }
     .label {
       font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
+      font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
       color: var(--muted);
       padding-top: 8px;
       display: flex; align-items: center; gap: 10px;
@@ -362,15 +311,15 @@
       font-weight: 400;
     }
 
-    /* studio positioning */
-    .studio-grid {
+    /* platform positioning */
+    .platform-grid {
       display: grid;
       grid-template-columns: 220px 1fr 1fr;
       gap: 48px;
       align-items: start;
     }
-    .studio-spacer { display: block; }
-    .studio-body p {
+    .platform-spacer { display: block; }
+    .platform-body p {
       font-size: clamp(17px, 1.4vw, 22px);
       line-height: 1.5;
       color: var(--ink-soft);
@@ -378,16 +327,12 @@
       max-width: 38ch;
       font-weight: 300;
     }
-    .studio-body p strong { color: var(--ink); font-weight: 500; }
-    .studio-quote {
-      border-left: 1px solid var(--hair-strong);
-      padding-left: 28px;
-    }
-    .studio-quote q {
+    .platform-body p strong { color: var(--ink); font-weight: 500; }
+    .platform-quote { border-left: 1px solid var(--hair-strong); padding-left: 28px; }
+    .platform-quote q {
       font-family: var(--serif);
       font-variation-settings: "opsz" 60, "SOFT" 80;
-      font-weight: 300;
-      font-style: italic;
+      font-weight: 300; font-style: italic;
       font-size: clamp(20px, 1.9vw, 28px);
       line-height: 1.32;
       color: var(--ink);
@@ -396,22 +341,46 @@
       margin-bottom: 22px;
       letter-spacing: -.005em;
     }
-    .studio-quote q::before, .studio-quote q::after { color: var(--accent-2); font-style: normal; }
-    .studio-quote cite {
+    .platform-quote q::before, .platform-quote q::after { color: var(--accent-2); font-style: normal; }
+    .platform-quote cite {
       font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      color: var(--faint);
-      font-style: normal;
+      font-size: 11px; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--faint); font-style: normal;
     }
-    .studio-quote cite b { color: var(--ink-soft); font-weight: 500; }
+    .platform-quote cite b { color: var(--ink-soft); font-weight: 500; }
 
-    /* practice / capabilities (editorial list) */
-    .practice-list { display: flex; flex-direction: column; }
+    /* stats strip */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      padding: 28px 0 0;
+      border-top: 1px solid var(--hair);
+      margin-top: clamp(48px, 6vh, 72px);
+    }
+    .stat b {
+      display: block;
+      font-family: var(--serif);
+      font-variation-settings: "opsz" 144, "SOFT" 30;
+      font-weight: 400;
+      font-size: clamp(32px, 3.6vw, 52px);
+      line-height: 1;
+      color: var(--ink);
+      letter-spacing: -.02em;
+      margin-bottom: 8px;
+      font-feature-settings: "lnum","tnum";
+    }
+    .stat span {
+      font-family: var(--mono);
+      font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--faint);
+    }
+
+    /* modules — editorial list */
+    .modules-list { display: flex; flex-direction: column; }
     .row {
       display: grid;
-      grid-template-columns: 220px 1fr 1fr 56px;
+      grid-template-columns: 220px 1fr 1fr 92px;
       gap: 32px;
       padding: clamp(34px, 4vw, 48px) 0;
       border-top: 1px solid var(--hair);
@@ -424,6 +393,7 @@
       background: var(--accent); transform: scaleX(0); transform-origin: left;
       transition: transform .8s var(--ease-out);
     }
+    .row.prototype::before { background: var(--cyan); }
     .row:hover::before { transform: scaleX(1); }
     .row .idx {
       display: flex; align-items: baseline; gap: 14px;
@@ -434,27 +404,27 @@
       font-variation-settings: "opsz" 144, "SOFT" 30;
       font-weight: 400;
       font-size: clamp(40px, 4.2vw, 64px);
-      line-height: 1;
-      letter-spacing: -.02em;
+      line-height: 1; letter-spacing: -.02em;
       color: var(--ink);
       transition: color .5s var(--ease);
     }
+    .row.prototype:hover .idx b { color: var(--cyan); }
     .row:hover .idx b { color: var(--accent-2); }
     .row h3 {
       font-family: var(--serif);
       font-variation-settings: "opsz" 60, "SOFT" 30;
       font-weight: 400;
-      font-size: clamp(26px, 2.4vw, 38px);
-      line-height: 1.05;
-      letter-spacing: -.02em;
+      font-size: clamp(24px, 2.2vw, 34px);
+      line-height: 1.05; letter-spacing: -.02em;
       color: var(--ink);
-      margin: 0 0 14px;
+      margin: 0 0 12px;
     }
     .row h3 em {
       font-style: italic;
       font-variation-settings: "opsz" 60, "SOFT" 100;
       color: var(--accent-2);
     }
+    .row.prototype h3 em { color: var(--cyan); }
     .row .tags {
       display: flex; flex-wrap: wrap; gap: 6px 14px;
       font-family: var(--mono); font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase;
@@ -462,17 +432,85 @@
     }
     .row .tags span:not(:last-child)::after { content: " /"; margin-left: 14px; color: var(--ghost); }
     .row .body {
-      font-size: 15.5px;
-      line-height: 1.6;
+      font-size: 15.5px; line-height: 1.6;
       color: var(--ink-soft);
       max-width: 42ch;
       font-weight: 300;
     }
-    .row .marker {
-      text-align: right;
-      font-family: var(--mono); font-size: 11px; letter-spacing: .14em;
+    .row .status {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--hair-strong);
+      font-family: var(--mono); font-size: 9.5px; letter-spacing: .18em; text-transform: uppercase;
       color: var(--faint);
+      justify-self: end;
+      white-space: nowrap;
     }
+    .row .status::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--faint); }
+    .row.prototype .status { color: var(--cyan); border-color: rgba(95, 212, 224, .35); background: var(--cyan-soft); }
+    .row.prototype .status::before { background: var(--cyan); box-shadow: 0 0 8px var(--cyan); animation: beat 2.5s var(--ease) infinite; }
+
+    /* access tiers */
+    .tiers {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .tier {
+      position: relative;
+      border: 1px solid var(--hair);
+      padding: 32px 28px 28px;
+      transition: border-color .4s var(--ease), background .4s var(--ease);
+      display: flex; flex-direction: column;
+      min-height: 380px;
+    }
+    .tier:hover { border-color: var(--hair-strong); background: rgba(167, 139, 250, .025); }
+    .tier.featured {
+      border-color: rgba(167, 139, 250, .45);
+      background: linear-gradient(180deg, rgba(167, 139, 250, .06) 0%, transparent 50%);
+    }
+    .tier.featured::before {
+      content: "Recommended";
+      position: absolute; top: -10px; left: 28px;
+      padding: 3px 10px;
+      background: var(--accent);
+      color: var(--bg);
+      font-family: var(--mono);
+      font-size: 9.5px; font-weight: 500;
+      letter-spacing: .18em; text-transform: uppercase;
+    }
+    .tier-name {
+      font-family: var(--mono);
+      font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .tier-price {
+      font-family: var(--serif);
+      font-variation-settings: "opsz" 144, "SOFT" 30;
+      font-weight: 400;
+      font-size: clamp(32px, 3.4vw, 44px);
+      line-height: 1;
+      letter-spacing: -.02em;
+      color: var(--ink);
+      margin-bottom: 24px;
+    }
+    .tier ul {
+      list-style: none; padding: 0; margin: 0 0 24px;
+      display: flex; flex-direction: column; gap: 10px;
+      flex: 1;
+    }
+    .tier li {
+      font-size: 14px; line-height: 1.5;
+      color: var(--ink-soft); font-weight: 300;
+      display: flex; gap: 10px; align-items: flex-start;
+    }
+    .tier li::before {
+      content: ""; width: 14px; height: 1px; background: var(--accent);
+      margin-top: 10px; flex-shrink: 0;
+    }
+    .tier .btn { width: 100%; justify-content: center; }
 
     /* about */
     .about-grid {
@@ -487,7 +525,7 @@
       border: 1px solid var(--hair-strong);
       background:
         radial-gradient(ellipse at 30% 25%, rgba(167, 139, 250, .22) 0%, transparent 55%),
-        radial-gradient(ellipse at 75% 80%, rgba(109, 77, 219, .18) 0%, transparent 50%),
+        radial-gradient(ellipse at 75% 80%, rgba(95, 212, 224, .12) 0%, transparent 50%),
         linear-gradient(160deg, var(--bg-3) 0%, var(--bg) 80%);
       overflow: hidden;
       border-radius: 2px;
@@ -582,7 +620,7 @@
       font-size: clamp(16px, 1.25vw, 20px);
       line-height: 1.55;
       color: var(--ink-soft);
-      max-width: 52ch;
+      max-width: 56ch;
       margin: 0 0 40px;
       font-weight: 300;
     }
@@ -603,44 +641,22 @@
     .contact-meta a:hover { color: var(--accent-2); }
 
     /* footer */
-    .foot {
-      padding: 56px 0 36px;
-      border-top: 1px solid var(--hair);
-      background: var(--bg);
-    }
-    .foot-grid {
-      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px;
-      margin-bottom: 56px;
-    }
+    .foot { padding: 56px 0 36px; border-top: 1px solid var(--hair); background: var(--bg); }
+    .foot-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 56px; }
     .foot-brand .brand { font-weight: 600; letter-spacing: .18em; text-transform: uppercase; font-size: 12px; color: var(--ink); text-decoration: none; display: inline-flex; align-items: center; margin-bottom: 16px; }
     .foot-brand .brand .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); margin-right: 10px; }
-    .foot-brand p {
-      font-size: 14px; line-height: 1.6; color: var(--muted);
-      max-width: 34ch; font-weight: 300; margin: 0;
-    }
-    .foot-col h4 {
-      font-family: var(--mono); font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase;
-      color: var(--faint); margin: 0 0 16px; font-weight: 500;
-    }
+    .foot-brand p { font-size: 14px; line-height: 1.6; color: var(--muted); max-width: 36ch; font-weight: 300; margin: 0; }
+    .foot-col h4 { font-family: var(--mono); font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--faint); margin: 0 0 16px; font-weight: 500; }
     .foot-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 9px; }
-    .foot-col a {
-      font-size: 14px; color: var(--muted); text-decoration: none;
-      transition: color .2s ease;
-      display: inline-flex; align-items: center; gap: 8px;
-      font-weight: 300;
-    }
+    .foot-col a { font-size: 14px; color: var(--muted); text-decoration: none; transition: color .2s ease; display: inline-flex; align-items: center; gap: 8px; font-weight: 300; }
     .foot-col a:hover { color: var(--ink); }
-    .foot-col a::before {
-      content: ""; width: 5px; height: 5px; background: var(--ghost); border-radius: 50%;
-      transition: background .2s ease;
-    }
+    .foot-col a::before { content: ""; width: 5px; height: 5px; background: var(--ghost); border-radius: 50%; transition: background .2s ease; }
     .foot-col a:hover::before { background: var(--accent); }
     .foot-bottom {
       display: flex; align-items: center; justify-content: space-between;
       padding-top: 24px; border-top: 1px solid var(--hair);
       font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase;
-      color: var(--faint);
-      gap: 24px; flex-wrap: wrap;
+      color: var(--faint); gap: 24px; flex-wrap: wrap;
     }
     .foot-bottom .stamp { display: inline-flex; align-items: center; gap: 10px; }
     .foot-bottom .stamp .dot {
@@ -650,25 +666,27 @@
     }
     @keyframes beat { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .45; transform: scale(.85); } }
 
-    /* ─── responsive ───────────────────────────── */
+    /* responsive */
     @media (max-width: 1100px) {
       .section-head { grid-template-columns: 160px 1fr; gap: 28px; }
-      .studio-grid { grid-template-columns: 160px 1fr 1fr; gap: 28px; }
-      .row { grid-template-columns: 120px 1fr 1fr 40px; gap: 24px; }
+      .platform-grid { grid-template-columns: 160px 1fr 1fr; gap: 28px; }
+      .row { grid-template-columns: 120px 1fr 1fr 72px; gap: 20px; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
       .about-grid { grid-template-columns: 160px 1fr 1fr; gap: 28px; }
       .contact-grid { grid-template-columns: 160px 1fr; gap: 28px; }
       .foot-grid { grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 32px; }
+      .tiers { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
     }
     @media (max-width: 760px) {
       nav.top ul { display: none; }
       .sticky-nav ul { display: none; }
       .section-head { grid-template-columns: 1fr; gap: 14px; margin-bottom: 48px; }
-      .studio-grid { grid-template-columns: 1fr; gap: 28px; }
-      .studio-spacer { display: none; }
+      .platform-grid { grid-template-columns: 1fr; gap: 28px; }
+      .platform-spacer { display: none; }
       .row { grid-template-columns: 64px 1fr; gap: 18px; padding: 32px 0; }
       .row .idx b { font-size: 32px; }
-      .row .body, .row .marker { grid-column: 2; }
-      .row .marker { display: none; }
+      .row .body, .row .status { grid-column: 2; }
+      .row .status { justify-self: start; margin-top: 8px; }
       .about-grid { grid-template-columns: 1fr; gap: 28px; }
       .about-card { max-width: 420px; }
       .about-meta { grid-template-columns: 1fr; }
@@ -679,6 +697,7 @@
     }
     @media (max-width: 480px) {
       .foot-grid { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: 1fr; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
@@ -687,7 +706,7 @@
 </head>
 <body>
 
-  <!-- ─── floating header (appears past hero) ─── -->
+  <!-- floating header -->
   <header class="sticky-nav" id="stickyNav" aria-hidden="true">
     <a href="#top" class="brand"><span class="dot"></span>Midnight Space</a>
     <ul>
@@ -695,10 +714,10 @@
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <a href="#contact" class="nav-cta">Start a project</a>
+    <a href="#contact" class="nav-cta">Become a pilot partner</a>
   </header>
 
-  <!-- ─── existing hero (preserved) ───────────── -->
+  <!-- existing hero (preserved) -->
   <section class="hero" id="top">
     <div class="stars" aria-hidden="true"></div>
 
@@ -708,7 +727,7 @@
         <li><a href="#work">Work</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><a href="#contact" class="nav-cta">Start a project</a></li>
+        <li><a href="#contact" class="nav-cta">Become a pilot partner</a></li>
       </ul>
     </nav>
 
@@ -734,119 +753,165 @@
       const mv = document.getElementById('heroModel');
       mv.addEventListener('load', () => {
         const model = mv.model;
-        // Traverse all materials and apply the Peachworlds blue/cyan look
         [...model.materials].forEach(mat => {
-          // Base: vivid electric blue
-          mat.pbrMetallicRoughness.setBaseColorFactor([0, 0.424, 1, 1]); // #006cff
+          mat.pbrMetallicRoughness.setBaseColorFactor([0, 0.424, 1, 1]);
           mat.pbrMetallicRoughness.setMetallicFactor(1);
           mat.pbrMetallicRoughness.setRoughnessFactor(1);
-          // Emissive: glowing cyan-blue
-          mat.setEmissiveFactor([0.396, 0.647, 1]);  // #65a5ff
+          mat.setEmissiveFactor([0.396, 0.647, 1]);
         });
       });
     </script>
 
     <div class="content">
-      <p class="eyebrow">A creative studio in orbit</p>
+      <p class="eyebrow">A space-data platform · In orbit</p>
       <h1 class="title">Midnight<br/>Space</h1>
-      <p class="tagline">We design quiet interfaces and loud ideas — building digital products that feel alive after dark.</p>
+      <p class="tagline">An honest space-data platform. We map the funding, programs, and accelerators shaping the next generation of space business — beginning with Saudi Arabia and the GCC.</p>
       <div class="cta">
-        <a class="btn primary" href="#work"><span>View work</span><span class="arr" aria-hidden="true"></span></a>
-        <a class="btn ghost" href="#contact"><span>Get in touch</span><span class="arr" aria-hidden="true"></span></a>
+        <a class="btn primary" href="#work"><span>See the prototype</span><span class="arr" aria-hidden="true"></span></a>
+        <a class="btn ghost" href="#contact"><span>Become a pilot partner</span><span class="arr" aria-hidden="true"></span></a>
       </div>
     </div>
 
     <div class="scroll-hint">Scroll</div>
   </section>
 
-  <!-- ─── studio positioning ──────────────────── -->
-  <section class="section" id="studio">
+  <!-- platform positioning -->
+  <section class="section" id="platform">
     <div class="wrap">
       <div class="section-head">
-        <div class="label r">Studio · 01</div>
-        <h2 class="display r r1">A small team.<br/><em>A clear point of view.</em></h2>
+        <div class="label r">Platform · 01</div>
+        <h2 class="display r r1">An honest platform.<br/><em>Built in orbit.</em></h2>
       </div>
 
-      <div class="studio-grid">
-        <div class="studio-spacer"></div>
+      <div class="platform-grid">
+        <div class="platform-spacer"></div>
 
-        <div class="studio-body">
-          <p class="r"><strong>Midnight Space is independent by design.</strong> We partner with a handful of clients each year, and we do fewer things, more deliberately than the industry expects.</p>
-          <p class="r r1">We bring strategy and craft to the same table — positioning that holds up under pressure, interfaces that feel inevitable, and a level of finish that signals what a company actually is.</p>
-          <p class="r r2">We're builders first. We ship.</p>
+        <div class="platform-body">
+          <p class="r"><strong>Midnight Space is a working prototype, not a brochure.</strong> The Saudi Space Opportunity Hub is live with real data on funding calls, grants, accelerators, and public programs across the region.</p>
+          <p class="r r1">We're focused on the GCC first because that's where the questions are most concentrated and the answers are least centralised. From there, we extend coverage outward — Europe, North America, Asia, and emerging markets.</p>
+          <p class="r r2">We're early. We're looking for pilot partners who want to shape what gets built.</p>
         </div>
 
-        <aside class="studio-quote r r3">
-          <q>The best digital work happens when fewer people make more deliberate decisions. We organise the studio around that single belief.</q>
-          <cite><b>John Apodaca</b> &nbsp;·&nbsp; Founder, Midnight Space</cite>
+        <aside class="platform-quote r r3">
+          <q>We started Midnight Space because the people who need this data — agencies, investors, operators — were each rebuilding the same spreadsheet from scratch. One honest source, kept current, beats ten outdated ones.</q>
+          <cite><b>Jordan Van Der Sloten</b> &nbsp;·&nbsp; Founder, Midnight Space</cite>
         </aside>
+      </div>
+
+      <div class="stats">
+        <div class="stat r">
+          <b>210<span style="color:var(--accent-2)">+</span></b>
+          <span>Programs tracked</span>
+        </div>
+        <div class="stat r r1">
+          <b>3</b>
+          <span>Regions covered</span>
+        </div>
+        <div class="stat r r2">
+          <b>6<span style="color:var(--accent-2)">+</span></b>
+          <span>Program types</span>
+        </div>
+        <div class="stat r r3">
+          <b>2024</b>
+          <span>Founded · In orbit</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── practice / capabilities ─────────────── -->
+  <!-- modules / what we build -->
   <section class="section" id="work">
     <div class="wrap">
       <div class="section-head">
-        <div class="label r">Practice · 02</div>
-        <h2 class="display r r1">Five disciplines,<br/><em>one studio.</em></h2>
+        <div class="label r">Modules · 02</div>
+        <h2 class="display r r1">What we've built,<br/><em>and what's next.</em></h2>
       </div>
 
-      <div class="practice-list">
-        <article class="row r">
-          <div class="idx"><b>01</b><span>Brand</span></div>
+      <div class="modules-list">
+        <article class="row prototype r">
+          <div class="idx"><b>01</b><span>Database</span></div>
           <div>
-            <h3>Brand <em>Systems</em></h3>
-            <div class="tags"><span>Identity</span><span>Naming</span><span>Editorial direction</span><span>Voice</span></div>
+            <h3>Funding &amp; Program <em>Database</em></h3>
+            <div class="tags"><span>Grants</span><span>Accelerators</span><span>Tenders</span><span>Public programs</span></div>
           </div>
-          <div class="body">Identities that feel inevitable. Wordmarks, design languages, and the documentation that holds them together as a company grows up.</div>
-          <div class="marker">→</div>
+          <div class="body">A manually curated database of space-related funding calls, grants, accelerators, and public programs. Focused on Saudi Arabia and the GCC, with selected global entries open to regional actors.</div>
+          <span class="status">Prototype live</span>
+        </article>
+
+        <article class="row prototype r">
+          <div class="idx"><b>02</b><span>Dashboards</span></div>
+          <div>
+            <h3>Basic <em>Dashboards</em></h3>
+            <div class="tags"><span>KPIs</span><span>Charts</span><span>Summary views</span></div>
+          </div>
+          <div class="body">Charts and summary views built from the program database — designed for leadership-level overviews rather than deep data exploration. The Saudi Space Opportunity Hub runs on this.</div>
+          <span class="status">Prototype live</span>
         </article>
 
         <article class="row r">
-          <div class="idx"><b>02</b><span>Product</span></div>
+          <div class="idx"><b>03</b><span>Global view</span></div>
           <div>
-            <h3>Product <em>Design</em></h3>
-            <div class="tags"><span>Discovery</span><span>IA</span><span>UI</span><span>Prototyping</span></div>
+            <h3>Global Space <em>Funding View</em></h3>
+            <div class="tags"><span>Europe</span><span>North America</span><span>Asia</span><span>Emerging markets</span></div>
           </div>
-          <div class="body">End-to-end product work, from first sketch to shipped interface. We work in tight loops with engineering and stay close to the user the whole way.</div>
-          <div class="marker">→</div>
+          <div class="body">Extending coverage beyond the GCC to include major space funding programs from Europe, North America, Asia, and emerging markets — with the same curation discipline.</div>
+          <span class="status">Planned</span>
         </article>
 
         <article class="row r">
-          <div class="idx"><b>03</b><span>Web</span></div>
+          <div class="idx"><b>04</b><span>API</span></div>
           <div>
-            <h3>Premium <em>Web Experiences</em></h3>
-            <div class="tags"><span>Editorial sites</span><span>Launches</span><span>Microsites</span><span>WebGL</span></div>
+            <h3>API <em>Access</em></h3>
+            <div class="tags"><span>Structured data</span><span>Internal tools</span><span>Workflows</span></div>
           </div>
-          <div class="body">Marketing sites and launches built to be remembered. Fast, accessible, and crafted at the level of the brand they represent — never templated.</div>
-          <div class="marker">→</div>
+          <div class="body">Structured data access for organisations that want to integrate Midnight Space data into their own internal tools, reports, or workflows. Versioned, rate-limited, documented.</div>
+          <span class="status">Planned</span>
         </article>
 
         <article class="row r">
-          <div class="idx"><b>04</b><span>Systems</span></div>
+          <div class="idx"><b>05</b><span>Agencies</span></div>
           <div>
-            <h3>Interface <em>Systems</em></h3>
-            <div class="tags"><span>Component libraries</span><span>Tokens</span><span>Governance</span><span>Handoff</span></div>
+            <h3>Custom Views <em>for Agencies</em></h3>
+            <div class="tags"><span>Sector filters</span><span>Regional cuts</span><span>Mandate-aligned</span></div>
           </div>
-          <div class="body">Design systems that scale across product, marketing, and partner surfaces. Quiet, consistent, durable — the kind a team can actually maintain.</div>
-          <div class="marker">→</div>
+          <div class="body">Tailored dashboard configurations for specific agency mandates — filtered to the sectors, regions, and program types each team actually cares about.</div>
+          <span class="status">Planned</span>
         </article>
 
         <article class="row r">
-          <div class="idx"><b>05</b><span>Strategy</span></div>
+          <div class="idx"><b>06</b><span>Signals</span></div>
           <div>
-            <h3>Digital <em>Strategy</em></h3>
-            <div class="tags"><span>Positioning</span><span>Narrative</span><span>Roadmaps</span><span>Workshops</span></div>
+            <h3>Signals &amp; <em>Alerts</em></h3>
+            <div class="tags"><span>New programs</span><span>Deadlines</span><span>Status changes</span></div>
           </div>
-          <div class="body">Sharp engagements for teams that need to choose. Positioning, narrative, and roadmap work — no slide decks for their own sake.</div>
-          <div class="marker">→</div>
+          <div class="body">Automated notifications when new programs open, deadlines approach, or data changes — so the right people hear about the right opportunities in time to act.</div>
+          <span class="status">Planned</span>
+        </article>
+
+        <article class="row r">
+          <div class="idx"><b>07</b><span>Exports</span></div>
+          <div>
+            <h3>Exports &amp; <em>Reports</em></h3>
+            <div class="tags"><span>CSV</span><span>PDF briefings</span><span>Curated views</span></div>
+          </div>
+          <div class="body">Export filtered datasets, generate summary reports, and share curated views with stakeholders who don't need a login. Built for how briefings actually circulate.</div>
+          <span class="status">Planned</span>
+        </article>
+
+        <article class="row r">
+          <div class="idx"><b>08</b><span>Intelligence</span></div>
+          <div>
+            <h3>Ecosystem <em>Intelligence</em></h3>
+            <div class="tags"><span>Trends</span><span>Scenario views</span><span>Gap analysis</span></div>
+          </div>
+          <div class="body">Deeper analytics — trend views over time, scenario comparisons across regions, and gap analysis between programs. The layer that turns data into a point of view.</div>
+          <span class="status">Planned</span>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ─── about ───────────────────────────────── -->
+  <!-- about -->
   <section class="section" id="about">
     <div class="wrap">
       <div class="section-head">
@@ -861,73 +926,123 @@
         </div>
 
         <div class="about-text r r1">
-          <p><strong>Midnight Space was founded by John Apodaca in 2024</strong> on a quiet conviction: that the best digital work happens when fewer people make more deliberate decisions.</p>
-          <p>We're a small studio with a global outlook. We work with early-stage founders building something specific, operators inside larger companies who still care about craft, and institutions that want to look and behave like the future they're investing in.</p>
-          <p>We're based nowhere in particular, reachable everywhere. We keep the room small, the schedule honest, and the output sharper than the brief.</p>
+          <p><strong>Midnight Space was founded by Jordan Van Der Sloten in 2024</strong> on a simple observation: the people moving the GCC space sector forward — agencies, investors, operators, founders — were each rebuilding the same funding spreadsheet from scratch.</p>
+          <p>We're small, self-funded, and pre-revenue by choice. The platform is a working prototype. Coverage is real but partial. We'd rather ship one honest tool than a perfect roadmap.</p>
+          <p>We work closely with a handful of pilot partners. Their feedback shapes what we build next, in that order.</p>
 
           <div class="about-meta">
-            <div><b>Founder</b>John Apodaca</div>
+            <div><b>Founder</b>Jordan Van Der Sloten</div>
             <div><b>Established</b>2024</div>
-            <div><b>Operating hours</b>22:00 — 04:00, local</div>
-            <div><b>Engagements / year</b>Five, at most</div>
+            <div><b>Stage</b>Prototype · Pilot partners welcome</div>
+            <div><b>Headquarters</b>Remote · GCC focus</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── contact ─────────────────────────────── -->
-  <section class="contact" id="contact">
-    <div class="wrap contact-grid">
-      <div class="label r">Contact · 04</div>
-      <div>
-        <h2 class="r r1">Tell us what you're<br/><em>working on.</em></h2>
-        <p class="contact-sub r r2">We reply to every serious enquiry within two working days. <strong>Sketches, half-thoughts, and bad ideas welcome</strong> — we'd rather hear the real shape of the problem than a polished brief.</p>
+  <!-- access tiers -->
+  <section class="section" id="access">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="label r">Access · 04</div>
+        <h2 class="display r r1">Three paths in.<br/><em>One platform.</em></h2>
+      </div>
 
-        <div class="contact-row r r3">
-          <a href="mailto:hello@midnightspace.studio?subject=A%20conversation" class="btn primary">
-            <span>hello@midnightspace.studio</span>
-            <span class="arr" aria-hidden="true"></span>
-          </a>
-          <a href="mailto:hello@midnightspace.studio?subject=Press%20%26%20speaking" class="btn ghost">
-            <span>Press &amp; speaking</span>
-            <span class="arr" aria-hidden="true"></span>
-          </a>
+      <div class="tiers">
+        <div class="tier r">
+          <div class="tier-name">Early Access</div>
+          <div class="tier-price">Free</div>
+          <ul>
+            <li>Current prototype access</li>
+            <li>Basic filtering &amp; search</li>
+            <li>Community dataset updates</li>
+            <li>Email support</li>
+          </ul>
+          <a href="#contact" class="btn ghost"><span>Get started</span><span class="arr" aria-hidden="true"></span></a>
         </div>
 
-        <div class="contact-meta r r4">
-          <div><b>Email</b><a href="mailto:hello@midnightspace.studio">hello@midnightspace.studio</a></div>
-          <div><b>Response time</b>Within two working days</div>
-          <div><b>Currently</b>Booking Q3 2026 — Q1 2027</div>
+        <div class="tier featured r r1">
+          <div class="tier-name">Pilot Partner</div>
+          <div class="tier-price">Custom</div>
+          <ul>
+            <li>Full platform access</li>
+            <li>Priority data requests</li>
+            <li>Custom dashboard views</li>
+            <li>Direct founder access</li>
+            <li>Quarterly briefings</li>
+          </ul>
+          <a href="#contact" class="btn primary"><span>Become a partner</span><span class="arr" aria-hidden="true"></span></a>
+        </div>
+
+        <div class="tier r r2">
+          <div class="tier-name">Enterprise</div>
+          <div class="tier-price">Contact</div>
+          <ul>
+            <li>Everything in Pilot</li>
+            <li>API access</li>
+            <li>Custom integrations</li>
+            <li>Dedicated support &amp; SLA</li>
+            <li>White-label options</li>
+          </ul>
+          <a href="#contact" class="btn ghost"><span>Talk to us</span><span class="arr" aria-hidden="true"></span></a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── footer ──────────────────────────────── -->
+  <!-- contact -->
+  <section class="contact" id="contact">
+    <div class="wrap contact-grid">
+      <div class="label r">Contact · 05</div>
+      <div>
+        <h2 class="r r1">Tell us what you're<br/><em>working on.</em></h2>
+        <p class="contact-sub r r2">If you're inside an agency, fund, operator, or government office and you've ever rebuilt a space-funding spreadsheet from scratch, <strong>we'd like to compare notes</strong>. Sketches, half-thoughts, and bad ideas welcome.</p>
+
+        <div class="contact-row r r3">
+          <a href="mailto:jblancoapodaca@gmail.com?subject=Midnight%20Space%20%E2%80%94%20Pilot%20enquiry" class="btn primary">
+            <span>jblancoapodaca@gmail.com</span>
+            <span class="arr" aria-hidden="true"></span>
+          </a>
+          <a href="mailto:jblancoapodaca@gmail.com?subject=Midnight%20Space%20%E2%80%94%20Demo%20request" class="btn ghost">
+            <span>Request a demo</span>
+            <span class="arr" aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <div class="contact-meta r r4">
+          <div><b>Email</b><a href="mailto:jblancoapodaca@gmail.com">jblancoapodaca@gmail.com</a></div>
+          <div><b>Response time</b>Within two working days</div>
+          <div><b>Currently</b>Onboarding pilot partners — Q3 2026</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- footer -->
   <footer class="foot">
     <div class="wrap">
       <div class="foot-grid">
         <div class="foot-brand">
           <a href="#top" class="brand"><span class="dot"></span>Midnight Space</a>
-          <p>An independent creative studio designing quiet interfaces and loud ideas — building digital products that feel alive after dark.</p>
+          <p>Space data and analytics tools for governments, agencies, and investors. An early-stage prototype, looking for pilot partners.</p>
         </div>
         <div class="foot-col">
           <h4>Index</h4>
           <ul>
-            <li><a href="#studio">Studio</a></li>
-            <li><a href="#work">Practice</a></li>
+            <li><a href="#platform">Platform</a></li>
+            <li><a href="#work">Modules</a></li>
             <li><a href="#about">About</a></li>
+            <li><a href="#access">Access</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
         </div>
         <div class="foot-col">
           <h4>Connect</h4>
           <ul>
-            <li><a href="mailto:hello@midnightspace.studio">Email</a></li>
-            <li><a href="#" rel="noopener">Instagram</a></li>
-            <li><a href="#" rel="noopener">Are.na</a></li>
-            <li><a href="#" rel="noopener">Read.cv</a></li>
+            <li><a href="mailto:jblancoapodaca@gmail.com">Email</a></li>
+            <li><a href="#" rel="noopener">LinkedIn</a></li>
+            <li><a href="#" rel="noopener">X / Twitter</a></li>
           </ul>
         </div>
         <div class="foot-col">
@@ -942,8 +1057,8 @@
 
       <div class="foot-bottom">
         <span>© 2026 Midnight Space</span>
-        <span class="stamp"><span class="dot"></span>Currently in orbit</span>
-        <span>Designed &amp; built in-house</span>
+        <span class="stamp"><span class="dot"></span>Currently in orbit · Onboarding pilot partners</span>
+        <span>Founded by Jordan Van Der Sloten</span>
       </div>
     </div>
   </footer>
@@ -953,7 +1068,6 @@
   </div>
 
   <script>
-    // Floating header appears past the hero.
     const stickyNav = document.getElementById('stickyNav');
     const hero = document.getElementById('top');
     const onScroll = () => {
@@ -964,7 +1078,6 @@
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
 
-    // Scroll reveal.
     const io = new IntersectionObserver(entries => {
       entries.forEach(e => {
         if (e.isIntersecting) {
